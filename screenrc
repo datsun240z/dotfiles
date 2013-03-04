@@ -7,3 +7,7 @@ termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
 defbce "on"
 # set TERM
 term screen-256color-bce
+# rons
+caption always "%l %H %t %= %w  %D %M %d %c"
+hardstatus alwayslastline "%h"
+startup_message off

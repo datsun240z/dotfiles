@@ -1,4 +1,6 @@
 alias ls='ls -G'
 alias ll='ls -la'
 
-alias gvim='open -a MacVim'
+alias psrt ps -eHo pid,tid,class,rtprio,ni,pri,psr,pcpu,stat,wchan:14,comm
+alias h history
+#alias ccollab /corp/tools/ccollab/6.5.6502

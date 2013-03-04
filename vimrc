@@ -1,273 +1,140 @@
-" Use Vim settings, rather then Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
+source $VIMRUNTIME/vimrc_example.vim
+" let Tmenu_ctags_cmd = 'c:\Downloads\Vim\ec554w32\ctags554\ctags.exe'
+" let Tlist_Ctags_Cmd = 'c:\Downloads\Vim\ec554w32\ctags554\ctags.exe'
+
+" Vundle Bundle START vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 set nocompatible
-" =============== Vundle Initialization ===============
-filetype off
+filetype off                   " required!
+
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
-" =============== Vundle Packagages ==================
-" let Vundle manage Vundle
-" required! 
+
+ " let Vundle manage Vundle
+ " required! 
 Bundle 'gmarik/vundle'
 
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-eunuch'
-
-"ctrlp is buggy or something.  Not shoing all my files
-"Bundle 'kien/ctrlp.vim'
-Bundle 'Command-T'
-
-
-Bundle 'Lokaltog/vim-easymotion'
-" Let it use the number keys instead of the alphabet
-let g:EasyMotion_keys = '1234567890'
-
-
-" Testing these out
-" This should have awesome error finding before compiling
-Bundle 'scrooloose/syntastic'
-
-Bundle 'Lokaltog/vim-powerline'
-set laststatus=2                " Always show the statusline
-let g:Powerline_symbols = 'fancy'
-let g:Powerline_theme = 'default'
-
-" Virtualenv stuff
-Bundle 'virtualenv.vim'
-
-" Git stuff
-Bundle 'vim-scripts/fugitive.vim'
-
-" autocomplete using clang
-Bundle 'clang-complete'
-
-" Markdown
-" Doesn't seem to work
-"Bundle 'swaroopch/vim-markdown-preview'
-filetype plugin indent on
-" ================ General Config ====================
-
-set encoding=utf-8              "Use utf-8
-set number                      "Line numbers are good
-set backspace=indent,eol,start  "Allow backspace in insert mode
-set history=1000                "Store lots of :cmdline history
-set showcmd                     "Show incomplete cmds down the bottom
-set showmode                    "Show current mode down the bottom
-"set gcr=a:blinkon0              "Disable cursor blink
-
-set autoread                    "Reload files changed outside vim
-
-" This makes vim act like all other editors, buffers can
-" exist in the background without being in a window. 
-" http://items.sjbach.com/319/configuring-vim-right
-set hidden
-
-" turn on syntax highlighting
-syntax on
-
-" Turn on the status bar
-set ruler
-
-" Save work when tabbing away.  I think it requires gui
-"au FocusLost * :wa
-" sets jj to to exit insert mode
-inoremap jj <ESC>
-
-" *E*dit my *V*imrc in a split
-:nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-" *S*ource my *V*imrc
-:nnoremap <leader>sv :source $MYVIMRC<cr>
-
-" Move between splits with just C-hjkl
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-
-" ================ Movement Config  =================
-" Set tab to just to matching paren (not bound before?)
-"nnoremap <tab> %
-"vnoremap <tab> %
-
-" ================ Search Settings  =================
-
-set incsearch        "Find the next match as we type the search
-set hlsearch         "Hilight searches by default
-set gdefault         "Default is now to chang all occurences on a line
-" Use normal regexs, not vim ones
-nnoremap / /\v
-vnoremap / /\v
-" Set <leader><space> to clear the search and highlighting
-nnoremap <leader><space> :noh<cr>
-set viminfo='100,f1  "Save up to 100 marks, enable capital marks
-
-" Visual mode pressing * or # searches for the current selection
-vnoremap <silent> * :call VisualSelection('f', '')<CR>
-vnoremap <silent> # :call VisualSelection('b', '')<CR>
-
-
-" ================ Persistent Undo ==================
-" Keep undo history across sessions, by storing in file.
-" Only works in MacVim (gui) mode. As of 7.3 it doesn't require gui
-" or maybe it doesn't work...
-"set undodir=~/.vim/backups
-"set undofile
-
-" ================ Indentation ======================
-
-set autoindent
-set smartindent
-set smarttab
-set shiftwidth=4
-set softtabstop=4
-set tabstop=4
-set expandtab
-
-filetype plugin on
-filetype indent on
-
-" Display tabs and trailing spaces visually
-set list listchars=tab:\ \ ,trail:·
-
-set wrap       "Yes wrap lines
-set linebreak    "Wrap lines at convenient points
-
-" ================ Folds ============================
-
-set foldmethod=indent   "fold based on indent
-set foldnestmax=3       "deepest fold is 3 levels
-set nofoldenable        "dont fold by default
-
-" ================ Completion =======================
-
-set wildmode=list:longest
-set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
-set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
-
-" ================ Scrolling ========================
-
-set scrolloff=15          "Start scrolling when we're 8 lines away from margins
-"Yes wrap lines, so this is not needed
-"set sidescrolloff=1
-"set sidescroll=1
-
-
-" Treat long lines as break lines (useful when moving around in them)
-nnoremap j gj
-nnoremap k gk
-
-" ================= Math =============================
-ab alpha α
-ab beta β
-ab gamma γ
-ab delta δ
-ab epsilon ε
-ab zeta ζ
-ab eta η
-ab theta θ
-ab iota ι
-ab kappa κ
-ab lambda λ
-ab mu μ
-ab nu ν
-ab xi ξ
-ab omicron ο
-ab pi π
-ab rho ρ
-ab sigma σ
-ab tau τ
-ab upsilon υ
-ab phi φ
-ab chi χ
-ab psi ψ
-ab omega ω
-
-ab Gamma Γ
-ab Delta Δ
-ab Theta Θ
-ab Lambda Λ
-ab Xi Ξ
-ab Pi Π
-ab Sigma Σ
-ab Upsilon Υ
-ab Phi Φ
-ab Psi Ψ
-ab Omega Ω
-
-imap \in ∈
-imap \notin ∉
-imap \subset ⊆
-imap \ssubset ⊂
-imap \cup ∪
-imap \cap ∩
-imap \forall ∀
-imap \exists ∃
-imap \notexists ∄
-imap \o+ ⊕
-imap \ox ⊗
-imap \o- ⊖
-imap \o. ⊙
-imap \o/ ⊘
-
-imap \trans ᵀ
-imap \bar  ̅
-imap \hat  ̂
-imap \wav  ̃
-imap \under  ̲
-
-imap \RR ℝ
-imap \CC ℂ
-imap \NN ℕ
-imap \ZZ ℤ
-imap \HH ℍ
-imap \QQ ℚ
-
-imap \scriptS 𝒮
-imap \scriptT 𝒯
-imap \scriptP 𝒫
-
-imap \empty ∅
-
-imap \|-> ↦
-
-imap \subi ᵢ
-imap \sub0 ₀
-imap \sub1 ₁
-imap \sub2 ₂
-imap \sub3 ₃
-imap \sub4 ₄
-imap \sub5 ₅
-imap \sub6 ₆
-imap \sub7 ₇
-imap \sub8 ₈
-imap \sub9 ₉
-
-imap \sup0 ⁰
-imap \sup1 ¹
-imap \sup2 ²
-imap \sup3 ³
-imap \sup4 ⁴
-imap \sup5 ⁵
-imap \sup6 ⁶
-imap \sup7 ⁷
-imap \sup8 ⁸
-imap \sup9 ⁹
-
-imap \doublearrow ⇋
-
-imap \QED ∎
-
-" ================= Python ===========================
+" My Bundles here:
 "
-" Add the virtualenv's site-packages to vim path
-py << EOF
-import os.path
-import sys
-import vim
-if 'VIRTUAL_ENV' in os.environ:
-    project_base_dir = os.environ['VIRTUAL_ENV']
-    sys.path.insert(0, project_base_dir)
-    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-    execfile(activate_this, dict(__file__=activate_this))
-EOF
+" original repos on github
+"Bundle 'tpope/vim-fugitive'
+"Bundle 'Lokaltog/vim-easymotion'
+"Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+"Bundle 'tpope/vim-rails.git'
+Bundle 'ifdef-highlighting'
+" vim-scripts repos
+"Bundle 'L9'
+"Bundle 'FuzzyFinder'
+" non github repos
+"Bundle 'git://git.wincent.com/command-t.git'
+
+filetype plugin indent on     " required!
+"
+" Brief help
+" :BundleList          - list configured bundles
+" :BundleInstall(!)    - install(update) bundles
+" :BundleSearch(!) foo - search(or refresh cache first) for foo
+" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+"
+" see :h vundle for more details or wiki for FAQ
+" NOTE: comments after Bundle command are not allowed..
+
+" Vundle Bundle STOP ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+"set viminfo+='21,nC:/vim/_viminfo
+" Vim will search for the file named 'tags', starting with the current
+" directory and then going to the parent directory and then recursively to the
+" directory one level above, till it either locates the 'tags' file or reaches
+" the root '/' directory.
+set tags=tags;\
+set path=.
+set incsearch
+set ignorecase
+set smartcase
+set showmatch
+set scrolloff=2
+set wildmode=longest,full
+set columns=85
+set lines=34
+set hidden
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set cindent
+set cinoptions=(0<Enter
+set nomousehide
+set directory=/tmp
+set guioptions+=a
+set ts=4   et sw=4 nowrap
+" set patchmode=.org
+let g:is_bash=1
+let c_space_errors=1
+
+behave xterm
+set selectmode=key
+set keymodel=startsel
+set bsdir=buffer
+"set grepprg=/bin/grep\ -Hn
+"set grepformat=%f:%l:%m
+"let g:greputilsFindcmd = 'C:/bin/GnuWin32/bin/find.exe'
+map <C-Up> <C-Y>
+map <C-Down> <C-E>
+map <F11> :set ts=4   et sw=4 nowrap<CR>
+map <F12> :set ts=8 noet sw=8 nowrap<CR>
+"set cscopeprg=gtags-cscope
+map <F3> :NERDTreeToggle<CR>
+map <F4> :NERDTreeFind<CR>
+map <F5> :cp<CR>
+map <M-F9> %
+map! <C-F> <Esc>gUiw`]a
+map ;' :%s:::cg<Left><Left><Left><Left>
+vmap ;' :s:::cg<Left><Left><Left><Left>
+map <M-l> V
+nmap <C-PageDown> ]]
+nmap <C-PageUp> [[
+nmap <C-Right> w
+nmap <C-Left> b
+nmap <C-Insert> "+yy
+nmap <S-Insert> "*P
+imap <S-Insert> <C-R>*
+nmap <C-Del> dw
+nmap <S-Del> "+dd
+nmap <C-Tab> :bnext
+nmap <C-S-Tab> :bprev
+nmap <C-F4> :bdelete
+imap <S-Tab> <C-D>
+imap <C-Del> <C-Right><C-W>
+map <M-k> viw
+vmap <M-k> <ESC>
+" visual selection turns into thing to search for
+vmap / y/<C-R>"
+map _F ma[[k"xyy`a:echo @x<CR>
+
+	" vim *.bin or *.exe : edit binary using xxd-format!
+	augroup Binary
+	  au!
+	  au BufReadPre   *.elf,*.bin,*.exe,*.dll let &bin=1
+	  au BufReadPost  *.elf,*.bin,*.exe,*.dll if &bin | %!xxd -g1
+	  au BufReadPost  *.elf,*.bin,*.exe,*.dll set ft=xxd | endif
+	  au BufWritePre  *.elf,*.bin,*.exe,*.dll if &bin | %!xxd -r
+	  au BufWritePre  *.elf,*.bin,*.exe,*.dll endif
+	  au BufWritePost *.elf,*.bin,*.exe,*.dll if &bin | %!xxd
+	  au BufWritePost *.elf,*.bin,*.exe,*.dll set nomod | endif
+	augroup END
+
+set nobackup
+set writebackup
+set printoptions=left:5pc,number:y,paper:letter
+set nrformats=hex,alpha
+"set makeprg=make\ TARG=CFFANCI-FLASH\ ROOTDIR=/home/rbelaire/Perforce/rbelaire_onp4proxy01.ciena.com_2002/Centaur/cfFanCI\ -f/home/rbelaire/Perforce/rbelaire_onp4proxy01.ciena.com_2002/Centaur/cfFanCI/Makefiles/Makefile
+"set gfn=terminus\ 16
+set guifont=Bitstream\ Vera\ Sans\ Mono\ 11
+"set guifont=Anonymous\ Pro\ 12
+
+nnoremap @pfa       :!p4 add %<CR>:e<CR>
+nnoremap @pfe       :!p4 edit %<CR>:e<CR>
+nnoremap @pfd       :!p4 diff %<CR>
+
+" CTRL+b opens the buffer list
+map <C-b> <esc>:BufExplorer<cr>
+
+nmap ,a:GNOMEAlignArguments<cr>
