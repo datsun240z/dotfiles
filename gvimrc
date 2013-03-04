@@ -1,9 +1,9 @@
 " gui vim
 
-Bundle 'Solarized'
+"Bundle 'Solarized'
 
-set background=light
-colorscheme Solarized
+"set background=light
+"colorscheme Solarized
 
-set guifont=Menlo:h14
+"set guifont=Menlo:h14
 
