@@ -1,0 +1,7 @@
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+$if Bash
+  Space: magic-space
+$endif
+"\M-f": forward-word
+"\M-o": "\C-p\C-a\M-f "
