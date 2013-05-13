@@ -1,0 +1,7 @@
+ git status
+ git add bashrc screenrc vimrc
+ git status
+ git commit  
+ git remote -v
+ git fetch -v
+ git push origin master  
