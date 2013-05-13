@@ -86,6 +86,10 @@ if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
+if [ -f ~/.bash_completion_lib.d/completions/complete/gocompletion.sh ]; then
+      . ~/.bash_completion_lib.d/completions/complete/gocompletion.sh 
+fi
+
 if [ -f bash_completion_lib-1.2.8/bash_completion_lib ]; then
     . bash_completion_lib-1.2.8/bash_completion_lib
 fi
@@ -95,7 +99,7 @@ if [ -f ~/code/to/to.sh ]; then
 fi
 
 tools=()
-tools=( "${tools[@]}" "powerpc" "/usr/local/ciena/powerpc-e500-linux-gnuspe-20100501/bin/powerpc-e500-linux-gnuspe- " )
+tools=( "${tools[@]}" "powerpc" "/usr/local/ciena/powerpc-e500-linux-gnuspe-20130325/bin/powerpc-e500-linux-gnuspe- " )
 tools=( "${tools[@]}" "mips"    "/usr/local/ciena/mips-unknown-linux-gnu-20080904/bin/mips-unknown-linux-gnu-" )
 tools=( "${tools[@]}" "mips64"  "/usr/local/ciena/mips64-octeon-linux-gnu-20080904/bin/mips64-octeon-linux-gnu-" )
 tools=( "${tools[@]}" "i486"  "/usr/local/ciena/i486-sim-linux-gnu-20110802/bin/i486-sim-linux-gnu-" )
@@ -134,9 +138,8 @@ done
 ## BABS issue
 umask 002
 
-export P4PASSWD="dontknow1"
 export P4USER="rbelaire"
-export P4PORT="onxp4proxy1.ciena.com:2003"
+#export P4PORT="onxp4proxy1.ciena.com:2003"
 export P4CONFIG=".p4config.txt"
 #export P4DIFF="diff -Naur"
 #export P4DIFF="meld"

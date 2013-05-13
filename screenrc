@@ -1,3 +1,47 @@
+#
+# ~/.screenrc
+#
+# Guy Who Tweaks This File and Adds Foul Language Comments:
+#  -- Miles Z. Sterrett <miles.sterrett@gmail.com>
+#
+# Original Author:         Aaron Schaefer <aaron@elasticdog.com>
+# Created:        Sat 05 Aug 2006 06:38:47 PM EDT
+#
+# Settings used to initialize screen sessions
+term screen-256color
+#ron term screen-256color-bce
+# Change default escape sequence from C-a to a backslash
+#  escape ``                            # default ^Aa
+
+# Do not display the copyright page
+  startup_message off                  # default: on
+
+# Change the number of scrollback lines
+  defscrollback 1000                   # default: 100
+
+# Ensure the default shell is the same as the $SHELL environment variable
+  shell -$SHELL
+
+# Make navigating between regions easier
+  bind s split
+  bind j focus down
+  bind k focus up
+
+# Make resizing regions easier
+  bind = resize =
+  bind + resize +1
+  bind - resize -1
+
+# Configure status bar at the bottom of the terminal
+  hardstatus alwayslastline
+  hardstatus string "%{= kb}[ %=%{w}%?%-Lw%?%{C}(%{W}%n*%f %t%?(%u)%?%{C})%{w}%?%+Lw%?%?%= %{b}][%{C} %Y.%m.%d %{W}%0c %{b}]"
+# ron hardstatus alwayslastline "%h"
+
+# Turn off the fucking visual bell
+  vbell off
+
+# End of file
+
 # terminfo and termcap for nice 256 color terminal
 # allow bold colors - necessary for some reason
 attrcolor b ".I"
@@ -5,9 +49,7 @@ attrcolor b ".I"
 termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
 # erase background with current bg color
 defbce "on"
-# set TERM
-term screen-256color-bce
 # rons
 caption always "%l %H %t %= %w  %D %M %d %c"
-hardstatus alwayslastline "%h"
-startup_message off
+
+

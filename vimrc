@@ -1,31 +1,49 @@
 source $VIMRUNTIME/vimrc_example.vim
-" let Tmenu_ctags_cmd = 'c:\Downloads\Vim\ec554w32\ctags554\ctags.exe'
-" let Tlist_Ctags_Cmd = 'c:\Downloads\Vim\ec554w32\ctags554\ctags.exe'
 
 " Vundle Bundle START vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 set nocompatible
 filetype off                   " required!
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+" Setting up Vundle - the vim plugin bundler
+    let iCanHazVundle=1
+    let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+    if !filereadable(vundle_readme)
+        echo "Installing Vundle.."
+        echo ""
+        silent !mkdir -p ~/.vim/bundle
+        silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+        let iCanHazVundle=0
+    endif
+    set rtp+=~/.vim/bundle/vundle/
+    call vundle#rc()
+    Bundle 'gmarik/vundle'
+    "Add your bundles here
+    "Bundle 'Syntastic' "uber awesome syntax and errors highlighter
+    "Bundle 'altercation/vim-colors-solarized' "T-H-E colorscheme
+    "vim-fugitive' "So awesome, it should be illegal 
+    Bundle 'https://github.com/tpope/vim-fugitive'
+    Bundle 'Lokaltog/vim-easymotion'
+    Bundle 'ifdef-highlighting'
+    Bundle 'Align'
+    Bundle 'ctrlp.vim'
+    Bundle 'bufexplorer.zip'
+    Bundle 'The-NERD-tree'
+    Bundle 'NERD_Tree-and-ack'
+    Bundle 'gtags.vim'
+    Bundle 'ack.vim'
+    Bundle 'matchit.zip'
+    Bundle 'genutils'
+    Bundle 'multvals.vim'
+    Bundle 'greputils'
+    Bundle 'statusline.vim'
 
- " let Vundle manage Vundle
- " required! 
-Bundle 'gmarik/vundle'
-
-" My Bundles here:
-"
-" original repos on github
-"Bundle 'tpope/vim-fugitive'
-"Bundle 'Lokaltog/vim-easymotion'
-"Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-"Bundle 'tpope/vim-rails.git'
-Bundle 'ifdef-highlighting'
-" vim-scripts repos
-"Bundle 'L9'
-"Bundle 'FuzzyFinder'
-" non github repos
-"Bundle 'git://git.wincent.com/command-t.git'
+    "...All your other bundles...
+    if iCanHazVundle == 0
+        echo "Installing Bundles, please ignore key map error messages"
+        echo ""
+        :BundleInstall
+    endif
+" Setting up Vundle - the vim plugin bundler end
 
 filetype plugin indent on     " required!
 "
@@ -127,7 +145,8 @@ set printoptions=left:5pc,number:y,paper:letter
 set nrformats=hex,alpha
 "set makeprg=make\ TARG=CFFANCI-FLASH\ ROOTDIR=/home/rbelaire/Perforce/rbelaire_onp4proxy01.ciena.com_2002/Centaur/cfFanCI\ -f/home/rbelaire/Perforce/rbelaire_onp4proxy01.ciena.com_2002/Centaur/cfFanCI/Makefiles/Makefile
 "set gfn=terminus\ 16
-set guifont=Bitstream\ Vera\ Sans\ Mono\ 11
+set guifont=DejaVu\ LGC\ Sans\ Mono\ 10
+"set guifont=Bitstream\ Vera\ Sans\ Mono\ 11
 "set guifont=Anonymous\ Pro\ 12
 
 nnoremap @pfa       :!p4 add %<CR>:e<CR>
