@@ -36,6 +36,8 @@ filetype off                   " required!
     Bundle 'multvals.vim'
     Bundle 'greputils'
     Bundle 'statusline.vim'
+    Bundle 'mbadran/headlights'
+    Bundle 'buffergrep'
 
     "...All your other bundles...
     if iCanHazVundle == 0
@@ -86,6 +88,12 @@ set ts=4   et sw=4 nowrap
 " set patchmode=.org
 let g:is_bash=1
 let c_space_errors=1
+
+let g:ctrlp_root_markers = ['go','linux-centaur']
+let g:ctrlp_by_filename = 1
+let g:ctrlp_regexp = 1
+let g:ctrlp_max_files = 0
+let g:ctrlp_max_depth = 40
 
 behave xterm
 set selectmode=key
@@ -156,4 +164,5 @@ nnoremap @pfd       :!p4 diff %<CR>
 " CTRL+b opens the buffer list
 map <C-b> <esc>:BufExplorer<cr>
 
-nmap ,a:GNOMEAlignArguments<cr>
+nmap ,a :GNOMEAlignArguments<cr>
+set wildignore+=*/build/*,*/cache/*
