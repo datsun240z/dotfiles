@@ -34,10 +34,11 @@ filetype off                   " required!
     Bundle 'matchit.zip'
     Bundle 'genutils'
     Bundle 'multvals.vim'
-    Bundle 'greputils'
+    Bundle 'GrepCommands'
     Bundle 'statusline.vim'
     Bundle 'mbadran/headlights'
-    Bundle 'buffergrep'
+    Bundle 'nathanaelkane/vim-indent-guides'
+    Bundle 'quickhl.vim'
 
     "...All your other bundles...
     if iCanHazVundle == 0
@@ -95,6 +96,9 @@ let g:ctrlp_regexp = 1
 let g:ctrlp_max_files = 0
 let g:ctrlp_max_depth = 40
 
+let g:indent_guides_color_change_percent = 50
+
+
 behave xterm
 set selectmode=key
 set keymodel=startsel
@@ -138,13 +142,13 @@ map _F ma[[k"xyy`a:echo @x<CR>
 	" vim *.bin or *.exe : edit binary using xxd-format!
 	augroup Binary
 	  au!
-	  au BufReadPre   *.elf,*.bin,*.exe,*.dll let &bin=1
-	  au BufReadPost  *.elf,*.bin,*.exe,*.dll if &bin | %!xxd -g1
-	  au BufReadPost  *.elf,*.bin,*.exe,*.dll set ft=xxd | endif
-	  au BufWritePre  *.elf,*.bin,*.exe,*.dll if &bin | %!xxd -r
-	  au BufWritePre  *.elf,*.bin,*.exe,*.dll endif
-	  au BufWritePost *.elf,*.bin,*.exe,*.dll if &bin | %!xxd
-	  au BufWritePost *.elf,*.bin,*.exe,*.dll set nomod | endif
+	  au BufReadPre   *.elf,*.bin,*.exe,*.dll,*.jic let &bin=1
+	  au BufReadPost  *.elf,*.bin,*.exe,*.dll,*.jic if &bin | %!xxd -g1
+	  au BufReadPost  *.elf,*.bin,*.exe,*.dll,*.jic set ft=xxd | endif
+	  au BufWritePre  *.elf,*.bin,*.exe,*.dll,*.jic if &bin | %!xxd -r
+	  au BufWritePre  *.elf,*.bin,*.exe,*.dll,*.jic endif
+	  au BufWritePost *.elf,*.bin,*.exe,*.dll,*.jic if &bin | %!xxd
+	  au BufWritePost *.elf,*.bin,*.exe,*.dll,*.jic set nomod | endif
 	augroup END
 
 set nobackup
@@ -166,3 +170,23 @@ map <C-b> <esc>:BufExplorer<cr>
 
 nmap ,a :GNOMEAlignArguments<cr>
 set wildignore+=*/build/*,*/cache/*
+
+nmap <Space>m <Plug>(quickhl-manual-this)
+xmap <Space>m <Plug>(quickhl-manual-this)
+nmap <F9>     <Plug>(quickhl-manual-toggle)
+xmap <F9>     <Plug>(quickhl-manual-toggle)
+
+nmap <Space>M <Plug>(quickhl-manual-reset)
+xmap <Space>M <Plug>(quickhl-manual-reset)
+
+nmap <Space>j <Plug>(quickhl-cword-toggle)
+
+nmap <Space>] <Plug>(quickhl-tag-toggle)
+
+map H <Plug>(operator-quickhl-manual-this-motion)
+
+" Copy full filename path
+" nmap cp :let @" = expand("%")
+nmap cp :let @" = expand("%:p")
+
+command! Blame execute '!p4-annotate' . ' ' . expand('%:p') . ' ' . line('.')

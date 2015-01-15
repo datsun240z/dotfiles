@@ -42,6 +42,7 @@ esac
 
 # Comment in the above and uncomment this below for a color prompt
 PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+#export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[01;35m\]$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -67,6 +68,7 @@ esac
 if [ "$TERM" != "dumb" ]; then
     eval "`dircolors -b`"
     alias ls='ls --color=auto'
+    alias ols="ls -la --color | awk '{k=0;for(i=0;i<=8;i++)k+=((substr(\$1,i+2,1)~/[rwx]/)*2^(8-i));if(k)printf(\" %0o \",k);print}'"
     #alias dir='ls --color=auto --format=vertical'
     #alias vdir='ls --color=auto --format=long'
 fi
@@ -78,12 +80,19 @@ alias l='ls -CF'
 alias h='history'
 alias vs='/corp/tools/slickedit/2008/bin/vs'
 alias psrt='ps -eHo pid,tid,class,rtprio,ni,pri,psr,pcpu,stat,wchan:14,comm'
+alias p4-syncable='p4 changes -L "...#>have"'
+alias p4h='p4 changes -l -m1 "...#have"'
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
+fi
+
+if [ -f /etc/bash_completion.d/git-completion.bash ]; then
+    source /etc/bash_completion.d/git-completion.bash
+    export GIT_PS1_SHOWDIRTYSTATE=1
 fi
 
 if [ -f ~/.bash_completion_lib.d/completions/complete/gocompletion.sh ]; then
@@ -132,14 +141,11 @@ for ((i=0; i<"${#tools[@]}"; i++)); do
   done
 done
 
-## xhost +
-###########source /etc/bash_completion.d/git-completion.bash
-
 ## BABS issue
 umask 002
 
 export P4USER="rbelaire"
-#export P4PORT="onxp4proxy1.ciena.com:2003"
+export P4PORT="onxp4proxy1.ciena.com:2003"
 export P4CONFIG=".p4config.txt"
 #export P4DIFF="diff -Naur"
 #export P4DIFF="meld"
@@ -147,3 +153,15 @@ export P4MERGE="/corp/tools/perforce/current/bin/p4merge"
 export P4EDITOR="gvim -f"
 export P4DIFF=meld p4 diff
 
+
+dnif () { 
+    # Recursively list a file from PWD up the directory tree to root
+    [[ -n $1 ]] || { echo "dnif [ls-opts] name"; return 1; }
+    local THERE=$PWD RC=2
+    while [[ $THERE != / ]]
+        do [[ -e $THERE/${2:-$1} ]] && { ls ${2:+$1} $THERE/${2:-$1}; RC=0; }
+            THERE=$(dirname $THERE)
+        done
+    [[ -e $THERE/${2:-$1} ]] && { echo ${2:+$1} /${2:-$1}; RC=0; }
+    return $RC
+}

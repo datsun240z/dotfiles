@@ -19,6 +19,11 @@ if [ -d ~/bin ] ; then
   PATH=~/bin:"${PATH}"
 fi
 
+# set PATH so it includes user's private bin if it exists
+if [ -d ~/usr/bin/p4u ] ; then
+  PATH=~/usr/bin/p4u:"$PATH"
+fi
+
 if [ -d /usr/local/ciena/m68k-elf-tools-20080416/bin ] ; then
   PATH=/usr/local/ciena/m68k-elf-tools-20080416/bin:"$PATH"
 fi
@@ -55,7 +60,7 @@ if [[ -d /corp/tools/perforce/current || -L /corp/tools/perforce/current ]] ; th
   PATH=/corp/tools/perforce/current/bin:"$PATH"
 fi
 PATH=~/usr/bin:"$PATH"
-PATH=~/bin/meld/bin:"$PATH"
+PATH=~/usr/bin/meld/bin:"$PATH"
 
 # New dotfile stuff
 dots=~/dotfiles
