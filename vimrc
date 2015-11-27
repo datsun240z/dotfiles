@@ -39,6 +39,7 @@ filetype off                   " required!
     Bundle 'mbadran/headlights'
     Bundle 'nathanaelkane/vim-indent-guides'
     Bundle 'quickhl.vim'
+    Bundle 'unimpaired.vim'
 
     "...All your other bundles...
     if iCanHazVundle == 0
@@ -74,7 +75,7 @@ set smartcase
 set showmatch
 set scrolloff=2
 set wildmode=longest,full
-set columns=85
+set columns=120
 set lines=34
 set hidden
 set tabstop=2
@@ -85,6 +86,8 @@ set cinoptions=(0<Enter
 set nomousehide
 set directory=/tmp
 set guioptions+=a
+set guioptions-=T
+set formatoptions-=t    " kill auto-wrap
 set ts=4   et sw=4 nowrap
 " set patchmode=.org
 let g:is_bash=1
@@ -109,11 +112,14 @@ set bsdir=buffer
 map <C-Up> <C-Y>
 map <C-Down> <C-E>
 map <F11> :set ts=4   et sw=4 nowrap<CR>
+map <F36> :set ts=4   et sw=4 nowrap<CR>
 map <F12> :set ts=8 noet sw=8 nowrap<CR>
+map <F37> :set ts=8 noet sw=8 nowrap<CR>
 "set cscopeprg=gtags-cscope
 map <F3> :NERDTreeToggle<CR>
 map <F4> :NERDTreeFind<CR>
 map <F5> :cp<CR>
+map <F6> :cn<CR>
 map <M-F9> %
 map! <C-F> <Esc>gUiw`]a
 map ;' :%s:::cg<Left><Left><Left><Left>
@@ -155,11 +161,11 @@ set nobackup
 set writebackup
 set printoptions=left:5pc,number:y,paper:letter
 set nrformats=hex,alpha
-"set makeprg=make\ TARG=CFFANCI-FLASH\ ROOTDIR=/home/rbelaire/Perforce/rbelaire_onp4proxy01.ciena.com_2002/Centaur/cfFanCI\ -f/home/rbelaire/Perforce/rbelaire_onp4proxy01.ciena.com_2002/Centaur/cfFanCI/Makefiles/Makefile
-"set gfn=terminus\ 16
-set guifont=DejaVu\ LGC\ Sans\ Mono\ 10
+set makeprg=\./go\ TARG=saos-sds\ -k\ -j16\ USE_COLOUR=n
+set guifont=DejaVu\ LGC\ Sans\ Mono\ 9
 "set guifont=Bitstream\ Vera\ Sans\ Mono\ 11
 "set guifont=Anonymous\ Pro\ 12
+"set gfn=terminus\ 16
 
 nnoremap @pfa       :!p4 add %<CR>:e<CR>
 nnoremap @pfe       :!p4 edit %<CR>:e<CR>
@@ -187,6 +193,13 @@ map H <Plug>(operator-quickhl-manual-this-motion)
 
 " Copy full filename path
 " nmap cp :let @" = expand("%")
+" Use Ctrl+R" to paste
 nmap cp :let @" = expand("%:p")
 
+let $UNCOLOR=1
 command! Blame execute '!p4-annotate' . ' ' . expand('%:p') . ' ' . line('.')
+
+"vimdiff current vs git head (fugitive extension)
+nnoremap @gd :Gdiff<cr> 
+"switch back to current file and closes fugitive buffer
+nnoremap @gD <c-w>h<c-w>c

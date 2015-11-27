@@ -18,6 +18,9 @@ export HISTCONTROL=ignoreboth
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
+export P4_VERSION=2015.1
+export P4V_VERSION=2015.1
+
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(lesspipe)"
 
@@ -61,7 +64,7 @@ esac
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
 #if [ -f ~/.bash_aliases ]; then
-#    . ~/.bash_aliases
+#    source ~/.bash_aliases
 #fi
 
 # enable color support of ls and also add handy aliases
@@ -73,38 +76,49 @@ if [ "$TERM" != "dumb" ]; then
     #alias vdir='ls --color=auto --format=long'
 fi
 
-# some more ls aliases
 alias ll='ls -l'
 alias la='ls -A'
-alias l='ls -CF'
+#alias ls='ls -lut'
 alias h='history'
+alias b='cd ..'
+alias p='cd -'
 alias vs='/corp/tools/slickedit/2008/bin/vs'
 alias psrt='ps -eHo pid,tid,class,rtprio,ni,pri,psr,pcpu,stat,wchan:14,comm'
 alias p4-syncable='p4 changes -L "...#>have"'
 alias p4h='p4 changes -l -m1 "...#have"'
+alias psrt='ps -eHo pid,tid,class,rtprio,ni,pri,psr,pcpu,stat,wchan:14,comm'
+alias gitlog='git log --graph --full-history --all --color --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20[%cn] %s"'
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
+    source /etc/bash_completion
 fi
 
-if [ -f /etc/bash_completion.d/git-completion.bash ]; then
-    source /etc/bash_completion.d/git-completion.bash
+if [ -f .git-completion.bash ]; then
+    source .git-completion.bash
     export GIT_PS1_SHOWDIRTYSTATE=1
 fi
 
 if [ -f ~/.bash_completion_lib.d/completions/complete/gocompletion.sh ]; then
-      . ~/.bash_completion_lib.d/completions/complete/gocompletion.sh 
+      source ~/.bash_completion_lib.d/completions/complete/gocompletion.sh 
 fi
 
-if [ -f bash_completion_lib-1.2.8/bash_completion_lib ]; then
-    . bash_completion_lib-1.2.8/bash_completion_lib
+if [ -f bash_completion_lib-1.3.1/bash_completion_lib ]; then
+    source bash_completion_lib-1.3.1/bash_completion_lib
 fi
 
 if [ -f ~/code/to/to.sh ]; then
-    . ~/code/to/to.sh
+    source ~/code/to/to.sh
+fi
+
+if [ -f ~/.local/bin/bashmarks.sh ]; then
+    source ~/.local/bin/bashmarks.sh
+fi
+
+if [ -f /etc/profile.d/vte.sh ]; then
+    source /etc/profile.d/vte.sh
 fi
 
 tools=()
