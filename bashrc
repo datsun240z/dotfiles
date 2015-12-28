@@ -36,9 +36,9 @@ xterm-color)
     ;;
 *)
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-    export EDITOR='/usr/bin/gvim'
-    export CSCOPE_EDITOR='/usr/bin/gvim'
-    export SVN_EDITOR='/usr/bin/gvim -f'
+    export EDITOR='/usr/local/bin/gvim'
+    export CSCOPE_EDITOR='/usr/local/bin/gvim'
+    export SVN_EDITOR='/usr/local/bin/gvim -f'
 
     ;;
 esac
@@ -68,7 +68,11 @@ esac
 #fi
 
 # enable color support of ls and also add handy aliases
-if [ "$TERM" != "dumb" ]; then
+if [ "$TERM" == "dumb" ]; then
+    alias ols="ls -la --color | awk '{k=0;for(i=0;i<=8;i++)k+=((substr(\$1,i+2,1)~/[rwx]/)*2^(8-i));if(k)printf(\" %0o \",k);print}'"
+elif [ "$TERM" == "xterm-256color" ]; then
+    alias ls='ls -G'
+else
     eval "`dircolors -b`"
     alias ls='ls --color=auto'
     alias ols="ls -la --color | awk '{k=0;for(i=0;i<=8;i++)k+=((substr(\$1,i+2,1)~/[rwx]/)*2^(8-i));if(k)printf(\" %0o \",k);print}'"
@@ -82,7 +86,6 @@ alias la='ls -A'
 alias h='history'
 alias b='cd ..'
 alias p='cd -'
-alias vs='/corp/tools/slickedit/2008/bin/vs'
 alias psrt='ps -eHo pid,tid,class,rtprio,ni,pri,psr,pcpu,stat,wchan:14,comm'
 alias p4-syncable='p4 changes -L "...#>have"'
 alias p4h='p4 changes -l -m1 "...#have"'

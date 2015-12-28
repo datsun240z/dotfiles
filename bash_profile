@@ -19,10 +19,6 @@ if [ -d ~/bin ] ; then
   PATH=~/bin:"${PATH}"
 fi
 
-if [ -d ~/usr/bin/p4u ] ; then
-  PATH=~/usr/bin/p4u:"$PATH"
-fi
-
 CHECKME=~/usr/bin
 if [ -d $CHECKME ] ; then
   PATH=$CHECKME:"$PATH"
@@ -117,3 +113,10 @@ source colours
 #sourceDir
 
 popd > /dev/null
+
+[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && source $(brew --prefix)/etc/profile.d/autojump.sh
+
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  source $(brew --prefix)/etc/bash_completion
+fi
+

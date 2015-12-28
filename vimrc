@@ -1,4 +1,4 @@
-source $VIMRUNTIME/vimrc_example.vim
+"source $VIMRUNTIME/vimrc_example.vim
 
 " Vundle Bundle START vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 set nocompatible
@@ -18,16 +18,34 @@ filetype off                   " required!
     call vundle#rc()
     Bundle 'gmarik/vundle'
     "Add your bundles here
-    "Bundle 'Syntastic' "uber awesome syntax and errors highlighter
-    "Bundle 'altercation/vim-colors-solarized' "T-H-E colorscheme
-    "vim-fugitive' "So awesome, it should be illegal 
-    Bundle 'https://github.com/tpope/vim-fugitive'
+    Bundle 'tpope/vim-fugitive'
+    "vimdiff current vs git head (fugitive extension)
+    nnoremap @gd :Gdiff<cr>
+    "switch back to current file and closes fugitive buffer
+    nnoremap @gD <c-w>h<c-w>c
+    "Bundle 'tpope/vim-sleuth' indent -detector is mod to be better
+    Bundle 'tpope/vim-sensible'
+    Bundle 'tpope/vim-surround'
+    Bundle 'tpope/vim-repeat'
+    Bundle 'tpope/vim-unimpaired'
+    Bundle 'tpope/vim-commentary'
+    Bundle 'vivien/vim-linux-coding-style'
+    let g:linuxsty_patterns = [ "/usr/src/", "/linux" ]
     Bundle 'Lokaltog/vim-easymotion'
     Bundle 'ifdef-highlighting'
     Bundle 'Align'
     Bundle 'ctrlp.vim'
+    let g:ctrlp_root_markers = ['go','oneos-linux']
+    let g:ctrlp_by_filename = 1
+    let g:ctrlp_regexp = 1
+    let g:ctrlp_max_files = 0
+    let g:ctrlp_max_depth = 40
     Bundle 'bufexplorer.zip'
+    " CTRL+b opens the buffer list
+    noremap <C-b> <esc>:BufExplorer<cr>
     Bundle 'The-NERD-tree'
+    noremap <F3> :NERDTreeToggle<CR>
+    noremap <F4> :NERDTreeFind<CR>
     Bundle 'NERD_Tree-and-ack'
     Bundle 'gtags.vim'
     Bundle 'ack.vim'
@@ -35,11 +53,43 @@ filetype off                   " required!
     Bundle 'genutils'
     Bundle 'multvals.vim'
     Bundle 'GrepCommands'
-    Bundle 'statusline.vim'
+    Bundle 'bling/vim-airline'
+    " set laststatus=2    Done in sensible.vim
+    " Newer statusline, since powerline has moved on
+    " Bundle 'bling/vim-airline'
+    let g:airline_powerline_fonts=0
+    let g:airline_theme='bubblegum'
+    let g:airline#extensions#hunks#enabled = 1
+    let g:airline#extensions#tabline#enabled = 1
+    let g:airline#extensions#tabline#left_sep = ' '
+    let g:airline#extensions#tabline#left_alt_sep = '|'
+    " Informs you of all the Bundles installed
     Bundle 'mbadran/headlights'
+    " plugin for visually displaying indent levels in Vim
     Bundle 'nathanaelkane/vim-indent-guides'
-    Bundle 'quickhl.vim'
-    Bundle 'unimpaired.vim'
+    let g:indent_guides_color_change_percent = 50
+    " Tells you about changes
+    Bundle 'airblade/vim-gitgutter'
+    Bundle 'luochen1990/indent-detector.vim'
+    Bundle "daylerees/colour-schemes", { "rtp": "vim/" }
+    Bundle 'vim-jp/vim-cpp'
+    let c_space_errors=1
+    "Bundle 'yaifa.vim'
+    "Bundle 'quickhl.vim'
+    "nmap <Space>m <Plug>(quickhl-manual-this)
+    "xmap <Space>m <Plug>(quickhl-manual-this)
+    "nmap <F9>     <Plug>(quickhl-manual-toggle)
+    "xmap <F9>     <Plug>(quickhl-manual-toggle)
+    "nmap <Space>M <Plug>(quickhl-manual-reset)
+    "xmap <Space>M <Plug>(quickhl-manual-reset)
+    "nmap <Space>j <Plug>(quickhl-cword-toggle)
+    "nmap <Space>] <Plug>(quickhl-tag-toggle)
+    "noremap H <Plug>(operator-quickhl-manual-this-motion)
+    "Bundle 'file:///usr/local/Cellar/global/6.5.1/share/gtags/gtags-cscope.vim'
+    "Bundle 'autoload_cscope.vim'
+    "Bundle 'cscope.vim'
+    "Bundle 'unimpaired.vim'
+    "Bundle 'taglist.vim'
 
     "...All your other bundles...
     if iCanHazVundle == 0
@@ -61,19 +111,22 @@ filetype plugin indent on     " required!
 " NOTE: comments after Bundle command are not allowed..
 
 " Vundle Bundle STOP ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+" colorscheme by http://bytefluent.com/vivify/
+colorscheme jellybeans_modified
 
 "set viminfo+='21,nC:/vim/_viminfo
 " Vim will search for the file named 'tags', starting with the current
 " directory and then going to the parent directory and then recursively to the
 " directory one level above, till it either locates the 'tags' file or reaches
 " the root '/' directory.
-set tags=tags;\
+set tags=tags;/
 set path=.
-set incsearch
+"set incsearch Done in sensible.vim
+set hlsearch
 set ignorecase
 set smartcase
 set showmatch
-set scrolloff=2
+"set scrolloff=2 Done in sensible.vim
 set wildmode=longest,full
 set columns=120
 set lines=34
@@ -91,17 +144,6 @@ set formatoptions-=t    " kill auto-wrap
 set ts=4   et sw=4 nowrap
 " set patchmode=.org
 let g:is_bash=1
-let c_space_errors=1
-
-let g:ctrlp_root_markers = ['go','linux-centaur']
-let g:ctrlp_by_filename = 1
-let g:ctrlp_regexp = 1
-let g:ctrlp_max_files = 0
-let g:ctrlp_max_depth = 40
-
-let g:indent_guides_color_change_percent = 50
-
-
 behave xterm
 set selectmode=key
 set keymodel=startsel
@@ -109,22 +151,21 @@ set bsdir=buffer
 "set grepprg=/bin/grep\ -Hn
 "set grepformat=%f:%l:%m
 "let g:greputilsFindcmd = 'C:/bin/GnuWin32/bin/find.exe'
-map <C-Up> <C-Y>
-map <C-Down> <C-E>
-map <F11> :set ts=4   et sw=4 nowrap<CR>
-map <F36> :set ts=4   et sw=4 nowrap<CR>
-map <F12> :set ts=8 noet sw=8 nowrap<CR>
-map <F37> :set ts=8 noet sw=8 nowrap<CR>
+noremap <C-Up> <C-Y>
+noremap <C-Down> <C-E>
+noremap <F11> :set ts=4   et sw=4 nowrap<CR>
+noremap <F36> :set ts=4   et sw=4 nowrap<CR>
+noremap <F12> :set ts=8 noet sw=8 nowrap<CR>
+noremap <F37> :set ts=8 noet sw=8 nowrap<CR>
 "set cscopeprg=gtags-cscope
-map <F3> :NERDTreeToggle<CR>
-map <F4> :NERDTreeFind<CR>
-map <F5> :cp<CR>
-map <F6> :cn<CR>
-map <M-F9> %
-map! <C-F> <Esc>gUiw`]a
-map ;' :%s:::cg<Left><Left><Left><Left>
+"set cscopetag cscopeverbose
+noremap <F5> :cp<CR>
+noremap <F6> :cn<CR>
+noremap <M-F9> %
+noremap! <C-F> <Esc>gUiw`]a
+noremap ;' :%s:::cg<Left><Left><Left><Left>
 vmap ;' :s:::cg<Left><Left><Left><Left>
-map <M-l> V
+noremap <M-l> V
 nmap <C-PageDown> ]]
 nmap <C-PageUp> [[
 nmap <C-Right> w
@@ -134,35 +175,36 @@ nmap <S-Insert> "*P
 imap <S-Insert> <C-R>*
 nmap <C-Del> dw
 nmap <S-Del> "+dd
-nmap <C-Tab> :bnext
-nmap <C-S-Tab> :bprev
-nmap <C-F4> :bdelete
+noremap <C-Tab> :bnext<CR>
+noremap <C-S-Tab> :bprev<CR>
+nmap <C-F4> :bdelete<CR>
 imap <S-Tab> <C-D>
 imap <C-Del> <C-Right><C-W>
-map <M-k> viw
+noremap <M-k> viw
 vmap <M-k> <ESC>
 " visual selection turns into thing to search for
 vmap / y/<C-R>"
-map _F ma[[k"xyy`a:echo @x<CR>
+noremap _F ma[[k"xyy`a:echo @x<CR>
 
-	" vim *.bin or *.exe : edit binary using xxd-format!
-	augroup Binary
-	  au!
-	  au BufReadPre   *.elf,*.bin,*.exe,*.dll,*.jic let &bin=1
-	  au BufReadPost  *.elf,*.bin,*.exe,*.dll,*.jic if &bin | %!xxd -g1
-	  au BufReadPost  *.elf,*.bin,*.exe,*.dll,*.jic set ft=xxd | endif
-	  au BufWritePre  *.elf,*.bin,*.exe,*.dll,*.jic if &bin | %!xxd -r
-	  au BufWritePre  *.elf,*.bin,*.exe,*.dll,*.jic endif
-	  au BufWritePost *.elf,*.bin,*.exe,*.dll,*.jic if &bin | %!xxd
-	  au BufWritePost *.elf,*.bin,*.exe,*.dll,*.jic set nomod | endif
-	augroup END
+    " vim *.bin or *.exe : edit binary using xxd-format!
+    augroup Binary
+        au!
+        au BufReadPre   *.elf,*.bin,*.exe,*.dll,*.jic let &bin=1
+        au BufReadPost  *.elf,*.bin,*.exe,*.dll,*.jic if &bin | %!xxd -g1
+        au BufReadPost  *.elf,*.bin,*.exe,*.dll,*.jic set ft=xxd | endif
+        au BufWritePre  *.elf,*.bin,*.exe,*.dll,*.jic if &bin | %!xxd -r
+        au BufWritePre  *.elf,*.bin,*.exe,*.dll,*.jic endif
+        au BufWritePost *.elf,*.bin,*.exe,*.dll,*.jic if &bin | %!xxd
+        au BufWritePost *.elf,*.bin,*.exe,*.dll,*.jic set nomod | endif
+    augroup END
 
 set nobackup
 set writebackup
 set printoptions=left:5pc,number:y,paper:letter
 set nrformats=hex,alpha
 set makeprg=\./go\ TARG=saos-sds\ -k\ -j16\ USE_COLOUR=n
-set guifont=DejaVu\ LGC\ Sans\ Mono\ 9
+set guifont=Menlo\ Regular:h11
+"set guifont=DejaVu\ LGC\ Sans\ Mono\ 9
 "set guifont=Bitstream\ Vera\ Sans\ Mono\ 11
 "set guifont=Anonymous\ Pro\ 12
 "set gfn=terminus\ 16
@@ -170,26 +212,10 @@ set guifont=DejaVu\ LGC\ Sans\ Mono\ 9
 nnoremap @pfa       :!p4 add %<CR>:e<CR>
 nnoremap @pfe       :!p4 edit %<CR>:e<CR>
 nnoremap @pfd       :!p4 diff %<CR>
-
-" CTRL+b opens the buffer list
-map <C-b> <esc>:BufExplorer<cr>
+command! Blame execute '!p4-annotate' . ' ' . expand('%:p') . ' ' . line('.')
 
 nmap ,a :GNOMEAlignArguments<cr>
 set wildignore+=*/build/*,*/cache/*
-
-nmap <Space>m <Plug>(quickhl-manual-this)
-xmap <Space>m <Plug>(quickhl-manual-this)
-nmap <F9>     <Plug>(quickhl-manual-toggle)
-xmap <F9>     <Plug>(quickhl-manual-toggle)
-
-nmap <Space>M <Plug>(quickhl-manual-reset)
-xmap <Space>M <Plug>(quickhl-manual-reset)
-
-nmap <Space>j <Plug>(quickhl-cword-toggle)
-
-nmap <Space>] <Plug>(quickhl-tag-toggle)
-
-map H <Plug>(operator-quickhl-manual-this-motion)
 
 " Copy full filename path
 " nmap cp :let @" = expand("%")
@@ -197,9 +223,5 @@ map H <Plug>(operator-quickhl-manual-this-motion)
 nmap cp :let @" = expand("%:p")
 
 let $UNCOLOR=1
-command! Blame execute '!p4-annotate' . ' ' . expand('%:p') . ' ' . line('.')
 
-"vimdiff current vs git head (fugitive extension)
-nnoremap @gd :Gdiff<cr> 
-"switch back to current file and closes fugitive buffer
-nnoremap @gD <c-w>h<c-w>c
+set visualbell
