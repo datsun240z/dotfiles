@@ -70,8 +70,12 @@ filetype off                   " required!
     let g:indent_guides_color_change_percent = 50
     " Tells you about changes
     Bundle 'airblade/vim-gitgutter'
+    nnoremap ]d :GitGutterNextHunk<CR>
+    nnoremap [d :GitGutterPrevHunk<CR>
     Bundle 'luochen1990/indent-detector.vim'
     Bundle "daylerees/colour-schemes", { "rtp": "vim/" }
+    Bundle 'wesQ3/vim-windowswap'
+    "\ww then move and \ww again
     Bundle 'vim-jp/vim-cpp'
     let c_space_errors=1
     "Bundle 'yaifa.vim'
