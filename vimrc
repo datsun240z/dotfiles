@@ -40,6 +40,7 @@ filetype off                   " required!
     let g:ctrlp_regexp = 1
     let g:ctrlp_max_files = 0
     let g:ctrlp_max_depth = 40
+    let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']
     Bundle 'bufexplorer.zip'
     " CTRL+b opens the buffer list
     noremap <C-b> <esc>:BufExplorer<cr>
@@ -53,9 +54,6 @@ filetype off                   " required!
     Bundle 'multvals.vim'
     Bundle 'GrepCommands'
     Bundle 'bling/vim-airline'
-    " set laststatus=2    Done in sensible.vim
-    " Newer statusline, since powerline has moved on
-    " Bundle 'bling/vim-airline'
     let g:airline_powerline_fonts=0
     let g:airline_theme='bubblegum'
     let g:airline#extensions#hunks#enabled = 1
@@ -77,6 +75,8 @@ filetype off                   " required!
     "\ww then move and \ww again
     Bundle 'vim-jp/vim-cpp'
     Bundle 'datsun240z/gtags-cscope'
+    Bundle 'datsun240z/gtagsomnicomplete'
+    Bundle 'datsun240z/vim-colors'
     let c_space_errors=1
     "Bundle 'yaifa.vim'
     "Bundle 'quickhl.vim'
@@ -91,7 +91,6 @@ filetype off                   " required!
     "noremap H <Plug>(operator-quickhl-manual-this-motion)
     "Bundle 'autoload_cscope.vim'
     "Bundle 'cscope.vim'
-    "Bundle 'unimpaired.vim'
     "Bundle 'taglist.vim'
 
     "...All your other bundles...
@@ -114,8 +113,9 @@ filetype plugin indent on     " required!
 " NOTE: comments after Bundle command are not allowed..
 
 " Vundle Bundle STOP ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 " colorscheme by http://bytefluent.com/vivify/
-colorscheme jellybeans_modified
+colorscheme jellybeans
 
 "set viminfo+='21,nC:/vim/_viminfo
 " Vim will search for the file named 'tags', starting with the current
@@ -201,6 +201,7 @@ noremap _F ma[[k"xyy`a:echo @x<CR>
         au BufWritePost *.elf,*.bin,*.exe,*.dll,*.jic set nomod | endif
     augroup END
 
+autocmd FileType c set omnifunc=gtagsomnicomplete#Complete
 set nobackup
 set writebackup
 set printoptions=left:5pc,number:y,paper:letter
