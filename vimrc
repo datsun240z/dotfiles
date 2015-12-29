@@ -47,7 +47,6 @@ filetype off                   " required!
     noremap <F3> :NERDTreeToggle<CR>
     noremap <F4> :NERDTreeFind<CR>
     Bundle 'NERD_Tree-and-ack'
-    Bundle 'gtags.vim'
     Bundle 'ack.vim'
     Bundle 'matchit.zip'
     Bundle 'genutils'
@@ -77,6 +76,7 @@ filetype off                   " required!
     Bundle 'wesQ3/vim-windowswap'
     "\ww then move and \ww again
     Bundle 'vim-jp/vim-cpp'
+    Bundle 'datsun240z/gtags-cscope'
     let c_space_errors=1
     "Bundle 'yaifa.vim'
     "Bundle 'quickhl.vim'
@@ -89,7 +89,6 @@ filetype off                   " required!
     "nmap <Space>j <Plug>(quickhl-cword-toggle)
     "nmap <Space>] <Plug>(quickhl-tag-toggle)
     "noremap H <Plug>(operator-quickhl-manual-this-motion)
-    "Bundle 'file:///usr/local/Cellar/global/6.5.1/share/gtags/gtags-cscope.vim'
     "Bundle 'autoload_cscope.vim'
     "Bundle 'cscope.vim'
     "Bundle 'unimpaired.vim'
@@ -161,7 +160,7 @@ noremap <F11> :set ts=4   et sw=4 nowrap<CR>
 noremap <F36> :set ts=4   et sw=4 nowrap<CR>
 noremap <F12> :set ts=8 noet sw=8 nowrap<CR>
 noremap <F37> :set ts=8 noet sw=8 nowrap<CR>
-"set cscopeprg=gtags-cscope
+set cscopeprg=gtags-cscope
 "set cscopetag cscopeverbose
 noremap <F5> :cp<CR>
 noremap <F6> :cn<CR>
@@ -229,3 +228,14 @@ nmap cp :let @" = expand("%:p")
 let $UNCOLOR=1
 
 set visualbell
+
+" To use the default key/mouse mapping:
+let GtagsCscope_Auto_Map = 1
+" To ignore letter case when searching:
+"	let GtagsCscope_Ignore_Case = 1
+" To use absolute path name:
+"       let GtagsCscope_Absolute_Path = 1
+" To deterring interruption:
+"	let GtagsCscope_Keep_Alive = 1
+" If you hope auto loading:
+let GtagsCscope_Auto_Load = 1
