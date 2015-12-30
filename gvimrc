@@ -7,4 +7,4 @@
 "colorscheme Earthsong
 " set guifont=*
 " to bring up a picker
-" set guifont=Fantasque\ Sans\ Mono:h14,Menlo\ Regular\ for\ Powerline:h14,Source\ Code\ Pro\ For\ Powerline:h14,Source\ Code\ Pro:h18,Menlo:h14
+set guifont=Menlo\ Regular:h11,DejaVu\ LGC\ Sans\ Mono\ 9,Bitstream\ Vera\ Sans\ Mono\ 11,Anonymous\ Pro\ 12

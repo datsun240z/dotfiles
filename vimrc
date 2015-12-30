@@ -207,11 +207,6 @@ set writebackup
 set printoptions=left:5pc,number:y,paper:letter
 set nrformats=hex,alpha
 set makeprg=\./go\ TARG=saos-sds\ -k\ -j16\ USE_COLOUR=n
-set guifont=Menlo\ Regular:h11
-"set guifont=DejaVu\ LGC\ Sans\ Mono\ 9
-"set guifont=Bitstream\ Vera\ Sans\ Mono\ 11
-"set guifont=Anonymous\ Pro\ 12
-"set gfn=terminus\ 16
 
 nnoremap @pfa       :!p4 add %<CR>:e<CR>
 nnoremap @pfe       :!p4 edit %<CR>:e<CR>
