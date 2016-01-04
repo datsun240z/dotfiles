@@ -75,8 +75,10 @@ filetype off                   " required!
     "\ww then move and \ww again
     Bundle 'vim-jp/vim-cpp'
     Bundle 'datsun240z/gtags-cscope'
+    Bundle 'datsun240z/GNOME-align-args'
     Bundle 'datsun240z/gtagsomnicomplete'
-    Bundle 'datsun240z/vim-colors'
+    autocmd FileType c set omnifunc=gtagsomnicomplete#Complete
+    "Bundle 'datsun240z/vim-colors'
     let c_space_errors=1
     "Bundle 'yaifa.vim'
     "Bundle 'quickhl.vim'
@@ -115,7 +117,7 @@ filetype plugin indent on     " required!
 " Vundle Bundle STOP ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 " colorscheme by http://bytefluent.com/vivify/
-colorscheme jellybeans
+"colorscheme jellybeans
 
 "set viminfo+='21,nC:/vim/_viminfo
 " Vim will search for the file named 'tags', starting with the current
@@ -201,7 +203,6 @@ noremap _F ma[[k"xyy`a:echo @x<CR>
         au BufWritePost *.elf,*.bin,*.exe,*.dll,*.jic set nomod | endif
     augroup END
 
-autocmd FileType c set omnifunc=gtagsomnicomplete#Complete
 set nobackup
 set writebackup
 set printoptions=left:5pc,number:y,paper:letter
