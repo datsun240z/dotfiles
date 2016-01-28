@@ -39,6 +39,11 @@ if [ -d $CHECKME ] ; then
   PATH=$CHECKME:"$PATH"
 fi
 
+CHECKME=/home/rbelaire/usr/bin/p4u
+if [ -d $CHECKME ] ; then
+  PATH=$CHECKME:"$PATH"
+fi
+
 #CHECKME=~/usr/bin/meld/bin
 #if [ -d $CHECKME ] ; then
   #PATH=$CHECKME:"$PATH"
@@ -122,3 +127,5 @@ if [ "$HOSTNAME" = "ONM-RBELAIRE-01" ]; then
   fi
 fi
 
+
+test -e ${HOME}/.iterm2_shell_integration.bash && source ${HOME}/.iterm2_shell_integration.bash

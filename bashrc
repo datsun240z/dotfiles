@@ -31,15 +31,17 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-xterm-color)
-#    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+  xterm-color)
     ;;
-*)
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+  xterm-256color)
     export EDITOR='/usr/local/bin/gvim'
     export CSCOPE_EDITOR='/usr/local/bin/gvim'
     export SVN_EDITOR='/usr/local/bin/gvim -f'
-
+    ;;
+  *)
+    export EDITOR='/usr/bin/gvim'
+    export CSCOPE_EDITOR='/usr/bin/gvim'
+    export SVN_EDITOR='/usr/bin/gvim -f'
     ;;
 esac
 

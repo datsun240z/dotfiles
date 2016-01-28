@@ -43,7 +43,7 @@ filetype off                   " required!
     let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']
     Bundle 'bufexplorer.zip'
     " CTRL+b opens the buffer list
-    noremap <C-b> <esc>:BufExplorer<cr>
+    noremap <C-b> <esc>:BufExplorer<CR>
     Bundle 'The-NERD-tree'
     noremap <F3> :NERDTreeToggle<CR>
     noremap <F4> :NERDTreeFind<CR>
@@ -76,6 +76,7 @@ filetype off                   " required!
     Bundle 'vim-jp/vim-cpp'
     Bundle 'datsun240z/gtags-cscope'
     Bundle 'datsun240z/GNOME-align-args'
+    nmap ,a :GNOMEAlignArguments<CR>
     Bundle 'datsun240z/gtagsomnicomplete'
     autocmd FileType c set omnifunc=gtagsomnicomplete#Complete
     "Bundle 'datsun240z/vim-colors'
@@ -128,31 +129,29 @@ set tags=tags;/
 set path=.
 "set incsearch Done in sensible.vim
 set hlsearch
-set ignorecase
-set smartcase
+" Make searches case-sensitive only if they contain upper-case characters
+set ignorecase smartcase
 set showmatch
 "set scrolloff=2 Done in sensible.vim
 set wildmode=longest,full
 set columns=120
 set lines=34
 set hidden
-set tabstop=2
-set shiftwidth=2
-set expandtab
 set cindent
-set cinoptions=(0<Enter
+set cinoptions+=(0<Enter>
 set nomousehide
 set directory=/tmp
 set guioptions+=a
 set guioptions-=T
-set formatoptions-=t    " kill auto-wrap
-set ts=4   et sw=4 nowrap
+"set formatoptions-=t    " kill auto-wrap
+set tabstop=4 expandtab shiftwidth=4 nowrap
 " set patchmode=.org
 let g:is_bash=1
 behave xterm
 set selectmode=key
 set keymodel=startsel
 set bsdir=buffer
+set t_Co=256 " 256 colors
 "set grepprg=/bin/grep\ -Hn
 "set grepformat=%f:%l:%m
 "let g:greputilsFindcmd = 'C:/bin/GnuWin32/bin/find.exe'
@@ -190,6 +189,7 @@ vmap <M-k> <ESC>
 " visual selection turns into thing to search for
 vmap / y/<C-R>"
 noremap _F ma[[k"xyy`a:echo @x<CR>
+nnoremap Q gq
 
     " vim *.bin or *.exe : edit binary using xxd-format!
     augroup Binary
@@ -214,7 +214,6 @@ nnoremap @pfe       :!p4 edit %<CR>:e<CR>
 nnoremap @pfd       :!p4 diff %<CR>
 command! Blame execute '!p4-annotate' . ' ' . expand('%:p') . ' ' . line('.')
 
-nmap ,a :GNOMEAlignArguments<cr>
 set wildignore+=*/build/*,*/cache/*
 
 " Copy full filename path
