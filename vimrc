@@ -18,12 +18,13 @@ filetype off                   " required!
     call vundle#rc()
     Bundle 'gmarik/vundle'
     "Add your bundles here
+    Bundle 'comment.vim'
     Bundle 'tpope/vim-fugitive'
     "vimdiff current vs git head (fugitive extension)
     nnoremap @gd :Gdiff<cr>
     "switch back to current file and closes fugitive buffer
     nnoremap @gD <c-w>h<c-w>c
-    "Bundle 'tpope/vim-sleuth' indent -detector is mod to be better
+    "Bundle 'tpope/vim-sleuth' indent-detector is mod to be better
     Bundle 'tpope/vim-sensible'
     Bundle 'tpope/vim-surround'
     Bundle 'tpope/vim-repeat'
@@ -34,6 +35,7 @@ filetype off                   " required!
     Bundle 'Lokaltog/vim-easymotion'
     Bundle 'ifdef-highlighting'
     Bundle 'Align'
+    Bundle 'vim-indent-object'
     Bundle 'ctrlp.vim'
     let g:ctrlp_root_markers = ['go','oneos-linux']
     let g:ctrlp_by_filename = 1
@@ -74,6 +76,7 @@ filetype off                   " required!
     Bundle 'wesQ3/vim-windowswap'
     "\ww then move and \ww again
     Bundle 'vim-jp/vim-cpp'
+    Bundle 'godlygeek/csapprox'
     Bundle 'datsun240z/gtags-cscope'
     Bundle 'datsun240z/GNOME-align-args'
     nmap ,a :GNOMEAlignArguments<CR>
@@ -134,9 +137,11 @@ set ignorecase smartcase
 set showmatch
 "set scrolloff=2 Done in sensible.vim
 set wildmode=longest,full
-set columns=120
-set lines=34
+"set columns=120
+"set lines=34
 set hidden
+set number
+set relativenumber
 set cindent
 set cinoptions+=(0<Enter>
 set nomousehide
@@ -176,9 +181,13 @@ nmap <C-Right> w
 nmap <C-Left> b
 nmap <C-Insert> "+yy
 nmap <S-Insert> "*P
+onoremap af :<C-u>normal! ggVG<CR>
 imap <S-Insert> <C-R>*
 nmap <C-Del> dw
 nmap <S-Del> "+dd
+noremap <C-k> :bnext<CR>
+noremap <C-j> :bprev<CR>
+nmap <C-d> :bdelete<CR>
 noremap <C-Tab> :bnext<CR>
 noremap <C-S-Tab> :bprev<CR>
 nmap <C-F4> :bdelete<CR>
