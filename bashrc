@@ -96,6 +96,8 @@ alias p4h='p4 changes -l -m1 "...#have"'
 alias psrt='ps -eHo pid,tid,class,rtprio,ni,pri,psr,pcpu,stat,wchan:14,comm'
 alias gitlog='git log --graph --full-history --all --color --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20[%cn] %s"'
 alias weather='curl -4 http://wttr.in'
+alias git-vimunstaged='vim $(git st -s | cut -f3 -d" ")'
+alias git-gvimunstaged='gvim $(git st -s | cut -f3 -d" ")'
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile

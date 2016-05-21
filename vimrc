@@ -143,7 +143,7 @@ set hidden
 set number
 set relativenumber
 set cindent
-set cinoptions+=(0<Enter>
+set cinoptions+=(0
 set nomousehide
 set directory=/tmp
 set guioptions+=a
@@ -175,8 +175,8 @@ noremap! <C-F> <Esc>gUiw`]a
 noremap ;' :%s:::cg<Left><Left><Left><Left>
 vmap ;' :s:::cg<Left><Left><Left><Left>
 noremap <M-l> V
-nmap <C-PageDown> ]]
-nmap <C-PageUp> [[
+nmap <C-PageDown> ]m
+nmap <C-PageUp> [m
 nmap <C-Right> w
 nmap <C-Left> b
 nmap <C-Insert> "+yy

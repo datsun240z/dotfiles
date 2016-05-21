@@ -69,10 +69,6 @@ fi
   #PATH=/home/rbelaire/code/nios2-linux/toolchain-build/build/nios2/bin:"$PATH"
 #fi
 
-#if [ -d /home/rbelaire/code/git ] ; then
-  #PATH=/home/rbelaire/code/git:"$PATH"
-#fi
-
 #if [[ -d /corp/tools/ccollab/current || -L /corp/tools/ccollab/current ]] ; then
   #PATH=/corp/tools/ccollab/current:"$PATH"
 #fi
@@ -126,6 +122,5 @@ if [ "$HOSTNAME" = "ONM-RBELAIRE-01" ]; then
     source $(brew --prefix)/etc/bash_completion
   fi
 fi
-
 
 test -e ${HOME}/.iterm2_shell_integration.bash && source ${HOME}/.iterm2_shell_integration.bash
