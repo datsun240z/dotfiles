@@ -190,20 +190,31 @@ onoremap af :<C-u>normal! ggVG<CR>
 imap <S-Insert> <C-R>*
 nmap <C-Del> dw
 nmap <S-Del> "+dd
-noremap <C-k> :bnext<CR>
-noremap <C-j> :bprev<CR>
-nmap <C-d> :bdelete<CR>
-noremap <C-Tab> :bnext<CR>
-noremap <C-S-Tab> :bprev<CR>
-nmap <C-F4> :bdelete<CR>
+noremap <C-k>     : bnext<CR>
+noremap <C-j>     : bprev<CR>
+nmap <C-d>        : bdelete<CR>
+noremap <C-Tab>   : bnext<CR>
+noremap <C-S-Tab> : bprev<CR>
+nmap <C-F4>       : bdelete<CR>
 imap <S-Tab> <C-D>
 imap <C-Del> <C-Right><C-W>
 noremap <M-k> viw
 vmap <M-k> <ESC>
 " visual selection turns into thing to search for
 vmap / y/<C-R>"
+" Get me the function name!
 noremap _F ma[[k"xyy`a:echo @x<CR>
+" gq is a formatting command. It reflows and wraps the given text object
+" (defaults to a single line) to the textwidth set width.
 nnoremap Q gq
+" Make Y yank everything from the cursor to the end of the line. This makes Y
+" act more like C or D because by default, Y yanks the current line (i.e. the
+" same as yy).
+noremap Y y$
+" Make Ctrl-e jump to the end of the current line in the insert mode. This is
+" handy when you are in the middle of a line and would like to go to its end
+" without switching to the normal mode.
+inoremap <C-e> <C-o>$
 
     " vim *.bin or *.exe : edit binary using xxd-format!
     augroup Binary
