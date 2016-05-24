@@ -119,6 +119,12 @@ if [ -f bash_completion_lib-1.3.1/bash_completion_lib ]; then
     source bash_completion_lib-1.3.1/bash_completion_lib
 fi
 
+test -e ${HOME}/.bash_completion_lib.d/completions/complete/bb.completion && \
+  source ${HOME}/.bash_completion_lib.d/completions/complete/bb.completion
+
+test -e ${HOME}/.bash_completion_lib.d/completions/complete/bitbake && \
+  source ${HOME}/.bash_completion_lib.d/completions/complete/bitbake
+
 if [ -f ~/code/to/to.sh ]; then
     source ~/code/to/to.sh
 fi

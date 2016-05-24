@@ -15,34 +15,26 @@ if [ -f ~/.bashrc ]; then
 fi
 
 # set PATH so it includes user's private bin if it exists
-if [ -d ~/bin ] ; then
-  PATH=~/bin:"${PATH}"
-fi
+CHECKME=~/bin
+if [ -d $CHECKME ] ; then PATH=$CHECKME:"$PATH"; fi
 
 CHECKME=~/usr/bin
-if [ -d $CHECKME ] ; then
-  PATH=$CHECKME:"$PATH"
-fi
+if [ -d $CHECKME ] ; then PATH=$CHECKME:"$PATH"; fi
 
 CHECKME=~/usr/bin/git-config/bin
-if [ -d $CHECKME ] ; then
-  PATH=$CHECKME:"$PATH"
-fi
+if [ -d $CHECKME ] ; then PATH=$CHECKME:"$PATH"; fi
 
 CHECKME=/opt/tools/bin
-if [ -d $CHECKME ] ; then
-  PATH=$CHECKME:"$PATH"
-fi
+if [ -d $CHECKME ] ; then PATH=$CHECKME:"$PATH"; fi
 
 CHECKME=/usr/bin
-if [ -d $CHECKME ] ; then
-  PATH=$CHECKME:"$PATH"
-fi
+if [ -d $CHECKME ] ; then PATH=$CHECKME:"$PATH"; fi
 
 CHECKME=/home/rbelaire/usr/bin/p4u
-if [ -d $CHECKME ] ; then
-  PATH=$CHECKME:"$PATH"
-fi
+if [ -d $CHECKME ] ; then PATH=$CHECKME:"$PATH"; fi
+
+CHECKME=/localdata/rbelaire/yocto/source/evernight/poky/scripts
+if [ -d $CHECKME ] ; then PATH=$CHECKME:"$PATH"; fi
 
 #CHECKME=~/usr/bin/meld/bin
 #if [ -d $CHECKME ] ; then
@@ -124,3 +116,8 @@ if [ "$HOSTNAME" = "ONM-RBELAIRE-01" ]; then
 fi
 
 test -e ${HOME}/.iterm2_shell_integration.bash && source ${HOME}/.iterm2_shell_integration.bash
+
+PATH=${PATH}:/home/rbelaire/ybin
+alias ysrc='cd /localdata/rbelaire/yocto/source/evernight'
+alias ybld='cd /localdata/rbelaire/yocto/builds'
+

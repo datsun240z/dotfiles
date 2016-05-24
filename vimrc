@@ -19,6 +19,7 @@ filetype off                   " required!
     Bundle 'gmarik/vundle'
     "Add your bundles here
     Bundle 'comment.vim'
+    let g:Author = 'rbelaire'
     Bundle 'tpope/vim-fugitive'
     "vimdiff current vs git head (fugitive extension)
     nnoremap @gd :Gdiff<cr>
@@ -78,6 +79,8 @@ filetype off                   " required!
     Bundle 'vim-jp/vim-cpp'
     Bundle 'godlygeek/csapprox'
     Bundle 'datsun240z/gtags-cscope'
+    let GtagsCscope_Quiet=1
+    Bundle 'datsun240z/bitbake.vim'
     Bundle 'datsun240z/GNOME-align-args'
     nmap ,a :GNOMEAlignArguments<CR>
     Bundle 'datsun240z/gtagsomnicomplete'
@@ -153,6 +156,8 @@ set tabstop=4 expandtab shiftwidth=4 nowrap
 " set patchmode=.org
 let g:is_bash=1
 behave xterm
+set number
+set relativenumber
 set selectmode=key
 set keymodel=startsel
 set bsdir=buffer
