@@ -56,7 +56,8 @@ filetype off                   " required!
     Bundle 'genutils'
     Bundle 'multvals.vim'
     Bundle 'GrepCommands'
-    Bundle 'bling/vim-airline'
+    Bundle 'vim-airline/vim-airline'
+    Bundle 'vim-airline/vim-airline-themes'
     let g:airline_powerline_fonts=0
     let g:airline_theme='bubblegum'
     let g:airline#extensions#hunks#enabled = 1
