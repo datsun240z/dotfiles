@@ -77,7 +77,8 @@ filetype off                   " required!
     Bundle 'wesQ3/vim-windowswap'
     "\ww then move and \ww again
     Bundle 'vim-jp/vim-cpp'
-    Bundle 'godlygeek/csapprox'
+    let c_space_errors=1
+    " Bundle 'godlygeek/csapprox'
     Bundle 'datsun240z/gtags-cscope'
     let GtagsCscope_Quiet=1
     Bundle 'datsun240z/bitbake.vim'
@@ -85,8 +86,7 @@ filetype off                   " required!
     nmap ,a :GNOMEAlignArguments<CR>
     Bundle 'datsun240z/gtagsomnicomplete'
     autocmd FileType c set omnifunc=gtagsomnicomplete#Complete
-    "Bundle 'datsun240z/vim-colors'
-    let c_space_errors=1
+    " Bundle 'datsun240z/vim-colors'
     "Bundle 'yaifa.vim'
     "Bundle 'quickhl.vim'
     "nmap <Space>m <Plug>(quickhl-manual-this)
@@ -214,7 +214,7 @@ noremap Y y$
 " Make Ctrl-e jump to the end of the current line in the insert mode. This is
 " handy when you are in the middle of a line and would like to go to its end
 " without switching to the normal mode.
-inoremap <C-e> <C-o>$
+" inoremap <C-e> <C-o>$
 
     " vim *.bin or *.exe : edit binary using xxd-format!
     augroup Binary
