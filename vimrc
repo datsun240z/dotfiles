@@ -1,4 +1,4 @@
-"source $VIMRUNTIME/vimrc_example.vim
+" source $VIMRUNTIME/vimrc_example.vim
 
 " Vundle Bundle START vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 set nocompatible
@@ -17,15 +17,15 @@ filetype off                   " required!
     set rtp+=~/.vim/bundle/vundle/
     call vundle#rc()
     Bundle 'gmarik/vundle'
-    "Add your bundles here
+    " Add your bundles here
     Bundle 'comment.vim'
     let g:Author = 'rbelaire'
     Bundle 'tpope/vim-fugitive'
-    "vimdiff current vs git head (fugitive extension)
+    " vimdiff current vs git head (fugitive extension)
     nnoremap @gd :Gdiff<cr>
-    "switch back to current file and closes fugitive buffer
+    " switch back to current file and closes fugitive buffer
     nnoremap @gD <c-w>h<c-w>c
-    "Bundle 'tpope/vim-sleuth' indent-detector is mod to be better
+    " Bundle 'tpope/vim-sleuth' indent-detector is mod to be better
     Bundle 'tpope/vim-sensible'
     Bundle 'tpope/vim-surround'
     Bundle 'tpope/vim-repeat'
@@ -76,7 +76,7 @@ filetype off                   " required!
     Bundle 'luochen1990/indent-detector.vim'
     Bundle "daylerees/colour-schemes", { "rtp": "vim/" }
     Bundle 'wesQ3/vim-windowswap'
-    "\ww then move and \ww again
+    " \ww then move and \ww again
     Bundle 'vim-jp/vim-cpp'
     let c_space_errors=1
     " Bundle 'godlygeek/csapprox'
@@ -103,7 +103,7 @@ filetype off                   " required!
     "Bundle 'cscope.vim'
     "Bundle 'taglist.vim'
 
-    "...All your other bundles...
+    " ...All your other bundles...
     if iCanHazVundle == 0
         echo "Installing Bundles, please ignore key map error messages"
         echo ""
@@ -125,24 +125,24 @@ filetype plugin indent on     " required!
 " Vundle Bundle STOP ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 " colorscheme by http://bytefluent.com/vivify/
-"colorscheme jellybeans
+" colorscheme jellybeans
 
-"set viminfo+='21,nC:/vim/_viminfo
+" set viminfo+='21,nC:/vim/_viminfo
 " Vim will search for the file named 'tags', starting with the current
 " directory and then going to the parent directory and then recursively to the
 " directory one level above, till it either locates the 'tags' file or reaches
 " the root '/' directory.
 set tags=tags;/
 set path=.
-"set incsearch Done in sensible.vim
+" set incsearch Done in sensible.vim
 set hlsearch
 " Make searches case-sensitive only if they contain upper-case characters
 set ignorecase smartcase
 set showmatch
-"set scrolloff=2 Done in sensible.vim
+" set scrolloff=2 Done in sensible.vim
 set wildmode=longest,full
-"set columns=120
-"set lines=34
+" set columns=120
+" set lines=34
 set hidden
 set number
 set relativenumber
@@ -152,7 +152,7 @@ set nomousehide
 set directory=/tmp
 set guioptions+=a
 set guioptions-=T
-"set formatoptions-=t    " kill auto-wrap
+" set formatoptions-=t    " kill auto-wrap
 set tabstop=4 expandtab shiftwidth=4 nowrap
 " set patchmode=.org
 let g:is_bash=1
@@ -163,9 +163,9 @@ set selectmode=key
 set keymodel=startsel
 set bsdir=buffer
 set t_Co=256 " 256 colors
-"set grepprg=/bin/grep\ -Hn
-"set grepformat=%f:%l:%m
-"let g:greputilsFindcmd = 'C:/bin/GnuWin32/bin/find.exe'
+" set grepprg=/bin/grep\ -Hn
+" set grepformat=%f:%l:%m
+" let g:greputilsFindcmd = 'C:/bin/GnuWin32/bin/find.exe'
 noremap <C-Up> <C-Y>
 noremap <C-Down> <C-E>
 noremap <F11> :set ts=4   et sw=4 nowrap<CR>
@@ -173,7 +173,7 @@ noremap <F36> :set ts=4   et sw=4 nowrap<CR>
 noremap <F12> :set ts=8 noet sw=8 nowrap<CR>
 noremap <F37> :set ts=8 noet sw=8 nowrap<CR>
 set cscopeprg=gtags-cscope
-"set cscopetag cscopeverbose
+" set cscopetag cscopeverbose
 noremap <F5> :cp<CR>
 noremap <F6> :cn<CR>
 noremap <M-F9> %
