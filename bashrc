@@ -34,9 +34,18 @@ case "$TERM" in
   xterm-color)
     ;;
   xterm-256color)
-    export EDITOR='/usr/local/bin/gvim'
-    export CSCOPE_EDITOR='/usr/local/bin/gvim'
-    export SVN_EDITOR='/usr/local/bin/gvim -f'
+    case "$OSTYPE" in
+      linux-gnu)
+        export EDITOR='/usr/bin/gvim'
+        export CSCOPE_EDITOR='/usr/bin/gvim'
+        export SVN_EDITOR='/usr/bin/gvim -f'
+        ;;
+      *)
+        export EDITOR='/usr/local/bin/gvim'
+        export CSCOPE_EDITOR='/usr/local/bin/gvim'
+        export SVN_EDITOR='/usr/local/bin/gvim -f'
+        ;;
+    esac
     ;;
   *)
     export EDITOR='/usr/bin/gvim'
@@ -45,16 +54,26 @@ case "$TERM" in
     ;;
 esac
 
+sps() {
+      python -c "import sys; dirs = sys.argv[1].split('/'); print '/'.join(d[:2] for d in dirs[:-1]) + '/' + dirs[-1]" $PWD
+    }
+
 # Comment in the above and uncomment this below for a color prompt
-PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-#export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[01;35m\]$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
+# PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
-xterm*|rxvt*)
+  xterm-256color)
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]$(eval "sps")\[\033[00m\]\$ '
+    source ~/.git-prompt.sh
+    PROMPT_COMMAND='q="- $(__git_ps1 "(%s)") $(date +%T)"; while [[ ${#q} -lt $COLUMNS ]]; do q="${q:0:1}$q"; done; echo -e "\033[0;32m$q";'
+    ;;
+  xterm*|rxvt*)
+    export PS1=' '
+    #export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[01;35m\]$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
+    #PS1='$(eval "sps")$ '
     #PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD/$HOME/~}\007"'
-    PROMPT_COMMAND='q="- $(date +%T)"; while [[ ${#q} -lt $COLUMNS ]]; do q="${q:0:1}$q"; done; echo -e "\033[0;90m$q";'
-
+    #source ~/.git-prompt.sh
     ;;
 *)
     ;;
@@ -73,9 +92,9 @@ esac
 if [ "$TERM" == "dumb" ]; then
     alias ols="ls -la --color | awk '{k=0;for(i=0;i<=8;i++)k+=((substr(\$1,i+2,1)~/[rwx]/)*2^(8-i));if(k)printf(\" %0o \",k);print}'"
 elif [ "$TERM" == "xterm-256color" ]; then
-    alias ls='ls -G'
+    alias ls='ls -G --color --classify'
 elif [ "$TERM" == "xterm" ]; then
-    alias ls='ls -G'
+    alias ls='ls --color=auto --classify'
 else
     eval "`dircolors -b`"
     alias ls='ls --color=auto'
@@ -98,6 +117,27 @@ alias gitlog='git log --graph --full-history --all --color --pretty=format:"%x1b
 alias weather='curl -4 http://wttr.in'
 alias git-vimunstaged='vim $(git st -s | cut -f3 -d" ")'
 alias git-gvimunstaged='gvim $(git st -s | cut -f3 -d" ")'
+alias superm1i='ipmitool -H 10.183.49.111 -U ADMIN -P ADMIN -e [ -I lanplus sol activate'
+alias superm2i='ipmitool -H 10.183.49.112 -U ADMIN -P ADMIN -e [ -I lanplus sol activate'
+alias superm3i='ipmitool -H 10.183.49.113 -U ADMIN -P ADMIN -e [ -I lanplus sol activate'
+alias superm4i='ipmitool -H 10.183.49.114 -U ADMIN -P ADMIN -e [ -I lanplus sol activate'
+alias superm5i='ipmitool -H 10.183.49.115 -U ADMIN -P ADMIN -e [ -I lanplus sol activate'
+alias superm6i='ipmitool -H 10.183.49.116 -U ADMIN -P ADMIN -e [ -I lanplus sol activate'
+alias superm7i='ipmitool -H 10.183.49.117 -U ADMIN -P ADMIN -e [ -I lanplus sol activate'
+alias superm8i='ipmitool -H 10.183.49.118 -U ADMIN -P ADMIN -e [ -I lanplus sol activate'
+#
+alias superm1p='ipmitool -H 10.183.49.111 -U ADMIN -P ADMIN -e [ -I lanplus power cycle'
+alias superm2p='ipmitool -H 10.183.49.112 -U ADMIN -P ADMIN -e [ -I lanplus power cycle'
+alias superm3p='ipmitool -H 10.183.49.113 -U ADMIN -P ADMIN -e [ -I lanplus power cycle'
+alias superm4p='ipmitool -H 10.183.49.114 -U ADMIN -P ADMIN -e [ -I lanplus power cycle'
+alias superm5p='ipmitool -H 10.183.49.115 -U ADMIN -P ADMIN -e [ -I lanplus power cycle'
+alias superm6p='ipmitool -H 10.183.49.116 -U ADMIN -P ADMIN -e [ -I lanplus power cycle'
+alias superm7p='ipmitool -H 10.183.49.117 -U ADMIN -P ADMIN -e [ -I lanplus power cycle'
+alias superm8p='ipmitool -H 10.183.49.118 -U ADMIN -P ADMIN -e [ -I lanplus power cycle'
+
+alias findh="find ~  -type d  -name '.?*' -prune -o -print"
+
+[[ -s "$HOME/.qfc/bin/qfc.sh" ]] && source "$HOME/.qfc/bin/qfc.sh"
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -106,17 +146,17 @@ if [ -f /etc/bash_completion ]; then
     source /etc/bash_completion
 fi
 
-if [ -f .git-completion.bash ]; then
-    source .git-completion.bash
+if [ -f ~/.git-completion.bash ]; then
+    source ~/.git-completion.bash
     export GIT_PS1_SHOWDIRTYSTATE=1
 fi
 
 if [ -f ~/.bash_completion_lib.d/completions/complete/gocompletion.sh ]; then
-      source ~/.bash_completion_lib.d/completions/complete/gocompletion.sh 
+      source ~/.bash_completion_lib.d/completions/complete/gocompletion.sh
 fi
 
-if [ -f bash_completion_lib-1.3.1/bash_completion_lib ]; then
-    source bash_completion_lib-1.3.1/bash_completion_lib
+if [ -f ~/bash_completion_lib-1.3.1/bash_completion_lib ]; then
+    source ~/bash_completion_lib-1.3.1/bash_completion_lib
 fi
 
 test -e ${HOME}/.bash_completion_lib.d/completions/complete/bb.completion && \
@@ -184,7 +224,7 @@ export P4EDITOR="gvim -f"
 export P4DIFF=meld p4 diff
 
 
-dnif () { 
+dnif () {
     # Recursively list a file from PWD up the directory tree to root
     [[ -n $1 ]] || { echo "dnif [ls-opts] name"; return 1; }
     local THERE=$PWD RC=2

@@ -89,21 +89,33 @@ filetype off                   " required!
     nmap ,a :GNOMEAlignArguments<CR>
     Bundle 'datsun240z/gtagsomnicomplete'
     autocmd FileType c set omnifunc=gtagsomnicomplete#Complete
+    Bundle 'VOoM'
     " Bundle 'datsun240z/vim-colors'
-    "Bundle 'yaifa.vim'
-    "Bundle 'quickhl.vim'
-    "nmap <Space>m <Plug>(quickhl-manual-this)
-    "xmap <Space>m <Plug>(quickhl-manual-this)
-    "nmap <F9>     <Plug>(quickhl-manual-toggle)
-    "xmap <F9>     <Plug>(quickhl-manual-toggle)
-    "nmap <Space>M <Plug>(quickhl-manual-reset)
-    "xmap <Space>M <Plug>(quickhl-manual-reset)
-    "nmap <Space>j <Plug>(quickhl-cword-toggle)
-    "nmap <Space>] <Plug>(quickhl-tag-toggle)
-    "noremap H <Plug>(operator-quickhl-manual-this-motion)
-    "Bundle 'autoload_cscope.vim'
-    "Bundle 'cscope.vim'
-    "Bundle 'taglist.vim'
+    " Bundle 'yaifa.vim'
+    " Bundle 'quickhl.vim'
+   " Bundle 'endel/vim-github-colorscheme'
+   " colorscheme github
+   " Bundle 'GGalizzi/cake-vim'
+    " colorscheme cake
+   " Bundle 'wimstefan/Lightning'
+   " colorscheme lightning
+   " Bundle 'vim-scripts/beauty256'
+    " colorscheme beauty256
+   " Bundle 'baeuml/summerfruit256.vim'
+    " colorscheme summerfruit256
+    " Bundle 'tmhedberg/SimpylFold'
+    " nmap <Space>m <Plug>(quickhl-manual-this)
+    " xmap <Space>m <Plug>(quickhl-manual-this)
+    " nmap <F9>     <Plug>(quickhl-manual-toggle)
+    " xmap <F9>     <Plug>(quickhl-manual-toggle)
+    " nmap <Space>M <Plug>(quickhl-manual-reset)
+    " xmap <Space>M <Plug>(quickhl-manual-reset)
+    " nmap <Space>j <Plug>(quickhl-cword-toggle)
+    " nmap <Space>] <Plug>(quickhl-tag-toggle)
+    " noremap H <Plug>(operator-quickhl-manual-this-motion)
+    " Bundle 'autoload_cscope.vim'
+    " Bundle 'cscope.vim'
+    " Bundle 'taglist.vim'
 
     " ...All your other bundles...
     if iCanHazVundle == 0
