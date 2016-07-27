@@ -39,11 +39,13 @@ case "$TERM" in
         export EDITOR='/usr/bin/gvim'
         export CSCOPE_EDITOR='/usr/bin/gvim'
         export SVN_EDITOR='/usr/bin/gvim -f'
+        alias ls='ls -G --color --classify'
         ;;
       *)
         export EDITOR='/usr/local/bin/gvim'
         export CSCOPE_EDITOR='/usr/local/bin/gvim'
         export SVN_EDITOR='/usr/local/bin/gvim -f'
+        alias ls='ls -G -F'
         ;;
     esac
     ;;
@@ -92,7 +94,8 @@ esac
 if [ "$TERM" == "dumb" ]; then
     alias ols="ls -la --color | awk '{k=0;for(i=0;i<=8;i++)k+=((substr(\$1,i+2,1)~/[rwx]/)*2^(8-i));if(k)printf(\" %0o \",k);print}'"
 elif [ "$TERM" == "xterm-256color" ]; then
-    alias ls='ls -G --color --classify'
+    #alias ls='ls -G --color --classify'
+    alias ll='ls -l'
 elif [ "$TERM" == "xterm" ]; then
     alias ls='ls --color=auto --classify'
 else
