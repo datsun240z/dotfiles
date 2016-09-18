@@ -275,3 +275,8 @@ let GtagsCscope_Auto_Map = 1
 "	let GtagsCscope_Keep_Alive = 1
 " If you hope auto loading:
 let GtagsCscope_Auto_Load = 1
+
+set clipboard=unnamed
+if has('unnamedplus')
+   set clipboard=unnamedplus
+endif
