@@ -77,6 +77,10 @@ case "$TERM" in
     #PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD/$HOME/~}\007"'
     #source ~/.git-prompt.sh
     ;;
+  screen*)
+    alias ls='ls --color=auto --classify'
+    alias vim='gvim -v'
+    ;;
 *)
     ;;
 esac
@@ -137,6 +141,10 @@ alias superm5p='ipmitool -H 10.183.49.115 -U ADMIN -P ADMIN -e [ -I lanplus powe
 alias superm6p='ipmitool -H 10.183.49.116 -U ADMIN -P ADMIN -e [ -I lanplus power cycle'
 alias superm7p='ipmitool -H 10.183.49.117 -U ADMIN -P ADMIN -e [ -I lanplus power cycle'
 alias superm8p='ipmitool -H 10.183.49.118 -U ADMIN -P ADMIN -e [ -I lanplus power cycle'
+
+alias 3906-8ipmi='ipmitool -H 10.183.49.118 -U ADMIN -P ADMIN -e [ -I lanplus power cycle'
+alias 3906-8telnet='telnet 10.183.50.137'
+alias 3906-8console='telnet 10.183.83.14 2011'
 
 alias findh="find ~  -type d  -name '.?*' -prune -o -print"
 
