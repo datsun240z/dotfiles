@@ -65,9 +65,10 @@ filetype off                   " required!
     nmap gs  <plug>(GrepperOperator)
     xmap gs  <plug>(GrepperOperator)
     let g:grepper = {
-        \ 'tools':     ['git', 'ag', 'grep'],
+        \ 'tools':     ['git', 'ack', 'grep'],
         \ 'highlight': 1,
         \ }
+    autocmd FileType qf nnoremap <buffer> <cr> <cr>:cclose<cr>
     Bundle 'vim-airline/vim-airline'
     Bundle 'vim-airline/vim-airline-themes'
     let g:airline_powerline_fonts=0
@@ -110,6 +111,7 @@ filetype off                   " required!
     "
     Bundle 'dzeban/vim-log-syntax'
     Bundle 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+    let g:fzf_layout = {}
     " Bundle 'datsun240z/vim-colors'
     " Bundle 'yaifa.vim'
     " Bundle 'quickhl.vim'
