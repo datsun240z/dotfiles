@@ -75,11 +75,12 @@ case "$TERM" in
     ;;
   screen*)
     alias ls='ls --color=auto --classify'
-    alias vim='gvim -v'
     ;;
 *)
     ;;
 esac
+
+alias vim='gvim -v'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -142,9 +143,13 @@ alias 3906-8ipmi='ipmitool -H 10.183.49.118 -U ADMIN -P ADMIN -e [ -I lanplus po
 alias 3906-8telnet='telnet 10.183.50.137'
 alias 3906-8console='telnet 10.183.83.14 2011'
 
+alias 3906-7telnet='telnet 10.183.50.136'
+
 alias findh="find ~  -type d  -name '.?*' -prune -o -print"
 
-[[ -s "$HOME/.qfc/bin/qfc.sh" ]] && source "$HOME/.qfc/bin/qfc.sh"
+if [[ '' = "$TMUX" ]]; then
+  [[ -s "$HOME/.qfc/bin/qfc.sh" ]] && source "$HOME/.qfc/bin/qfc.sh"
+fi
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -242,3 +247,6 @@ dnif () {
     [[ -e $THERE/${2:-$1} ]] && { echo ${2:+$1} /${2:-$1}; RC=0; }
     return $RC
 }
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export FZF_TMUX='0'

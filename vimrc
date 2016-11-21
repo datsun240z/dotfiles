@@ -90,6 +90,14 @@ filetype off                   " required!
     Bundle 'datsun240z/gtagsomnicomplete'
     autocmd FileType c set omnifunc=gtagsomnicomplete#Complete
     Bundle 'VOoM'
+    Bundle 'unblevable/quick-scope'
+    " Trigger a highlight in the appropriate direction when pressing these
+    " keys:
+    let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+    "
+    " " Trigger a highlight only when pressing f and F.
+    let g:qs_highlight_on_keys = ['f', 'F']
+    "
     " Bundle 'datsun240z/vim-colors'
     " Bundle 'yaifa.vim'
     " Bundle 'quickhl.vim'
@@ -280,3 +288,5 @@ set clipboard=unnamed
 if has('unnamedplus')
    set clipboard=unnamedplus
 endif
+
+set iskeyword+=-

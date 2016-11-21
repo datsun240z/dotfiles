@@ -14,6 +14,7 @@ if [ -f ~/.bashrc ]; then
   source ~/.bashrc
 fi
 
+if [[ '' = "$TMUX" ]]; then
 # set PATH so it includes user's private bin if it exists
 CHECKME=~/bin
 if [ -d $CHECKME ] ; then PATH=$CHECKME:"$PATH"; fi
@@ -35,6 +36,8 @@ if [ -d $CHECKME ] ; then PATH=$CHECKME:"$PATH"; fi
 
 CHECKME=/localdata/rbelaire/yocto/source/evernight/poky/scripts
 if [ -d $CHECKME ] ; then PATH=$CHECKME:"$PATH"; fi
+
+fi
 
 #CHECKME=~/usr/bin/meld/bin
 #if [ -d $CHECKME ] ; then
@@ -117,7 +120,9 @@ fi
 
 test -e ${HOME}/.iterm2_shell_integration.bash && source ${HOME}/.iterm2_shell_integration.bash
 
-PATH=${PATH}:/home/rbelaire/ybin
+if [[ '' = "$TMUX" ]]; then
+  PATH=${PATH}:/home/rbelaire/ybin
+fi
 alias ysrc='cd /localdata/rbelaire/yocto/source/evernight'
 alias ybld='cd /localdata/rbelaire/yocto/builds'
 
