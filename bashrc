@@ -72,6 +72,7 @@ case "$TERM" in
     ;;
   xterm*|rxvt*)
     export PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    # export PS1="\u@\h \w> "
     ;;
   screen*)
     alias ls='ls --color=auto --classify'
@@ -92,20 +93,6 @@ alias vim='gvim -v'
 #fi
 
 # enable color support of ls and also add handy aliases
-if [ "$TERM" == "dumb" ]; then
-    alias ols="ls -la --color | awk '{k=0;for(i=0;i<=8;i++)k+=((substr(\$1,i+2,1)~/[rwx]/)*2^(8-i));if(k)printf(\" %0o \",k);print}'"
-elif [ "$TERM" == "xterm-256color" ]; then
-    #alias ls='ls -G --color --classify'
-    alias ll='ls -l'
-elif [ "$TERM" == "xterm" ]; then
-    alias ls='ls --color=auto --classify'
-else
-    eval "`dircolors -b`"
-    alias ls='ls --color=auto'
-    alias ols="ls -la --color | awk '{k=0;for(i=0;i<=8;i++)k+=((substr(\$1,i+2,1)~/[rwx]/)*2^(8-i));if(k)printf(\" %0o \",k);print}'"
-    #alias dir='ls --color=auto --format=vertical'
-    #alias vdir='ls --color=auto --format=long'
-fi
 
 alias ll='ls -l'
 alias la='ls -A'
@@ -250,3 +237,5 @@ dnif () {
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_TMUX='0'
+
+# [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh

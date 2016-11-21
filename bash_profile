@@ -15,28 +15,30 @@ if [ -f ~/.bashrc ]; then
 fi
 
 if [[ '' = "$TMUX" ]]; then
-# set PATH so it includes user's private bin if it exists
-CHECKME=~/bin
-if [ -d $CHECKME ] ; then PATH=$CHECKME:"$PATH"; fi
+  # set PATH so it includes user's private bin if it exists
+  CHECKME=~/bin
+  if [ -d $CHECKME ] ; then PATH=$CHECKME:"$PATH"; fi
 
-CHECKME=~/usr/bin
-if [ -d $CHECKME ] ; then PATH=$CHECKME:"$PATH"; fi
+  CHECKME=~/usr/bin
+  if [ -d $CHECKME ] ; then PATH=$CHECKME:"$PATH"; fi
 
-CHECKME=~/usr/bin/git-config/bin
-if [ -d $CHECKME ] ; then PATH=$CHECKME:"$PATH"; fi
+  CHECKME=~/usr/bin/git-config/bin
+  if [ -d $CHECKME ] ; then PATH=$CHECKME:"$PATH"; fi
 
-CHECKME=/opt/tools/bin
-if [ -d $CHECKME ] ; then PATH=$CHECKME:"$PATH"; fi
+  CHECKME=/opt/tools/bin
+  if [ -d $CHECKME ] ; then PATH=$CHECKME:"$PATH"; fi
 
-CHECKME=/usr/bin
-if [ -d $CHECKME ] ; then PATH=$CHECKME:"$PATH"; fi
+  CHECKME=/usr/bin
+  if [ -d $CHECKME ] ; then PATH=$CHECKME:"$PATH"; fi
 
-CHECKME=/home/rbelaire/usr/bin/p4u
-if [ -d $CHECKME ] ; then PATH=$CHECKME:"$PATH"; fi
+  CHECKME=/usr/local/bin
+  if [ -d $CHECKME ] ; then PATH=$CHECKME:"$PATH"; fi
 
-CHECKME=/localdata/rbelaire/yocto/source/evernight/poky/scripts
-if [ -d $CHECKME ] ; then PATH=$CHECKME:"$PATH"; fi
+  CHECKME=/home/rbelaire/usr/bin/p4u
+  if [ -d $CHECKME ] ; then PATH=$CHECKME:"$PATH"; fi
 
+  CHECKME=/localdata/rbelaire/yocto/source/evernight/poky/scripts
+  if [ -d $CHECKME ] ; then PATH=$CHECKME:"$PATH"; fi
 fi
 
 #CHECKME=~/usr/bin/meld/bin

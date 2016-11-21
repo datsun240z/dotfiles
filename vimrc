@@ -37,6 +37,7 @@ filetype off                   " required!
     Bundle 'ifdef-highlighting'
     Bundle 'Align'
     Bundle 'vim-indent-object'
+    Bundle 'rust-lang/rust.vim'
     Bundle 'ctrlp.vim'
     " let g:ctrlp_root_markers = ['go','oneos-linux']
     let g:ctrlp_by_filename = 1
@@ -58,6 +59,15 @@ filetype off                   " required!
     Bundle 'genutils'
     Bundle 'multvals.vim'
     Bundle 'GrepCommands'
+    Bundle 'mhinz/vim-grepper'
+    nnoremap <leader>g :Grepper<cr>
+    nnoremap <leader>* :Grepper -tool ag -cword<cr>
+    nmap gs  <plug>(GrepperOperator)
+    xmap gs  <plug>(GrepperOperator)
+    let g:grepper = {
+        \ 'tools':     ['git', 'ag', 'grep'],
+        \ 'highlight': 1,
+        \ }
     Bundle 'vim-airline/vim-airline'
     Bundle 'vim-airline/vim-airline-themes'
     let g:airline_powerline_fonts=0
@@ -98,6 +108,8 @@ filetype off                   " required!
     " " Trigger a highlight only when pressing f and F.
     let g:qs_highlight_on_keys = ['f', 'F']
     "
+    Bundle 'dzeban/vim-log-syntax'
+    Bundle 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     " Bundle 'datsun240z/vim-colors'
     " Bundle 'yaifa.vim'
     " Bundle 'quickhl.vim'
@@ -185,9 +197,7 @@ set selectmode=key
 set keymodel=startsel
 set bsdir=buffer
 set t_Co=256 " 256 colors
-" set grepprg=/bin/grep\ -Hn
 " set grepformat=%f:%l:%m
-" let g:greputilsFindcmd = 'C:/bin/GnuWin32/bin/find.exe'
 noremap <C-Up> <C-Y>
 noremap <C-Down> <C-E>
 noremap <F11> :set ts=4   et sw=4 nowrap<CR>
