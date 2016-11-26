@@ -239,3 +239,12 @@ dnif () {
 export FZF_TMUX='0'
 
 # [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+
+function tabname {
+  if [ -z $TMUX ] ; then
+    printf "\e]1;$@\a"
+  else
+   tmux rename-window $@
+  fi
+}
+
