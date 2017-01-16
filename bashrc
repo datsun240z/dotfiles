@@ -134,10 +134,6 @@ alias 3906-7telnet='telnet 10.183.50.136'
 
 alias findh="find ~  -type d  -name '.?*' -prune -o -print"
 
-if [[ '' = "$TMUX" ]]; then
-  [[ -s "$HOME/.qfc/bin/qfc.sh" ]] && source "$HOME/.qfc/bin/qfc.sh"
-fi
-
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
