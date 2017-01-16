@@ -38,15 +38,6 @@ filetype off                   " required!
     Bundle 'Align'
     Bundle 'vim-indent-object'
     Bundle 'rust-lang/rust.vim'
-    Bundle 'ctrlp.vim'
-    " let g:ctrlp_root_markers = ['go','oneos-linux']
-    let g:ctrlp_by_filename = 1
-    let g:ctrlp_regexp = 1
-    let g:ctrlp_max_files = 0
-    let g:ctrlp_max_depth = 40
-    let g:ctrlp_use_caching = 0
-    let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
-    let g:ctrlp_prompt_mappings = { 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'], }
     Bundle 'bufexplorer.zip'
     " CTRL+b opens the buffer list
     noremap <C-b> <esc>:BufExplorer<CR>
@@ -111,7 +102,9 @@ filetype off                   " required!
     "
     Bundle 'dzeban/vim-log-syntax'
     Bundle 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+    Bundle 'junegunn/fzf.vim'
     let g:fzf_layout = {}
+    inoremap <expr> <c-x><c-k> fzf#complete('cat /usr/share/dict/words')
     " Bundle 'datsun240z/vim-colors'
     " Bundle 'yaifa.vim'
     " Bundle 'quickhl.vim'
