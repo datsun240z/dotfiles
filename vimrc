@@ -294,7 +294,7 @@ if has('unnamedplus')
    set clipboard=unnamedplus
 endif
 
-set iskeyword+=-
+" set iskeyword+=-
 
 highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
 highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red

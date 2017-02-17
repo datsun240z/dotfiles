@@ -33,7 +33,7 @@ fi
 case "$TERM" in
   xterm-color)
     ;;
-  xterm-256color)
+  xterm-256color|xterm)
     case "$OSTYPE" in
       linux-gnu)
         export EDITOR='/usr/bin/gvim'
@@ -160,9 +160,9 @@ test -e ${HOME}/.bash_completion_lib.d/completions/complete/bb.completion && \
 test -e ${HOME}/.bash_completion_lib.d/completions/complete/bitbake && \
   source ${HOME}/.bash_completion_lib.d/completions/complete/bitbake
 
-if [ -f ~/code/to/to.sh ]; then
-    source ~/code/to/to.sh
-fi
+# if [ -f ~/code/to/to.sh ]; then
+#     source ~/code/to/to.sh
+# fi
 
 if [ -f ~/.local/bin/bashmarks.sh ]; then
     source ~/.local/bin/bashmarks.sh
@@ -210,7 +210,7 @@ done
 umask 002
 
 export P4USER="rbelaire"
-export P4PORT="onxp4proxy1.ciena.com:2003"
+export P4PORT="onxp4proxy.ciena.com:2003"
 export P4CONFIG=".p4config.txt"
 #export P4DIFF="diff -Naur"
 #export P4DIFF="meld"

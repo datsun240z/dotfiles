@@ -17,28 +17,29 @@ fi
 if [[ '' = "$TMUX" ]]; then
   # set PATH so it includes user's private bin if it exists
   CHECKME=~/bin
-  if [ -d $CHECKME ] ; then PATH=$CHECKME:"$PATH"; fi
+  if [ -d $CHECKME ] ; then PATH="$PATH":$CHECKME; fi
 
   CHECKME=~/usr/bin
-  if [ -d $CHECKME ] ; then PATH=$CHECKME:"$PATH"; fi
+  if [ -d $CHECKME ] ; then PATH="$PATH":$CHECKME; fi
 
   CHECKME=~/usr/bin/git-config/bin
-  if [ -d $CHECKME ] ; then PATH=$CHECKME:"$PATH"; fi
+  if [ -d $CHECKME ] ; then PATH="$PATH":$CHECKME; fi
 
   CHECKME=/opt/tools/bin
-  if [ -d $CHECKME ] ; then PATH=$CHECKME:"$PATH"; fi
+  if [ -d $CHECKME ] ; then PATH="$PATH":$CHECKME; fi
 
-  CHECKME=/usr/bin
-  if [ -d $CHECKME ] ; then PATH=$CHECKME:"$PATH"; fi
+  # CHECKME=/usr/bin
+  # if [ -d $CHECKME ] ; then PATH=$CHECKME:"$PATH"; fi
 
-  CHECKME=/usr/local/bin
-  if [ -d $CHECKME ] ; then PATH=$CHECKME:"$PATH"; fi
+  # CHECKME=/usr/local/bin
+  # if [ -d $CHECKME ] ; then PATH=$CHECKME:"$PATH"; fi
+  # if [ -d $CHECKME ] ; then PATH="$PATH":$CHECKME; fi
 
   CHECKME=/home/rbelaire/usr/bin/p4u
-  if [ -d $CHECKME ] ; then PATH=$CHECKME:"$PATH"; fi
+  if [ -d $CHECKME ] ; then PATH="$PATH":$CHECKME; fi
 
   CHECKME=/localdata/rbelaire/yocto/source/evernight/poky/scripts
-  if [ -d $CHECKME ] ; then PATH=$CHECKME:"$PATH"; fi
+  if [ -d $CHECKME ] ; then PATH="$PATH":$CHECKME; fi
 fi
 
 #CHECKME=~/usr/bin/meld/bin
@@ -125,6 +126,4 @@ test -e ${HOME}/.iterm2_shell_integration.bash && source ${HOME}/.iterm2_shell_i
 if [[ '' = "$TMUX" ]]; then
   PATH=${PATH}:/home/rbelaire/ybin
 fi
-alias ysrc='cd /localdata/rbelaire/yocto/source/evernight'
-alias ybld='cd /localdata/rbelaire/yocto/builds'
 
