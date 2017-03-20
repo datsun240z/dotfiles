@@ -36,6 +36,7 @@ filetype off                   " required!
     Bundle 'Lokaltog/vim-easymotion'
     Bundle 'ifdef-highlighting'
     Bundle 'Align'
+    " Bundle 'w0rp/ale'
     Bundle 'vim-indent-object'
     Bundle 'rust-lang/rust.vim'
     Bundle 'bufexplorer.zip'
@@ -79,7 +80,7 @@ filetype off                   " required!
     nnoremap [d :GitGutterPrevHunk<CR>
     Bundle 'luochen1990/indent-detector.vim'
     Bundle "daylerees/colour-schemes", { "rtp": "vim/" }
-    Bundle 'wesQ3/vim-windowswap'
+    " Bundle 'wesQ3/vim-windowswap'
     " \ww then move and \ww again
     Bundle 'vim-jp/vim-cpp'
     let c_space_errors=1
@@ -131,6 +132,13 @@ filetype off                   " required!
     " Bundle 'autoload_cscope.vim'
     " Bundle 'cscope.vim'
     " Bundle 'taglist.vim'
+    Bundle 'vimwiki/vimwiki'
+    let g:vimwiki_list = [{'path': '~/vimwiki/', 'auto_toc': 1, 'syntax': 'markdown', 'ext': '.md'}]
+    let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
+
+    Bundle 'suan/vim-instant-markdown'
+    let g:instant_markdown_autostart = 0
+    map <leader>md :InstantMarkdownPreview<CR>
 
     " ...All your other bundles...
     if iCanHazVundle == 0
