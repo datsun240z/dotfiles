@@ -136,9 +136,9 @@ filetype off                   " required!
     let g:vimwiki_list = [{'path': '~/vimwiki/', 'auto_toc': 1, 'syntax': 'markdown', 'ext': '.md'}]
     let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 
-    Bundle 'suan/vim-instant-markdown'
-    let g:instant_markdown_autostart = 0
-    map <leader>md :InstantMarkdownPreview<CR>
+    " Bundle 'suan/vim-instant-markdown'
+    " let g:instant_markdown_autostart = 0
+    " map <leader>md :InstantMarkdownPreview<CR>
 
     " ...All your other bundles...
     if iCanHazVundle == 0
