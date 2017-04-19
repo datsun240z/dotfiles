@@ -140,8 +140,9 @@ filetype off                   " required!
       " Use '\ig' to toggle
       let g:indent_guides_color_change_percent = 50
    Bundle 'airblade/vim-gitgutter'
-      " nnoremap ]c :GitGutterNextHunk<CR>
-      " nnoremap [c :GitGutterPrevHunk<CR>
+      " ]c      [c  Next/Prev Hunk
+      " \hs and \hu Stage/Unstage Hunk
+      " :GitGutterToggle  :GitGutterSignsToggle  :GitGutterLineHighlightsToggle
    Bundle 'luochen1990/indent-detector.vim'
       " manually patch indent_detector#search_nearby('^ [^\t \*]')
    Bundle "daylerees/colour-schemes", { "rtp": "vim/" }
