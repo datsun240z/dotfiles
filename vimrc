@@ -4,149 +4,214 @@
 set nocompatible
 filetype off                   " required!
 
-" Setting up Vundle - the vim plugin bundler
-    let iCanHazVundle=1
-    let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
-    if !filereadable(vundle_readme)
-        echo "Installing Vundle.."
-        echo ""
-        silent !mkdir -p ~/.vim/bundle
-        silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
-        let iCanHazVundle=0
-    endif
-    set rtp+=~/.vim/bundle/vundle/
-    call vundle#rc()
-    Bundle 'gmarik/vundle'
-    " Add your bundles here
-    Bundle 'comment.vim'
-    let g:Author = 'rbelaire'
-    Bundle 'tpope/vim-fugitive'
-    " vimdiff current vs git head (fugitive extension)
-    nnoremap @gd :Gdiff<cr>
-    " switch back to current file and closes fugitive buffer
-    nnoremap @gD <c-w>h<c-w>c
-    " Bundle 'tpope/vim-sleuth' indent-detector is mod to be better
-    Bundle 'tpope/vim-sensible'
-    Bundle 'tpope/vim-surround'
-    Bundle 'tpope/vim-repeat'
-    Bundle 'tpope/vim-unimpaired'
-    Bundle 'tpope/vim-commentary'
-    Bundle 'vivien/vim-linux-coding-style'
-    let g:linuxsty_patterns = [ "/usr/src/", "/linux" ]
-    Bundle 'Lokaltog/vim-easymotion'
-    Bundle 'ifdef-highlighting'
-    Bundle 'Align'
-    " Bundle 'w0rp/ale'
-    Bundle 'vim-indent-object'
-    Bundle 'rust-lang/rust.vim'
-    Bundle 'bufexplorer.zip'
-    " CTRL+b opens the buffer list
-    noremap <C-b> <esc>:BufExplorer<CR>
-    Bundle 'The-NERD-tree'
-    noremap <F3> :NERDTreeToggle<CR>
-    noremap <F4> :NERDTreeFind<CR>
-    Bundle 'NERD_Tree-and-ack'
-    Bundle 'ack.vim'
-    Bundle 'matchit.zip'
-    Bundle 'genutils'
-    Bundle 'multvals.vim'
-    Bundle 'GrepCommands'
-    Bundle 'mhinz/vim-grepper'
-    nnoremap <leader>g :Grepper<cr>
-    nnoremap <leader>* :Grepper -tool ag -cword<cr>
-    nmap gs  <plug>(GrepperOperator)
-    xmap gs  <plug>(GrepperOperator)
-    let g:grepper = {
-        \ 'tools':     ['git', 'ack', 'grep'],
-        \ 'highlight': 1,
-        \ }
-    autocmd FileType qf nnoremap <buffer> <cr> <cr>:cclose<cr>
-    Bundle 'vim-airline/vim-airline'
-    Bundle 'vim-airline/vim-airline-themes'
-    let g:airline_powerline_fonts=0
-    let g:airline_theme='bubblegum'
-    let g:airline#extensions#hunks#enabled = 1
-    let g:airline#extensions#tabline#enabled = 1
-    let g:airline#extensions#tabline#left_sep = ' '
-    let g:airline#extensions#tabline#left_alt_sep = '|'
-    " Informs you of all the Bundles installed
-    Bundle 'mbadran/headlights'
-    " plugin for visually displaying indent levels in Vim
-    Bundle 'nathanaelkane/vim-indent-guides'
-    let g:indent_guides_color_change_percent = 50
-    " Tells you about changes
-    Bundle 'airblade/vim-gitgutter'
-    nnoremap ]d :GitGutterNextHunk<CR>
-    nnoremap [d :GitGutterPrevHunk<CR>
-    Bundle 'luochen1990/indent-detector.vim'
-    Bundle "daylerees/colour-schemes", { "rtp": "vim/" }
-    " Bundle 'wesQ3/vim-windowswap'
-    " \ww then move and \ww again
-    Bundle 'vim-jp/vim-cpp'
-    let c_space_errors=1
-    " Bundle 'godlygeek/csapprox'
-    Bundle 'datsun240z/gtags-cscope'
-    let GtagsCscope_Quiet=1
-    Bundle 'datsun240z/bitbake.vim'
-    Bundle 'datsun240z/GNOME-align-args'
-    nmap ,a :GNOMEAlignArguments<CR>
-    Bundle 'datsun240z/gtagsomnicomplete'
-    autocmd FileType c set omnifunc=gtagsomnicomplete#Complete
-    Bundle 'VOoM'
-    Bundle 'unblevable/quick-scope'
-    " Trigger a highlight in the appropriate direction when pressing these
-    " keys:
-    let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-    "
-    " " Trigger a highlight only when pressing f and F.
-    let g:qs_highlight_on_keys = ['f', 'F']
-    "
-    Bundle 'dzeban/vim-log-syntax'
-    Bundle 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-    Bundle 'junegunn/fzf.vim'
-    let g:fzf_layout = {}
-    inoremap <expr> <c-x><c-k> fzf#complete('cat /usr/share/dict/words')
-    " Bundle 'datsun240z/vim-colors'
-    " Bundle 'yaifa.vim'
-    " Bundle 'quickhl.vim'
+   " Setting up Vundle - the vim plugin bundler
+   let iCanHazVundle=1
+   let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+   if !filereadable(vundle_readme)
+      echo "Installing Vundle.."
+      echo ""
+      silent !mkdir -p ~/.vim/bundle
+      silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+      let iCanHazVundle=0
+   endif
+   set rtp+=~/.vim/bundle/vundle/
+   call vundle#rc()
+   Bundle 'gmarik/vundle'
+   " Add your bundles here
+   Bundle 'comment.vim'
+      let g:Author = 'rbelaire'
+      " use .c .C to #ifdef out code
+   Bundle 'tpope/vim-fugitive'
+      " vimdiff current vs git head (fugitive extension)
+      nnoremap @gd :Gdiff<cr>
+      " switch back to current file and closes fugitive buffer
+      nnoremap @gD <c-w>h<c-w>c
+   " Bundle 'tpope/vim-sleuth' indent-detector is mod to be better
+   Bundle 'tpope/vim-sensible'
+   Bundle 'tpope/vim-surround'
+      " 'Hello *world!'           ds'         Hello world!
+      " [123+4*56]/2              cs])        (123+456)/2
+      " if *x>3 {                 ysW(        if ( x>3 ) {
+   Bundle 'tpope/vim-repeat'
+   Bundle 'tpope/vim-unimpaired'
+      " [b ]b buffer next/previous
+      " [q ]q errors next/previous
+      " [f ]f file   next/previous
+      " [n ]n diff   next/previous
+      " [<Space> ]<Space> Add [count] blank lines above/below the cursor.
+      " [e ]e Exchange the current line with [count] lines above/below it
+      " [oc	]oc	coc	'cursorline'
+      " [ol	]ol	col	'list'
+      " [on	]on	con	'number'
+      " [or	]or	cor	'relativenumber'
+      " [ou	]ou	cou	'cursorcolumn'
+      " [ow	]ow	cow	'wrap'
+      " [ox	]ox	cox	'cursorline' 'cursorcolumn' (x as in crosshairs)
+   Bundle 'tpope/vim-commentary'
+      " gcc to un/comment a line
+      " gc  to un/comment a motion/visual
+   Bundle 'vivien/vim-linux-coding-style'
+      let g:linuxsty_patterns = [ "/usr/src/", "/linux/", "/ko/" ]
+      " or :LinuxCodingStyle
+   Bundle 'Lokaltog/vim-easymotion'
+      " Default Mapping      | Details
+      " ---------------------|----------------------------------------------
+      " <Leader>f{char}      | Find {char} to the right. See f.
+      " <Leader>F{char}      | Find {char} to the left. See F.
+      " <Leader>t{char}      | Till before the {char} to the right. See t.
+      " <Leader>T{char}      | Till after the {char} to the left. See T.
+      " <Leader>w            | Beginning of word forward. See w.
+      " <Leader>W            | Beginning of WORD forward. See W.
+      " <Leader>b            | Beginning of word backward. See b.
+      " <Leader>B            | Beginning of WORD backward. See B.
+      " <Leader>e            | End of word forward. See e.
+      " <Leader>E            | End of WORD forward. See E.
+      " <Leader>ge           | End of word backward. See ge.
+      " <Leader>gE           | End of WORD backward. See gE.
+      " <Leader>j            | Line downward. See j.
+      " <Leader>k            | Line upward. See k.
+      " <Leader>n            | Jump to latest "/" or "?" forward. See n.
+      " <Leader>N            | Jump to latest "/" or "?" backward. See N.
+      " <Leader>s            | Find(Search) {char} forward and backward
+   Bundle 'ifdef-highlighting'
+      "  make a '.defines' file in local folder
+      " ----.defines-------
+      " undefined=*
+      " defined=WIN32;__MT
+      " undefined=DEBUG,DBG
+   Bundle 'Align'
+      " \t=  : align assignments (don't count logic, like == or !=)
+      " \t,  : align on commas
+      " \t|  : align on vertical bars (|)
+      " \tsp : align on whitespace
+      " \acom : align comments
+      " \adec : align C declarations (one variable per line)
+      " \afnc : align ansi-style C function input arguments
+   " Bundle 'w0rp/ale'
+   " Bundle 'vim-indent-object'
+   " Bundle 'rust-lang/rust.vim'
+   Bundle 'bufexplorer.zip'
+      " CTRL+b opens the buffer list
+      noremap <C-b> <esc>:BufExplorer<CR>
+   Bundle 'The-NERD-tree'
+      noremap <F3> :NERDTreeToggle<CR>
+      noremap <F4> :NERDTreeFind<CR>
+   Bundle 'NERD_Tree-and-ack'
+      " While in nerd, hit m to ack the folder
+   " Bundle 'ack.vim'
+      " :Ack pattern
+   " Bundle 'matchit.zip' Included in vim 6.0
+   Bundle 'genutils'
+   Bundle 'multvals.vim'
+   " Bundle 'GrepCommands'
+      " :ArgGrep[Add][!] [{pattern}]
+      " :ArgGrep[Add][!] /{pattern}/[g][j]
+      "                         Search for {pattern} (or current search string if
+      "                         omitted) in all files from the argument-list and set
+      "                         the error list to the matches.
+
+      " :BufGrep[Add][!] [{pattern}]
+      " :BufGrep[Add][!] /{pattern}/[g][j]
+      "                         Search for {pattern} (or current search string if
+      "                         omitted) in all listed buffers and set the error list
+      "                         to the matches.
+   Bundle 'mhinz/vim-grepper'
+      nnoremap <leader>g :Grepper -cword<cr>
+      nnoremap <leader>* :Grepper -tool ag -cword -noprompt<cr>
+      nmap gs  <plug>(GrepperOperator)
+      xmap gs  <plug>(GrepperOperator)
+      let g:grepper = {
+          \ 'tools':     ['git', 'ack', 'grep'],
+          \ 'highlight': 1,
+          \ }
+      autocmd FileType qf nnoremap <buffer> <cr> <cr>:cclose<cr>
+   Bundle 'vim-airline/vim-airline'
+   Bundle 'vim-airline/vim-airline-themes'
+      let g:airline_powerline_fonts=0
+      let g:airline_theme='bubblegum'
+      let g:airline#extensions#hunks#enabled = 1
+      let g:airline#extensions#tabline#enabled = 1
+      let g:airline#extensions#tabline#left_sep = ' '
+      let g:airline#extensions#tabline#left_alt_sep = '|'
+   " Bundle 'mbadran/headlights'
+      " Informs you of all the Bundles installed
+   Bundle 'nathanaelkane/vim-indent-guides'
+      " plugin for visually displaying indent levels in Vim
+      " Use '\ig' to toggle
+      let g:indent_guides_color_change_percent = 50
+   Bundle 'airblade/vim-gitgutter'
+      " nnoremap ]c :GitGutterNextHunk<CR>
+      " nnoremap [c :GitGutterPrevHunk<CR>
+   Bundle 'luochen1990/indent-detector.vim'
+      " manually patch indent_detector#search_nearby('^ [^\t \*]')
+   Bundle "daylerees/colour-schemes", { "rtp": "vim/" }
+   " Bundle 'wesQ3/vim-windowswap'
+      " \ww then move and \ww again
+   Bundle 'vim-jp/vim-cpp'
+      let c_space_errors=1
+   " Bundle 'godlygeek/csapprox'
+   Bundle 'datsun240z/gtags-cscope'
+      let GtagsCscope_Quiet=1
+   Bundle 'datsun240z/bitbake.vim'
+   Bundle 'datsun240z/GNOME-align-args'
+      nmap ,a :GNOMEAlignArguments<CR>
+   Bundle 'datsun240z/gtagsomnicomplete'
+      autocmd FileType c set omnifunc=gtagsomnicomplete#Complete
+   " Bundle 'VOoM'
+   Bundle 'unblevable/quick-scope'
+      " Trigger a highlight in the appropriate direction when pressing these keys:
+      let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+   Bundle 'dzeban/vim-log-syntax'
+   Bundle 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+   Bundle 'junegunn/fzf.vim'
+      let g:fzf_layout = {}
+      inoremap <expr> <c-x><c-k> fzf#complete('cat /usr/share/dict/words')
+   " Bundle 'datsun240z/vim-colors'
+   " Bundle 'yaifa.vim'
+   " Bundle 'quickhl.vim'
    " Bundle 'endel/vim-github-colorscheme'
-   " colorscheme github
+      " colorscheme github
    " Bundle 'GGalizzi/cake-vim'
-    " colorscheme cake
+      " colorscheme cake
    " Bundle 'wimstefan/Lightning'
-   " colorscheme lightning
+      " colorscheme lightning
    " Bundle 'vim-scripts/beauty256'
-    " colorscheme beauty256
+      " colorscheme beauty256
    " Bundle 'baeuml/summerfruit256.vim'
-    " colorscheme summerfruit256
-    " Bundle 'tmhedberg/SimpylFold'
-    " nmap <Space>m <Plug>(quickhl-manual-this)
-    " xmap <Space>m <Plug>(quickhl-manual-this)
-    " nmap <F9>     <Plug>(quickhl-manual-toggle)
-    " xmap <F9>     <Plug>(quickhl-manual-toggle)
-    " nmap <Space>M <Plug>(quickhl-manual-reset)
-    " xmap <Space>M <Plug>(quickhl-manual-reset)
-    " nmap <Space>j <Plug>(quickhl-cword-toggle)
-    " nmap <Space>] <Plug>(quickhl-tag-toggle)
-    " noremap H <Plug>(operator-quickhl-manual-this-motion)
-    " Bundle 'autoload_cscope.vim'
-    " Bundle 'cscope.vim'
-    " Bundle 'taglist.vim'
-    Bundle 'vimwiki/vimwiki'
-    let g:vimwiki_list = [{'path': '~/vimwiki/', 'auto_toc': 1, 'syntax': 'markdown', 'ext': '.md'}]
-    let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
+      " colorscheme summerfruit256
+   " Bundle 'tmhedberg/SimpylFold'
+      " nmap <Space>m <Plug>(quickhl-manual-this)
+      " xmap <Space>m <Plug>(quickhl-manual-this)
+      " nmap <F9>     <Plug>(quickhl-manual-toggle)
+      " xmap <F9>     <Plug>(quickhl-manual-toggle)
+      " nmap <Space>M <Plug>(quickhl-manual-reset)
+      " xmap <Space>M <Plug>(quickhl-manual-reset)
+      " nmap <Space>j <Plug>(quickhl-cword-toggle)
+      " nmap <Space>] <Plug>(quickhl-tag-toggle)
+      " noremap H <Plug>(operator-quickhl-manual-this-motion)
+   " Bundle 'autoload_cscope.vim'
+   " Bundle 'cscope.vim'
+   " Bundle 'taglist.vim'
+   Bundle 'vimwiki/vimwiki'
+      " let g:vimwiki_list = [{'path': '~/vimwiki/', 'auto_toc': 1 }]
+      let g:vimwiki_list = [{'path': '~/vimwiki/', 'auto_toc': 1, 'syntax': 'markdown', 'ext': '.md'}]
+      let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
+      " nnoremap <leader>wb <Plug>VimwikiGoBackLink :VimwikiGoBackLink<CR>
+      " nnoremap <leader>wb :VimwikiGoBackLink<CR>
+   " Bundle 'suan/vim-instant-markdown'
+      " let g:instant_markdown_autostart = 0
+      " map <leader>md :InstantMarkdownPreview<CR>
+   Bundle 'wikitopian/hardmode'
+      nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
+      let g:HardMode_level = 'wannabe'
 
-    " Bundle 'suan/vim-instant-markdown'
-    " let g:instant_markdown_autostart = 0
-    " map <leader>md :InstantMarkdownPreview<CR>
-
-    " ...All your other bundles...
-    if iCanHazVundle == 0
-        echo "Installing Bundles, please ignore key map error messages"
-        echo ""
-        :BundleInstall
-    endif
-" Setting up Vundle - the vim plugin bundler end
+   " ...All your other bundles...
+   if iCanHazVundle == 0
+      echo "Installing Bundles, please ignore key map error messages"
+      echo ""
+      :BundleInstall
+   endif
+   " Setting up Vundle - the vim plugin bundler end
 
 filetype plugin indent on     " required!
 "
@@ -252,17 +317,17 @@ noremap Y y$
 " without switching to the normal mode.
 " inoremap <C-e> <C-o>$
 
-    " vim *.bin or *.exe : edit binary using xxd-format!
-    augroup Binary
-        au!
-        au BufReadPre   *.elf,*.bin,*.exe,*.dll,*.jic let &bin=1
-        au BufReadPost  *.elf,*.bin,*.exe,*.dll,*.jic if &bin | %!xxd -g1
-        au BufReadPost  *.elf,*.bin,*.exe,*.dll,*.jic set ft=xxd | endif
-        au BufWritePre  *.elf,*.bin,*.exe,*.dll,*.jic if &bin | %!xxd -r
-        au BufWritePre  *.elf,*.bin,*.exe,*.dll,*.jic endif
-        au BufWritePost *.elf,*.bin,*.exe,*.dll,*.jic if &bin | %!xxd
-        au BufWritePost *.elf,*.bin,*.exe,*.dll,*.jic set nomod | endif
-    augroup END
+" vim *.bin or *.exe : edit binary using xxd-format!
+augroup Binary
+   au!
+   au BufReadPre   *.elf,*.bin,*.exe,*.dll,*.jic let &bin=1
+   au BufReadPost  *.elf,*.bin,*.exe,*.dll,*.jic if &bin | %!xxd -g1
+   au BufReadPost  *.elf,*.bin,*.exe,*.dll,*.jic set ft=xxd | endif
+   au BufWritePre  *.elf,*.bin,*.exe,*.dll,*.jic if &bin | %!xxd -r
+   au BufWritePre  *.elf,*.bin,*.exe,*.dll,*.jic endif
+   au BufWritePost *.elf,*.bin,*.exe,*.dll,*.jic if &bin | %!xxd
+   au BufWritePost *.elf,*.bin,*.exe,*.dll,*.jic set nomod | endif
+augroup END
 
 set nobackup
 set writebackup
@@ -276,6 +341,9 @@ nnoremap @pfd       :!p4 diff %<CR>
 command! Blame execute '!p4-annotate' . ' ' . expand('%:p') . ' ' . line('.')
 
 set wildignore+=*/build/*,*/cache/*
+set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png
+set wildignore+=*.pdf,*.psd
+set wildmenu
 
 " Copy full filename path
 " nmap cp :let @" = expand("%")
