@@ -205,6 +205,8 @@ filetype off                   " required!
    Bundle 'wikitopian/hardmode'
       nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
       let g:HardMode_level = 'wannabe'
+   Bundle 'google/vim-searchindex'
+      " press g/ to display search index for the last search
 
    " ...All your other bundles...
    if iCanHazVundle == 0
