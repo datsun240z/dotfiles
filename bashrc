@@ -49,6 +49,12 @@ case "$TERM" in
         ;;
     esac
     ;;
+  screen-256color)
+        export EDITOR='/usr/bin/gvim -v'
+        export CSCOPE_EDITOR='/usr/bin/gvim -v'
+        export SVN_EDITOR='/usr/bin/gvim -f -v'
+        alias ls='ls -G --color --classify'
+    ;;
   *)
     export EDITOR='/usr/bin/gvim'
     export CSCOPE_EDITOR='/usr/bin/gvim'
@@ -75,7 +81,6 @@ case "$TERM" in
     # export PS1="\u@\h \w> "
     ;;
   screen*)
-    alias ls='ls --color=auto --classify'
     ;;
 *)
     ;;
@@ -106,8 +111,7 @@ alias p4h='p4 changes -l -m1 "...#have"'
 alias psrt='ps -eHo pid,tid,class,rtprio,ni,pri,psr,pcpu,stat,wchan:14,comm'
 alias gitlog='git log --graph --full-history --all --color --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20[%cn] %s"'
 alias weather='curl -4 http://wttr.in'
-alias git-vimunstaged='vim $(git st -s | cut -f3 -d" ")'
-alias git-gvimunstaged='gvim $(git st -s | cut -f3 -d" ")'
+alias git-vimunstaged='$EDITOR $(git st -s | cut -f3 -d" ")'
 alias superm1i='ipmitool -H 10.183.49.111 -U ADMIN -P ADMIN -e [ -I lanplus sol activate'
 alias superm2i='ipmitool -H 10.183.49.112 -U ADMIN -P ADMIN -e [ -I lanplus sol activate'
 alias superm3i='ipmitool -H 10.183.49.113 -U ADMIN -P ADMIN -e [ -I lanplus sol activate'
