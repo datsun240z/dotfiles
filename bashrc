@@ -72,7 +72,10 @@ sps() {
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
   xterm-256color)
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]$(eval "sps")\[\033[00m\]\$ '
+    # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]$(eval "sps")\[\033[00m\]\$ '
+    GIT_PS1_SHOWDIRTYSTATE=true
+    export PS1='[\u@\h \w$(__git_ps1)]\$ '
+
     source ~/.git-prompt.sh
     PROMPT_COMMAND='q="- $(__git_ps1 "(%s)") $(date +%T)"; while [[ ${#q} -lt $COLUMNS ]]; do q="${q:0:1}$q"; done; echo -e "\033[0;32m$q";'
     ;;
@@ -247,4 +250,7 @@ function tabname {
    tmux rename-window $@
   fi
 }
+
+export "GPG_TTY=$(tty)"
+export "SSH_AUTH_SOCK=${HOME}/.gnupg/S.gpg-agent.ssh"
 

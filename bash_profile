@@ -127,3 +127,4 @@ if [[ '' = "$TMUX" ]]; then
   PATH=${PATH}:/home/rbelaire/ybin
 fi
 
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
