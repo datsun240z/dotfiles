@@ -26,6 +26,8 @@ filetype off                   " required!
       nnoremap @gd :Gdiff<cr>
       " switch back to current file and closes fugitive buffer
       nnoremap @gD <c-w>h<c-w>c
+      " Use :Gstatus with "-" to add files to cache
+      " Use :Gcommit
    " Bundle 'tpope/vim-sleuth' indent-detector is mod to be better
    Bundle 'tpope/vim-sensible'
    Bundle 'tpope/vim-surround'
@@ -167,6 +169,8 @@ filetype off                   " required!
    Bundle 'junegunn/fzf.vim'
       let g:fzf_layout = {}
       inoremap <expr> <c-x><c-k> fzf#complete('cat /usr/share/dict/words')
+   Bundle 'ajmwagar/vim-dues'
+      "colors dues
    " Bundle 'datsun240z/vim-colors'
    " Bundle 'yaifa.vim'
    " Bundle 'quickhl.vim'
@@ -197,6 +201,7 @@ filetype off                   " required!
       " let g:vimwiki_list = [{'path': '~/vimwiki/', 'auto_toc': 1 }]
       let g:vimwiki_list = [{'path': '~/vimwiki/', 'auto_toc': 1, 'syntax': 'markdown', 'ext': '.md'}]
       let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
+      let g:vimwiki_url_maxsave = 0
       " nnoremap <leader>wb <Plug>VimwikiGoBackLink :VimwikiGoBackLink<CR>
       " nnoremap <leader>wb :VimwikiGoBackLink<CR>
    " Bundle 'suan/vim-instant-markdown'
@@ -379,3 +384,12 @@ highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Re
 highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
 highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
 highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
+
+nnoremap <silent> <Leader>d "_d
+xnoremap <silent> <Leader>d "_d
+
+runtime! ftplugin/man.vim
+if has("gui_running")
+   nnoremap K :<C-U>exe "Man" v:count "<C-R><C-W>"<CR>
+endif
+
