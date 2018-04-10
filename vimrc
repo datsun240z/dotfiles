@@ -123,7 +123,7 @@ filetype off                   " required!
       nmap gs  <plug>(GrepperOperator)
       xmap gs  <plug>(GrepperOperator)
       let g:grepper = {
-          \ 'tools':     ['git', 'ack', 'grep'],
+          \ 'tools':     ['rg', 'ack', 'grep'],
           \ 'highlight': 1,
           \ }
       autocmd FileType qf nnoremap <buffer> <cr> <cr>:cclose<cr>
@@ -170,6 +170,9 @@ filetype off                   " required!
       let g:fzf_layout = {}
       inoremap <expr> <c-x><c-k> fzf#complete('cat /usr/share/dict/words')
    Bundle 'ajmwagar/vim-dues'
+   Bundle 'gregsexton/gitv'
+      "Type :Gitv for log
+      "
       "colors dues
    " Bundle 'datsun240z/vim-colors'
    " Bundle 'yaifa.vim'
