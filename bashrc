@@ -169,6 +169,10 @@ if [ -f  ${HOME}/.bash_completion_lib.d/completions/complete/bbconf.completion ]
   source ${HOME}/.bash_completion_lib.d/completions/complete/bbconf.completion
 fi
 
+if [ -f  ${HOME}/.bash_completion_lib.d/completions/complete/gitm.completion ]; then
+  source ${HOME}/.bash_completion_lib.d/completions/complete/gitm.completion
+fi
+
 if [ -f  ${HOME}/.bash_completion_lib.d/completions/complete/bitbake ]; then
   source ${HOME}/.bash_completion_lib.d/completions/complete/bitbake
 fi
