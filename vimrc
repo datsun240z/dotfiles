@@ -52,6 +52,7 @@ filetype off                   " required!
    Bundle 'tpope/vim-commentary'
       " gcc to un/comment a line
       " gc  to un/comment a motion/visual
+   Bundle 'tpope/vim-vinegar'
    Bundle 'vivien/vim-linux-coding-style'
       let g:linuxsty_patterns = [ "/usr/src/", "/linux/", "/ko/" ]
       " or :LinuxCodingStyle
@@ -169,6 +170,9 @@ filetype off                   " required!
    Bundle 'junegunn/fzf.vim'
       let g:fzf_layout = {}
       inoremap <expr> <c-x><c-k> fzf#complete('cat /usr/share/dict/words')
+      nmap ; :Buffers<CR>
+      nmap <Leader>t :Files<CR>
+      nmap <Leader>r :Tags<CR>
    Bundle 'ajmwagar/vim-dues'
    Bundle 'gregsexton/gitv'
       "Type :Gitv for log
@@ -391,6 +395,7 @@ highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Re
 
 set ttyfast
 set shortmess+=I
+
 nnoremap <silent> <Leader>d "_d
 xnoremap <silent> <Leader>d "_d
 
@@ -398,3 +403,17 @@ runtime! ftplugin/man.vim
 if has("gui_running")
    nnoremap K :<C-U>exe "Man" v:count "<C-R><C-W>"<CR>
 endif
+
+" --column: Show column number
+" --line-number: Show line number
+" --no-heading: Do not show file headings in results
+" --fixed-strings: Search term as a literal string
+" --ignore-case: Case insensitive search
+" --no-ignore: Do not respect .gitignore, etc...
+" --hidden: Search hidden files and folders
+" --follow: Follow symlinks
+" --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
+" --color: Search color options
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+
+set grepprg=rg\ --vimgrep

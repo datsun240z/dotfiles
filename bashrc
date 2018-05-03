@@ -45,7 +45,7 @@ case "$TERM" in
         #PROMPT_COMMAND='echo -ne "${USER}@${HOSTNAME}:${PWD/#$HOME/~}"'
         ;;
       *)
-        export EDITOR='/usr/local/bin/gvim'
+        export EDITOR='/usr/local/bin/gvim -f'
         export CSCOPE_EDITOR='/usr/local/bin/gvim'
         export SVN_EDITOR='/usr/local/bin/gvim -f'
         alias ls='ls -G -F'
@@ -251,3 +251,11 @@ function tabname {
 
 export "GPG_TTY=$(tty)"
 export "SSH_AUTH_SOCK=${HOME}/.gnupg/S.gpg-agent.ssh"
+
+# --files: List files that would be searched but do not search
+# --no-ignore: Do not respect .gitignore, etc...
+# --hidden: Search hidden files and folders
+# --follow: Follow symlinks
+# --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+
