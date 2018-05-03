@@ -28,56 +28,12 @@ if [[ '' = "$TMUX" ]]; then
   CHECKME=/opt/tools/bin
   if [ -d $CHECKME ] ; then PATH="$PATH":$CHECKME; fi
 
-  # CHECKME=/usr/bin
-  # if [ -d $CHECKME ] ; then PATH=$CHECKME:"$PATH"; fi
-
-  # CHECKME=/usr/local/bin
-  # if [ -d $CHECKME ] ; then PATH=$CHECKME:"$PATH"; fi
-  # if [ -d $CHECKME ] ; then PATH="$PATH":$CHECKME; fi
-
   CHECKME=/home/rbelaire/usr/bin/p4u
   if [ -d $CHECKME ] ; then PATH="$PATH":$CHECKME; fi
 
   CHECKME=/localdata/rbelaire/yocto/source/evernight/poky/scripts
   if [ -d $CHECKME ] ; then PATH="$PATH":$CHECKME; fi
 fi
-
-#CHECKME=~/usr/bin/meld/bin
-#if [ -d $CHECKME ] ; then
-  #PATH=$CHECKME:"$PATH"
-#fi
-
-#if [ -d /usr/local/ciena/m68k-elf-tools-20080416/bin ] ; then
-  #PATH=/usr/local/ciena/m68k-elf-tools-20080416/bin:"$PATH"
-#fi
-
-#if [ -d /corp/tools/altera/latest/quartus/bin ] ; then
-  #PATH=/corp/tools/altera/latest/quartus/bin:"$PATH"
-#fi
-
-#if [ -d /corp/tools/altera/latest/nios2eds/bin ] ; then
-  #PATH=/corp/tools/altera/latest/nios2eds/bin:"$PATH"
-#fi
-
-#if [ -d /corp/tools/altera/latest/nios2eds/bin/nios2-gnutools/H-i686-pc-linux-gnu/bin ] ; then
-  #PATH=/corp/tools/altera/latest/nios2eds/bin/nios2-gnutools/H-i686-pc-linux-gnu/bin:"$PATH"
-#fi
-
-#if [ -d /home/rbelaire/code/nios2-linux/toolchain-build/build/nios2/bin ] ; then
-  #PATH=/home/rbelaire/code/nios2-linux/toolchain-build/build/nios2/bin:"$PATH"
-#fi
-
-#if [[ -d /corp/tools/ccollab/current || -L /corp/tools/ccollab/current ]] ; then
-  #PATH=/corp/tools/ccollab/current:"$PATH"
-#fi
-
-#if [ -f /corp/proj/centaur/common/env.sh ] ; then
-  #source /corp/proj/centaur/common/env.sh
-#fi
-
-#if [[ -d /corp/tools/perforce/current || -L /corp/tools/perforce/current ]] ; then
-  #PATH=/corp/tools/perforce/current/bin:"$PATH"
-#fi
 
 # New dotfile stuff
 dots=~/dotfiles

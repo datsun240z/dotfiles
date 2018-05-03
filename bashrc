@@ -18,8 +18,8 @@ export HISTCONTROL=ignoreboth
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-export P4_VERSION=2015.1
-export P4V_VERSION=2015.1
+export P4_VERSION=2015.2
+export P4V_VERSION=2015.2
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(lesspipe)"
@@ -40,6 +40,9 @@ case "$TERM" in
         export CSCOPE_EDITOR='/usr/bin/gvim'
         export SVN_EDITOR='/usr/bin/gvim -f'
         alias ls='ls -G --color --classify'
+        #export PROMPT_COMMAND='printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/~}"'
+        #PS1="[e]0;wa]\$ "
+        #PROMPT_COMMAND='echo -ne "${USER}@${HOSTNAME}:${PWD/#$HOME/~}"'
         ;;
       *)
         export EDITOR='/usr/local/bin/gvim'
@@ -76,14 +79,24 @@ function _update_ps1() {
 
 case "$TERM" in
   xterm-256color)
-    # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]$(eval "sps")\[\033[00m\]\$ '
-    GIT_PS1_SHOWDIRTYSTATE=true
-    # export PS1='[\u@\h \w$(__git_ps1)]\$ '
-    # source ~/.git-prompt.sh
-    # PROMPT_COMMAND='q="- $(__git_ps1 "(%s)") $(date +%T)"; while [[ ${#q} -lt $COLUMNS ]]; do q="${q:0:1}$q"; done; echo -e "\033[0;32m$q";'
-    if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
-      PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-    fi
+    case "$OSTYPE" in
+      linux-gnu)
+        PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]$(eval "sps")\[\033[00m\]\$ '
+        source ~/.git-prompt.sh
+        PROMPT_COMMAND='q="- $(__git_ps1 "(%s)") $(date +%T)"; while [[ ${#q} -lt $COLUMNS ]]; do q="${q:0:1}$q"; done; echo -e "\033[0;32m$q";'
+        export GREP_OPTIONS='--color=auto'
+        ;;
+      *)
+        # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]$(eval "sps")\[\033[00m\]\$ '
+        GIT_PS1_SHOWDIRTYSTATE=true
+        # export PS1='[\u@\h \w$(__git_ps1)]\$ '
+        # source ~/.git-prompt.sh
+        # PROMPT_COMMAND='q="- $(__git_ps1 "(%s)") $(date +%T)"; while [[ ${#q} -lt $COLUMNS ]]; do q="${q:0:1}$q"; done; echo -e "\033[0;32m$q";'
+        if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
+          PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+        fi
+        ;;
+    esac
     ;;
   xterm*|rxvt*)
     export PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
@@ -96,6 +109,7 @@ case "$TERM" in
 esac
 
 alias vim='gvim -v'
+alias view='gview -v'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -146,14 +160,12 @@ alias 3906-8console='telnet 10.183.83.14 2011'
 alias 3906-7telnet='telnet 10.183.50.136'
 
 alias findh="find ~  -type d  -name '.?*' -prune -o -print"
+alias fut="scp build/saos-frerin/frerin-tool/chassis/x86-64/32/frerin-tool   diag@10.183.49.40:"
+alias fso="scp build/saos-frerin/libfrerin.so/chassis/x86-64/32/libfrerin.so diag@10.183.49.40:"
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
-if [ -f /etc/bash_completion ]; then
-    source /etc/bash_completion
-fi
-
 if [ -f ~/.git-completion.bash ]; then
     source ~/.git-completion.bash
     export GIT_PS1_SHOWDIRTYSTATE=1
@@ -167,15 +179,26 @@ if [ -f ~/bash_completion_lib-1.3.1/bash_completion_lib ]; then
     source ~/bash_completion_lib-1.3.1/bash_completion_lib
 fi
 
-test -e ${HOME}/.bash_completion_lib.d/completions/complete/bb.completion && \
+if [ -f  ${HOME}/.bash_completion_lib.d/completions/complete/bb.completion ]; then
   source ${HOME}/.bash_completion_lib.d/completions/complete/bb.completion
+fi
 
-test -e ${HOME}/.bash_completion_lib.d/completions/complete/bitbake && \
+if [ -f  ${HOME}/.bash_completion_lib.d/completions/complete/bbconf.completion ]; then
+  source ${HOME}/.bash_completion_lib.d/completions/complete/bbconf.completion
+fi
+
+if [ -f  ${HOME}/.bash_completion_lib.d/completions/complete/gitm.completion ]; then
+  source ${HOME}/.bash_completion_lib.d/completions/complete/gitm.completion
+fi
+
+if [ -f  ${HOME}/.bash_completion_lib.d/completions/complete/git-completion.bash ]; then
+  # source ${HOME}/.bash_completion_lib.d/completions/complete/git-completion.bash
+  :
+fi
+
+if [ -f  ${HOME}/.bash_completion_lib.d/completions/complete/bitbake ]; then
   source ${HOME}/.bash_completion_lib.d/completions/complete/bitbake
-
-# if [ -f ~/code/to/to.sh ]; then
-#     source ~/code/to/to.sh
-# fi
+fi
 
 if [ -f ~/.local/bin/bashmarks.sh ]; then
     source ~/.local/bin/bashmarks.sh
@@ -185,49 +208,15 @@ if [ -f /etc/profile.d/vte.sh ]; then
     source /etc/profile.d/vte.sh
 fi
 
-tools=()
-tools=( "${tools[@]}" "powerpc" "/usr/local/ciena/powerpc-e500-linux-gnuspe-20130325/bin/powerpc-e500-linux-gnuspe- " )
-tools=( "${tools[@]}" "mips"    "/usr/local/ciena/mips-unknown-linux-gnu-20080904/bin/mips-unknown-linux-gnu-" )
-tools=( "${tools[@]}" "mips64"  "/usr/local/ciena/mips64-octeon-linux-gnu-20080904/bin/mips64-octeon-linux-gnu-" )
-tools=( "${tools[@]}" "i486"  "/usr/local/ciena/i486-sim-linux-gnu-20110802/bin/i486-sim-linux-gnu-" )
-
-for ((i=0; i<"${#tools[@]}"; i++)); do
-  name="${tools[${i}]}"
-  ((i+=1))
-  prefix="${tools[${i}]}"
-
-  eval "export ${name}=${prefix}"
-  eval "alias ${name}-ddd='\${${name}}ddd --debugger \${${name}}gdb'"
-
-  for prog in addr2line \
-              ar \
-              as \
-              c++ \
-              cpp \
-              g++ \
-              gcc \
-              gdb \
-              ld \
-              nm \
-              objcopy \
-              objdump \
-              ranlib \
-              readelf \
-              size \
-              strip ; do
-    eval "alias ${name}-${prog}='\${${name}}${prog}'"
-  done
-done
-
 ## BABS issue
 umask 002
 
 export P4USER="rbelaire"
-export P4PORT="onxp4proxy.ciena.com:2003"
+export P4PORT="on-p4proxy1.ciena.com:2003"
 export P4CONFIG=".p4config.txt"
 #export P4DIFF="diff -Naur"
 #export P4DIFF="meld"
-export P4MERGE="/corp/tools/perforce/current/bin/p4merge"
+export P4MERGE="/opt/tools/bin/p4merge"
 export P4EDITOR="gvim -f"
 export P4DIFF=meld p4 diff
 
@@ -246,6 +235,9 @@ dnif () {
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_TMUX='0'
+# https://superuser.com/questions/1103963/neovim-fzf-hidden-files
+export FZF_DEFAULT_COMMAND="find . -path '*/\.*' -type d -prune -o -type f -print -o -type l -print 2> /dev/null | sed s/^..//"
+export FZF_CTRL_T_COMMAND="find . -path '*/\.*' -type d -prune -o -type f -print -o -type l -print 2> /dev/null | sed s/^..//"
 
 # [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
