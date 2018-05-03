@@ -173,6 +173,11 @@ if [ -f  ${HOME}/.bash_completion_lib.d/completions/complete/gitm.completion ]; 
   source ${HOME}/.bash_completion_lib.d/completions/complete/gitm.completion
 fi
 
+if [ -f  ${HOME}/.bash_completion_lib.d/completions/complete/git-completion.bash ]; then
+  # source ${HOME}/.bash_completion_lib.d/completions/complete/git-completion.bash
+  :
+fi
+
 if [ -f  ${HOME}/.bash_completion_lib.d/completions/complete/bitbake ]; then
   source ${HOME}/.bash_completion_lib.d/completions/complete/bitbake
 fi

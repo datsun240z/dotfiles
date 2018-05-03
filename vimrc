@@ -215,6 +215,7 @@ filetype off                   " required!
       let g:HardMode_level = 'wannabe'
    Bundle 'google/vim-searchindex'
       " press g/ to display search index for the last search
+   Bundle 'vim-scripts/confluencewiki.vim'
 
    " ...All your other bundles...
    if iCanHazVundle == 0
