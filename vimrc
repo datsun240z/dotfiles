@@ -136,6 +136,7 @@ filetype off                   " required!
       let g:airline#extensions#tabline#enabled = 1
       let g:airline#extensions#tabline#left_sep = ' '
       let g:airline#extensions#tabline#left_alt_sep = '|'
+      let g:airline_section_z = airline#section#create(['windowswap', 'obsession', '%3p%%'.g:airline_symbols.space, 'linenr', 'maxlinenr', g:airline_symbols.space.':%5(%c%V%)'])
    " Bundle 'mbadran/headlights'
       " Informs you of all the Bundles installed
    Bundle 'nathanaelkane/vim-indent-guides'
@@ -404,6 +405,7 @@ if has("gui_running")
    nnoremap K :<C-U>exe "Man" v:count "<C-R><C-W>"<CR>
 endif
 
+" https://medium.com/@crashybang/supercharge-vim-with-fzf-and-ripgrep-d4661fc853d2
 " --column: Show column number
 " --line-number: Show line number
 " --no-heading: Do not show file headings in results

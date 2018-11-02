@@ -84,3 +84,4 @@ if [[ '' = "$TMUX" ]]; then
 fi
 
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+export PATH="/usr/local/sbin:$PATH"

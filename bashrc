@@ -53,10 +53,10 @@ case "$TERM" in
     esac
     ;;
   screen-256color)
-        export EDITOR='/usr/bin/gvim -v'
-        export CSCOPE_EDITOR='/usr/bin/gvim -v'
-        export SVN_EDITOR='/usr/bin/gvim -f -v'
-        alias ls='ls -G --color --classify'
+    export EDITOR='/usr/bin/gvim -v'
+    export CSCOPE_EDITOR='/usr/bin/gvim -v'
+    export SVN_EDITOR='/usr/bin/gvim -f -v'
+    alias ls='ls -G --color --classify'
     ;;
   *)
     export EDITOR='/usr/bin/gvim'
@@ -92,6 +92,7 @@ case "$TERM" in
         # export PS1='[\u@\h \w$(__git_ps1)]\$ '
         # source ~/.git-prompt.sh
         # PROMPT_COMMAND='q="- $(__git_ps1 "(%s)") $(date +%T)"; while [[ ${#q} -lt $COLUMNS ]]; do q="${q:0:1}$q"; done; echo -e "\033[0;32m$q";'
+        # https://github.com/b-ryan/powerline-shell
         if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
           PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
         fi
