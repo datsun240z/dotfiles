@@ -28,12 +28,19 @@ if [[ '' = "$TMUX" ]]; then
   CHECKME=/opt/tools/bin
   if [ -d $CHECKME ] ; then PATH="$PATH":$CHECKME; fi
 
-  CHECKME=/home/rbelaire/usr/bin/p4u
+  CHECKME=~/usr/bin/p4u
   if [ -d $CHECKME ] ; then PATH="$PATH":$CHECKME; fi
 
   CHECKME=/localdata/rbelaire/yocto/source/evernight/poky/scripts
   if [ -d $CHECKME ] ; then PATH="$PATH":$CHECKME; fi
+
+  CHECKME=~/ybin
+  if [ -d $CHECKME ] ; then PATH="$PATH":$CHECKME; fi
+
 fi
+
+CHECKME=usr/local/sbin
+if [ -d $CHECKME ] ; then PATH="$PATH":$CHECKME; fi
 
 # New dotfile stuff
 dots=~/dotfiles
@@ -79,9 +86,4 @@ fi
 
 test -e ${HOME}/.iterm2_shell_integration.bash && source ${HOME}/.iterm2_shell_integration.bash
 
-if [[ '' = "$TMUX" ]]; then
-  PATH=${PATH}:/home/rbelaire/ybin
-fi
-
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
-export PATH="/usr/local/sbin:$PATH"
