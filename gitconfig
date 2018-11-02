@@ -1,34 +1,75 @@
-[core]
-	excludesfile = /Users/rbelaire/.gitignore_global
-	editor = vim
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
 [user]
-	email = rbelaire@ciena.com
-	name = Ron Belaire
-[push]
-	default = matching
+    name = Ron Belaire
+    email = rbelaire@ciena.com
+[color]
+    pager = true
+    ui = auto
+    ui = auto # covers diff = true, status = auto, branch = auto
+    interactive = auto
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+	old = red reverse
+    new = green reverse
+    whitespace = red reverse
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+[git-p4]
+    user = rbelaire
+    port = onp4proxy01.ciena.com:2003
+[core]
+    editor = vim
+    whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+	pager = less -RFX
+	autocrlf = input
+	excludesfile = /home/rbelaire/.gitignore
 [alias]
-	co   = checkout
-	ci   = commit
-	st   = status
-	br   = branch
-	hist = log --pretty = format:\"%h %ad | %s%d [%an]\" --graph --date = short
-	type = cat-file -t
-	dump = cat-file -p
-        # http://haacked.com/archive/2014/07/28/github-flow-aliases/
-	ec     = config --global -e
-	up     = !git pull --rebase --prune $@ && git submodule update --init --recursive
-	cob    = checkout -b
-	cm     = !git add -A && git commit -m
-	save   = !git add -A && git commit -m 'SAVEPOINT'
-	wip    = !git add -u && git commit -m "WIP"
-	undo   = reset HEAD~1 --mixed
-	amend  = commit -a --amend
-	wipe   = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
-	bclean = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -r git branch -d; }; f"
-	bdone  = "!f() { git checkout ${1-master} && git up && git bclean ${1-master}; }; f"
+	st = status --short --branch
+    ci = commit
+    br = branch
+    co = checkout
+    df = diff --color-words=.
+    dif = diff --word-diff=color
+    dfg = difftool --gui
+    lg = log --pretty='%Cred%h%Creset |%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %C(cyan)[%an]%Creset' --graph
+    lol = log --graph --decorate --pretty=oneline --abbrev-commit
+    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    ls = ls-files
+    hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+    type = cat-file -t
+    dump = cat-file -p
+	dirty = diff --name-only --cached
+	unstage = reset HEAD --
+	last = log -1 HEAD
+	d = 
+	dt = difftool
+	cp = cherry-pick
+[diff]
+    #tool = vimdiff
+    guitool = meld
+	submodule = log
+	tool = vimdiff
+	algorithm = histogram
+[difftool]
+	prompt = false
+[merge]
+    tool = p4mergetool
+[mergetool "p4mergetool"]
+    cmd = /corp/tools/perforce/current/bin/p4merge $PWD/$BASE $PWD/$REMOTE $PWD/$LOCAL $PWD/$MERGED
+    trustExitCode = false
+[mergetool]
+    keepBackup = false
+[push]
+    default = simple
+[status]
+	submoduleSummary = false
+[pull]
+	ff = only
+[commit]
+    #template = ~/.gitmessage
