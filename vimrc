@@ -53,6 +53,8 @@ filetype off                   " required!
       " gcc to un/comment a line
       " gc  to un/comment a motion/visual
    Bundle 'tpope/vim-vinegar'
+   Bundle 'Valloric/ListToggle'
+      " Location/Quick Toogle set to <leader>l and <leader>q, respectively.
    Bundle 'vivien/vim-linux-coding-style'
       let g:linuxsty_patterns = [ "/usr/src/", "/linux/", "/ko/" ]
       " or :LinuxCodingStyle

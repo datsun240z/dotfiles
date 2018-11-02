@@ -40,6 +40,8 @@ case "$TERM" in
         export CSCOPE_EDITOR='/usr/bin/gvim'
         export SVN_EDITOR='/usr/bin/gvim -f'
         alias ls='ls -G --color --classify'
+        source ~/setPythonPaths
+        export GTAGSCONF=~/dotfiles/globalrc
         #export PROMPT_COMMAND='printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/~}"'
         #PS1="[e]0;wa]\$ "
         #PROMPT_COMMAND='echo -ne "${USER}@${HOSTNAME}:${PWD/#$HOME/~}"'
@@ -163,6 +165,10 @@ alias 3906-7telnet='telnet 10.183.50.136'
 alias findh="find ~  -type d  -name '.?*' -prune -o -print"
 alias fut="scp build/saos-frerin/frerin-tool/chassis/x86-64/32/frerin-tool   diag@10.183.49.40:"
 alias fso="scp build/saos-frerin/libfrerin.so/chassis/x86-64/32/libfrerin.so diag@10.183.49.40:"
+
+findlastest() {
+  find . -name "$1" -exec ls -latR {} +
+}
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
