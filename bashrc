@@ -36,11 +36,15 @@ case "$TERM" in
   xterm-256color|xterm)
     case "$OSTYPE" in
       linux-gnu)
-        export EDITOR='/usr/bin/gvim'
-        export CSCOPE_EDITOR='/usr/bin/gvim'
-        export SVN_EDITOR='/usr/bin/gvim -f'
+        if [ "$HOSTNAME" != "ThinkPad-T420" ]; then
+          export EDITOR='/usr/bin/gvim'
+          export CSCOPE_EDITOR='/usr/bin/gvim'
+          source ~/setPythonPaths
+        else
+          # export EDITOR='/usr/bin/gvim -v'
+          export CSCOPE_EDITOR='/usr/bin/gvim -v'
+        fi
         alias ls='ls -G --color --classify'
-        source ~/setPythonPaths
         export GTAGSCONF=~/dotfiles/globalrc
         #export PROMPT_COMMAND='printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/~}"'
         #PS1="[e]0;wa]\$ "
@@ -49,12 +53,11 @@ case "$TERM" in
       *)
         export EDITOR='/usr/local/bin/gvim -f'
         export CSCOPE_EDITOR='/usr/local/bin/gvim'
-        export SVN_EDITOR='/usr/local/bin/gvim -f'
         alias ls='ls -G -F'
         ;;
     esac
     ;;
-  screen-256color)
+  tmux-256color|screen-256color)
     export EDITOR='/usr/bin/gvim -v'
     export CSCOPE_EDITOR='/usr/bin/gvim -v'
     export SVN_EDITOR='/usr/bin/gvim -f -v'
@@ -63,7 +66,6 @@ case "$TERM" in
   *)
     export EDITOR='/usr/bin/gvim'
     export CSCOPE_EDITOR='/usr/bin/gvim'
-    export SVN_EDITOR='/usr/bin/gvim -f'
     ;;
 esac
 
@@ -83,10 +85,12 @@ case "$TERM" in
   xterm-256color)
     case "$OSTYPE" in
       linux-gnu)
-        PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]$(eval "sps")\[\033[00m\]\$ '
-        source ~/.git-prompt.sh
-        PROMPT_COMMAND='q="- $(__git_ps1 "(%s)") $(date +%T)"; while [[ ${#q} -lt $COLUMNS ]]; do q="${q:0:1}$q"; done; echo -e "\033[0;32m$q";'
-        export GREP_OPTIONS='--color=auto'
+        if [ "$HOSTNAME" != "ThinkPad-T420" ]; then
+          PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]$(eval "sps")\[\033[00m\]\$ '
+          source ~/.git-prompt.sh
+          PROMPT_COMMAND='q="- $(__git_ps1 "(%s)") $(date +%T)"; while [[ ${#q} -lt $COLUMNS ]]; do q="${q:0:1}$q"; done; echo -e "\033[0;32m$q";'
+          export GREP_OPTIONS='--color=auto'
+        fi
         ;;
       *)
         # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]$(eval "sps")\[\033[00m\]\$ '
@@ -102,7 +106,9 @@ case "$TERM" in
     esac
     ;;
   xterm*|rxvt*)
-    export PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    if [ "$HOSTNAME" != "ThinkPad-T420" ]; then
+      export PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    fi
     # export PS1="\u@\h \w> "
     ;;
   screen*)
@@ -111,8 +117,10 @@ case "$TERM" in
     ;;
 esac
 
-alias vim='gvim -v'
-alias view='gview -v'
+if [ "$HOSTNAME" != "ThinkPad-T420" ]; then
+  alias vim='gvim -v'
+  alias view='gview -v'
+fi
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -134,10 +142,9 @@ alias p='cd -'
 alias psrt='ps -eHo pid,tid,class,rtprio,ni,pri,psr,pcpu,stat,wchan:14,comm'
 alias p4-syncable='p4 changes -L "...#>have"'
 alias p4h='p4 changes -l -m1 "...#have"'
-alias psrt='ps -eHo pid,tid,class,rtprio,ni,pri,psr,pcpu,stat,wchan:14,comm'
-alias gitlog='git log --graph --full-history --all --color --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20[%cn] %s"'
+# alias gitlog='git log --graph --full-history --all --color --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20[%cn] %s"'
 alias weather='curl -4 http://wttr.in'
-alias git-vimunstaged='$EDITOR $(git st -s | cut -f3 -d" ")'
+# alias git-vimunstaged='$EDITOR $(git status -s | cut -f3 -d" ")'
 alias superm1i='ipmitool -H 10.183.49.111 -U ADMIN -P ADMIN -e [ -I lanplus sol activate'
 alias superm2i='ipmitool -H 10.183.49.112 -U ADMIN -P ADMIN -e [ -I lanplus sol activate'
 alias superm3i='ipmitool -H 10.183.49.113 -U ADMIN -P ADMIN -e [ -I lanplus sol activate'
@@ -179,11 +186,17 @@ if [ -f ~/.git-completion.bash ]; then
 fi
 
 if [ -f ~/.bash_completion_lib.d/completions/complete/gocompletion.sh ]; then
-      source ~/.bash_completion_lib.d/completions/complete/gocompletion.sh
+  source ~/.bash_completion_lib.d/completions/complete/gocompletion.sh
 fi
 
 if [ -f ~/bash_completion_lib-1.3.1/bash_completion_lib ]; then
-    source ~/bash_completion_lib-1.3.1/bash_completion_lib
+  source ~/bash_completion_lib-1.3.1/bash_completion_lib
+fi
+
+if [ "$HOSTNAME" != "ThinkPad-T420" ]; then
+  if [ -f /etc/bash_completion ]; then
+    source /etc/bash_completion
+  fi
 fi
 
 if [ -f  ${HOME}/.bash_completion_lib.d/completions/complete/bb.completion ]; then
@@ -266,3 +279,56 @@ export "SSH_AUTH_SOCK=${HOME}/.gnupg/S.gpg-agent.ssh"
 # --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
+
+if [ "$HOSTNAME" = "ThinkPad-T420" ]; then
+  # Path to the bash it configuration
+  export BASH_IT="/home/rbelaire/.bash_it"
+
+  # Lock and Load a custom theme file
+  # location /.bash_it/themes/
+  export BASH_IT_THEME='bobby'
+
+  # (Advanced): Change this to the name of your remote repo if you
+  # cloned bash-it with a remote other than origin such as `bash-it`.
+  # export BASH_IT_REMOTE='bash-it'
+
+  # Your place for hosting Git repos. I use this for private repos.
+  export GIT_HOSTING='git@git.domain.com'
+
+  # Don't check mail when opening terminal.
+  unset MAILCHECK
+
+  # Change this to your console based IRC client of choice.
+  export IRC_CLIENT='irssi'
+
+  # Set this to the command you use for todo.txt-cli
+  export TODO="t"
+
+  # Set this to false to turn off version control status checking within the prompt for all themes
+  export SCM_CHECK=true
+
+  # Set Xterm/screen/Tmux title with only a short hostname.
+  # Uncomment this (or set SHORT_HOSTNAME to something else),
+  # Will otherwise fall back on $HOSTNAME.
+  #export SHORT_HOSTNAME=$(hostname -s)
+
+  # Set Xterm/screen/Tmux title with only a short username.
+  # Uncomment this (or set SHORT_USER to something else),
+  # Will otherwise fall back on $USER.
+  #export SHORT_USER=${USER:0:8}
+
+  # Set Xterm/screen/Tmux title with shortened command and directory.
+  # Uncomment this to set.
+  #export SHORT_TERM_LINE=true
+
+  # Set vcprompt executable path for scm advance info in prompt (demula theme)
+  # https://github.com/djl/vcprompt
+  #export VCPROMPT_EXECUTABLE=~/.vcprompt/bin/vcprompt
+
+  # (Advanced): Uncomment this to make Bash-it reload itself automatically
+  # after enabling or disabling aliases, plugins, and completions.
+  # export BASH_IT_AUTOMATIC_RELOAD_AFTER_CONFIG_CHANGE=1
+
+  # Load Bash It
+  source "$BASH_IT"/bash_it.sh
+fi

@@ -84,6 +84,10 @@ if [ "$HOSTNAME" = "ONM-RBELAIRE-01" ]; then
   fi
 fi
 
+if [ "$HOSTNAME" = "ThinkPad-T420" ]; then
+  export iterm2_hostname=thinkpad.belaire.net
+fi
+
 test -e ${HOME}/.iterm2_shell_integration.bash && source ${HOME}/.iterm2_shell_integration.bash
 
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh

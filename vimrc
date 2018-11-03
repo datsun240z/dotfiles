@@ -223,6 +223,7 @@ filetype off                   " required!
    Bundle 'google/vim-searchindex'
       " press g/ to display search index for the last search
    Bundle 'vim-scripts/confluencewiki.vim'
+   Bundle 'vim-scripts/rtorrent-syntax-file'
 
    " ...All your other bundles...
    if iCanHazVundle == 0
