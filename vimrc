@@ -30,6 +30,8 @@ filetype off                   " required!
       " Use :Gcommit
    " Bundle 'tpope/vim-sleuth' indent-detector is mod to be better
    Bundle 'tpope/vim-sensible'
+   Bundle 'tpope/vim-scriptease'
+      " Try :Verbose map
    Bundle 'tpope/vim-surround'
       " 'Hello *world!'           ds'         Hello world!
       " [123+4*56]/2              cs])        (123+456)/2
@@ -107,6 +109,8 @@ filetype off                   " required!
       " :Ack pattern
    " Bundle 'matchit.zip' Included in vim 6.0
    Bundle 'genutils'
+   Bundle 'ScreenShot'
+      let ScreenShot = {'Title':0, 'Icon':0, 'Credits':0, 'force_background':'#FFFFFF'}
    Bundle 'multvals.vim'
    " Bundle 'GrepCommands'
       " :ArgGrep[Add][!] [{pattern}]
@@ -159,6 +163,7 @@ filetype off                   " required!
    " Bundle 'godlygeek/csapprox'
    Bundle 'datsun240z/gtags-cscope'
       let GtagsCscope_Quiet=1
+   Bundle 'ludovicchabant/vim-gutentags.git'
    Bundle 'datsun240z/bitbake.vim'
    Bundle 'datsun240z/GNOME-align-args'
       nmap ,a :GNOMEAlignArguments<CR>
@@ -422,3 +427,6 @@ endif
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 
 set grepprg=rg\ --vimgrep
+set spelllang=en
+set spellfile=$HOME/en.utf-8.add
+" setlocal spell
