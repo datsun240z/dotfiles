@@ -229,6 +229,19 @@ filetype off                   " required!
       " press g/ to display search index for the last search
    Bundle 'vim-scripts/confluencewiki.vim'
    Bundle 'vim-scripts/rtorrent-syntax-file'
+   Bundle 'Vimjas/vim-python-pep8-indent'
+      let g:python_pep8_indent_multiline_string=-1
+      " g:python_pep8_indent_multiline_string=[0|-1|-2]
+      "  You can configure the initial indentation of multiline strings using
+      "  g:python_pep8_indent_multiline_string (which can also be set per buffer). This
+      "  defaults to 0, which means that multiline strings are not indented. -1 and
+      "  positive values will be used as-is, where -1 is a special value for Vim's
+      "  indentexpr, and will keep the existing indent (using Vim's autoindent
+      "  setting). -2 is meant to be used for strings that are wrapped with
+      "  textwrap.dedent etc. It will add a level of indentation if the multiline
+      "  string started in the previous line, without any content in it already:
+      " g:python_pep8_indent_hang_closing=[0|-1]
+      " Control closing bracket indentation with python_pep8_indent_hang_closing
 
    " ...All your other bundles...
    if iCanHazVundle == 0
@@ -280,7 +293,7 @@ set directory=/tmp
 set guioptions+=a
 set guioptions-=T
 " set formatoptions-=t    " kill auto-wrap
-set tabstop=4 expandtab shiftwidth=4 nowrap
+" set tabstop=4 expandtab shiftwidth=4 nowrap
 " set patchmode=.org
 let g:is_bash=1
 behave xterm
@@ -430,3 +443,7 @@ set grepprg=rg\ --vimgrep
 set spelllang=en
 set spellfile=$HOME/en.utf-8.add
 " setlocal spell
+
+" if has("autocmd")
+"   filetype plugin indent on
+" endif

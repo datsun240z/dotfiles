@@ -279,7 +279,6 @@ export "SSH_AUTH_SOCK=${HOME}/.gnupg/S.gpg-agent.ssh"
 # --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
-
 if [ "$HOSTNAME" = "ThinkPad-T420" ]; then
   # Path to the bash it configuration
   export BASH_IT="/home/rbelaire/.bash_it"
@@ -332,3 +331,5 @@ if [ "$HOSTNAME" = "ThinkPad-T420" ]; then
   # Load Bash It
   source "$BASH_IT"/bash_it.sh
 fi
+
+source /home/rbelaire/.expect-literc
