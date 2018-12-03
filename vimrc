@@ -163,7 +163,7 @@ filetype off                   " required!
    " Bundle 'godlygeek/csapprox'
    Bundle 'datsun240z/gtags-cscope'
       let GtagsCscope_Quiet=1
-   Bundle 'ludovicchabant/vim-gutentags.git'
+   " Bundle 'ludovicchabant/vim-gutentags.git' requires vim 8.0
    Bundle 'datsun240z/bitbake.vim'
    Bundle 'datsun240z/GNOME-align-args'
       nmap ,a :GNOMEAlignArguments<CR>
