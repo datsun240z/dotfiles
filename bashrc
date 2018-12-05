@@ -228,6 +228,10 @@ if [ -f /etc/profile.d/vte.sh ]; then
     source /etc/profile.d/vte.sh
 fi
 
+if [ -f  ${HOME}/.expect-liter ]; then
+  source ${HOME}/.expect-literc
+fi
+
 ## BABS issue
 umask 002
 
@@ -281,7 +285,7 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.g
 
 if [ "$HOSTNAME" = "ThinkPad-T420" ]; then
   # Path to the bash it configuration
-  export BASH_IT="/home/rbelaire/.bash_it"
+  export BASH_IT="${HOME}/.bash_it"
 
   # Lock and Load a custom theme file
   # location /.bash_it/themes/
@@ -331,5 +335,3 @@ if [ "$HOSTNAME" = "ThinkPad-T420" ]; then
   # Load Bash It
   source "$BASH_IT"/bash_it.sh
 fi
-
-source /home/rbelaire/.expect-literc

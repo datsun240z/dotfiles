@@ -354,6 +354,9 @@ noremap Y y$
 " handy when you are in the middle of a line and would like to go to its end
 " without switching to the normal mode.
 " inoremap <C-e> <C-o>$
+"
+" http://vim.wikia.com/wiki/Replace_a_word_with_yanked_text
+xnoremap p "_dP
 
 " vim *.bin or *.exe : edit binary using xxd-format!
 augroup Binary
