@@ -142,7 +142,8 @@ filetype off                   " required!
       let g:airline#extensions#tabline#enabled = 1
       let g:airline#extensions#tabline#left_sep = ' '
       let g:airline#extensions#tabline#left_alt_sep = '|'
-      let g:airline_section_z = airline#section#create(['windowswap', 'obsession', '%3p%%'.g:airline_symbols.space, 'linenr', 'maxlinenr', g:airline_symbols.space.':%5(%c%V%)'])
+      let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+      " let g:airline_section_z = airline#section#create(['windowswap', 'obsession', '%3p%%'.g:airline_symbols.space, 'linenr', 'maxlinenr', g:airline_symbols.space.':%5(%c%V%)'])
    " Bundle 'mbadran/headlights'
       " Informs you of all the Bundles installed
    Bundle 'nathanaelkane/vim-indent-guides'
@@ -360,14 +361,14 @@ xnoremap p "_dP
 
 " vim *.bin or *.exe : edit binary using xxd-format!
 augroup Binary
-   au!
-   au BufReadPre   *.elf,*.bin,*.exe,*.dll,*.jic let &bin=1
-   au BufReadPost  *.elf,*.bin,*.exe,*.dll,*.jic if &bin | %!xxd -g1
-   au BufReadPost  *.elf,*.bin,*.exe,*.dll,*.jic set ft=xxd | endif
-   au BufWritePre  *.elf,*.bin,*.exe,*.dll,*.jic if &bin | %!xxd -r
-   au BufWritePre  *.elf,*.bin,*.exe,*.dll,*.jic endif
-   au BufWritePost *.elf,*.bin,*.exe,*.dll,*.jic if &bin | %!xxd
-   au BufWritePost *.elf,*.bin,*.exe,*.dll,*.jic set nomod | endif
+   autocmd!
+   autocmd BufReadPre   *.elf,*.bin,*.exe,*.dll,*.jic let &bin=1
+   autocmd BufReadPost  *.elf,*.bin,*.exe,*.dll,*.jic if &bin | %!xxd -g1
+   autocmd BufReadPost  *.elf,*.bin,*.exe,*.dll,*.jic set ft=xxd | endif
+   autocmd BufWritePre  *.elf,*.bin,*.exe,*.dll,*.jic if &bin | %!xxd -r
+   autocmd BufWritePre  *.elf,*.bin,*.exe,*.dll,*.jic endif
+   autocmd BufWritePost *.elf,*.bin,*.exe,*.dll,*.jic if &bin | %!xxd
+   autocmd BufWritePost *.elf,*.bin,*.exe,*.dll,*.jic set nomod | endif
 augroup END
 
 set nobackup
@@ -446,7 +447,12 @@ set grepprg=rg\ --vimgrep
 set spelllang=en
 set spellfile=$HOME/en.utf-8.add
 " setlocal spell
+" i_CTRL-x s
+" z= suggest
+" [s next bad word
 
 " if has("autocmd")
 "   filetype plugin indent on
 " endif
+"autocmd FileType gitcommit match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$' | setlocal spell
+autocmd FileType gitcommit setlocal spell
