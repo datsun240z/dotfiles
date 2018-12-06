@@ -1,75 +1,75 @@
 [user]
-    name = Ron Belaire
-    email = rbelaire@ciena.com
+	name = Ron Belaire
+	email = rbelaire@ciena.com
 [color]
-    pager = true
-    ui = auto
-    ui = auto # covers diff = true, status = auto, branch = auto
-    interactive = auto
+	pager = true
+	ui = auto
+	ui = auto # covers diff = true, status = auto, branch = auto
+	interactive = auto
 [color "branch"]
-    current = yellow reverse
-    local = yellow
-    remote = green
+	current = yellow reverse
+	local = yellow
+	remote = green
 [color "diff"]
-    meta = yellow bold
-    frag = magenta bold
+	meta = yellow bold
+	frag = magenta bold
 	old = red reverse
-    new = green reverse
-    whitespace = red reverse
+	new = green reverse
+	whitespace = red reverse
 [color "status"]
-    added = yellow
-    changed = green
-    untracked = cyan
+	added = yellow
+	changed = green
+	untracked = cyan
 [git-p4]
-    user = rbelaire
-    port = onp4proxy01.ciena.com:2003
+	user = rbelaire
+	port = onp4proxy01.ciena.com:2003
 [core]
-    editor = vim
-    whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+	editor = vim
+	whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
 	pager = less -RFX
 	autocrlf = input
 	excludesfile = /home/rbelaire/.gitignore
 [alias]
 	st = status --short --branch
-    ci = commit
-    br = branch
-    co = checkout
-    df = diff --color-words=.
-    dif = diff --word-diff=color
-    dfg = difftool --gui
-    lg = log --pretty='%Cred%h%Creset |%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %C(cyan)[%an]%Creset' --graph
-    lol = log --graph --decorate --pretty=oneline --abbrev-commit
-    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
-    ls = ls-files
-    hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-    type = cat-file -t
-    dump = cat-file -p
+	ci = commit
+	br = branch
+	co = checkout
+	df = diff --color-words=.
+	dif = diff --word-diff=color
+	dfg = difftool --gui
+	lg = log --pretty='%Cred%h%Creset |%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %C(cyan)[%an]%Creset' --graph
+	lol = log --graph --decorate --pretty=oneline --abbrev-commit
+	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	ls = ls-files
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	type = cat-file -t
+	dump = cat-file -p
 	dirty = diff --name-only --cached
 	unstage = reset HEAD --
 	last = log -1 HEAD
-	d = 
+	d =
 	dt = difftool
 	cp = cherry-pick
 [diff]
-    #tool = vimdiff
-    guitool = meld
+	#tool = vimdiff
+	guitool = meld
 	submodule = log
 	tool = vimdiff
 	algorithm = histogram
 [difftool]
 	prompt = false
 [merge]
-    tool = p4mergetool
+	tool = p4mergetool
 [mergetool "p4mergetool"]
-    cmd = /corp/tools/perforce/current/bin/p4merge $PWD/$BASE $PWD/$REMOTE $PWD/$LOCAL $PWD/$MERGED
-    trustExitCode = false
+	cmd = /corp/tools/perforce/current/bin/p4merge $PWD/$BASE $PWD/$REMOTE $PWD/$LOCAL $PWD/$MERGED
+	trustExitCode = false
 [mergetool]
-    keepBackup = false
+	keepBackup = false
 [push]
-    default = simple
+	default = simple
 [status]
 	submoduleSummary = false
 [pull]
 	ff = only
 [commit]
-    #template = ~/.gitmessage
+	#template = ~/.gitmessage
