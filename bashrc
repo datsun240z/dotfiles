@@ -335,3 +335,9 @@ if [ "$HOSTNAME" = "ThinkPad-T420" ]; then
   # Load Bash It
   source "$BASH_IT"/bash_it.sh
 fi
+
+vimq() {
+    # vim -v -q <($(fc -nl -1))
+    vim -q <(rg --vimgrep $1)
+}
+
