@@ -60,7 +60,7 @@ filetype off                   " required!
    Bundle 'vivien/vim-linux-coding-style'
       let g:linuxsty_patterns = [ "/usr/src/", "/linux/", "/ko/" ]
       " or :LinuxCodingStyle
-   Bundle 'Lokaltog/vim-easymotion'
+   Bundle 'easymotion/vim-easymotion'
       " Default Mapping      | Details
       " ---------------------|----------------------------------------------
       " <Leader>f{char}      | Find {char} to the right. See f.
@@ -80,6 +80,19 @@ filetype off                   " required!
       " <Leader>n            | Jump to latest "/" or "?" forward. See n.
       " <Leader>N            | Jump to latest "/" or "?" backward. See N.
       " <Leader>s            | Find(Search) {char} forward and backward
+      let g:EasyMotion_do_mapping = 0 " Disable default mappings
+		" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+		" `s{char}{label}`
+		nmap <Leader>s <Plug>(easymotion-overwin-f)
+		" or
+		" `s{char}{char}{label}`
+		" Need one more keystroke, but on average, it may be more comfortable.
+		" nmap s <Plug>(easymotion-overwin-f2)
+		" Turn on case insensitive feature
+		let g:EasyMotion_smartcase = 1
+		" JK motions: Line motions
+		map <Leader>j <Plug>(easymotion-j)
+		map <Leader>k <Plug>(easymotion-k)
    Bundle 'ifdef-highlighting'
       "  make a '.defines' file in local folder
       " ----.defines-------
@@ -100,10 +113,10 @@ filetype off                   " required!
    Bundle 'bufexplorer.zip'
       " CTRL+b opens the buffer list
       noremap <C-b> <esc>:BufExplorer<CR>
-   Bundle 'The-NERD-tree'
-      noremap <F3> :NERDTreeToggle<CR>
-      noremap <F4> :NERDTreeFind<CR>
-   Bundle 'NERD_Tree-and-ack'
+   " Bundle 'The-NERD-tree'
+   "    noremap <F3> :NERDTreeToggle<CR>
+   "    noremap <F4> :NERDTreeFind<CR>
+   " Bundle 'NERD_Tree-and-ack'
       " While in nerd, hit m to ack the folder
    " Bundle 'ack.vim'
       " :Ack pattern
@@ -456,3 +469,4 @@ set spellfile=$HOME/en.utf-8.add
 " endif
 "autocmd FileType gitcommit match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$' | setlocal spell
 autocmd FileType gitcommit setlocal spell
+autocmd FileType vimwiki set nonumber | set norelativenumber
