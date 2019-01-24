@@ -470,3 +470,7 @@ set spellfile=$HOME/en.utf-8.add
 "autocmd FileType gitcommit match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$' | setlocal spell
 autocmd FileType gitcommit setlocal spell
 autocmd FileType vimwiki set nonumber | set norelativenumber
+
+" To view NFO files correctly in Vim, create a ~/.vim/after/ftplugin/nfo.vim file with the following content:
+" try | silent edit ++enc=cp437 | catch | endtry
+autocmd BufRead,BufNewFile *.nfo,*.NFO set ft=nfo
