@@ -89,7 +89,7 @@ case "$TERM" in
           PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]$(eval "sps")\[\033[00m\]\$ '
           source ~/.git-prompt.sh
           PROMPT_COMMAND='q="- $(__git_ps1 "(%s)") $(date +%T)"; while [[ ${#q} -lt $COLUMNS ]]; do q="${q:0:1}$q"; done; echo -e "\033[0;32m$q";'
-          export GREP_OPTIONS='--color=auto'
+          # export GREP_OPTIONS='--color=auto'
         fi
         ;;
       *)
