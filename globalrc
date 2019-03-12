@@ -61,7 +61,6 @@ exuberant-ctags|plugin-example|setting to use Exuberant Ctags plug-in parser:\
 	:tc=common:\
 	:langmap=Asm\:.asm.ASM.s.S:\
 	:langmap=Asp\:.asp.asa:\
-	:langmap=Awk\:.awk.gawk.mawk:\
 	:langmap=Basic\:.bas.bi.bb.pb:\
 	:langmap=BETA\:.bet:\
 	:langmap=C\:.c:\
@@ -89,7 +88,6 @@ exuberant-ctags|plugin-example|setting to use Exuberant Ctags plug-in parser:\
 	:langmap=Scheme\:.SCM.SM.sch.scheme.scm.sm:\
 	:langmap=Sh\:.sh.SH.bsh.bash.ksh.zsh:\
 	:langmap=SLang\:.sl:\
-	:langmap=SML\:.sml.sig:\
 	:langmap=SQL\:.sql:\
 	:langmap=Tcl\:.tcl.tk.wish.itcl:\
 	:langmap=Tex\:.tex:\
@@ -100,7 +98,6 @@ exuberant-ctags|plugin-example|setting to use Exuberant Ctags plug-in parser:\
 	:langmap=YACC\:.y:\
 	:gtags_parser=Asm\:/usr/local/lib/gtags/exuberant-ctags.la:\
 	:gtags_parser=Asp\:/usr/local/lib/gtags/exuberant-ctags.la:\
-	:gtags_parser=Awk\:/usr/local/lib/gtags/exuberant-ctags.la:\
 	:gtags_parser=Basic\:/usr/local/lib/gtags/exuberant-ctags.la:\
 	:gtags_parser=BETA\:/usr/local/lib/gtags/exuberant-ctags.la:\
 	:gtags_parser=C\:/usr/local/lib/gtags/exuberant-ctags.la:\
@@ -128,7 +125,6 @@ exuberant-ctags|plugin-example|setting to use Exuberant Ctags plug-in parser:\
 	:gtags_parser=Scheme\:/usr/local/lib/gtags/exuberant-ctags.la:\
 	:gtags_parser=Sh\:/usr/local/lib/gtags/exuberant-ctags.la:\
 	:gtags_parser=SLang\:/usr/local/lib/gtags/exuberant-ctags.la:\
-	:gtags_parser=SML\:/usr/local/lib/gtags/exuberant-ctags.la:\
 	:gtags_parser=SQL\:/usr/local/lib/gtags/exuberant-ctags.la:\
 	:gtags_parser=Tcl\:/usr/local/lib/gtags/exuberant-ctags.la:\
 	:gtags_parser=Tex\:/usr/local/lib/gtags/exuberant-ctags.la:\
@@ -149,7 +145,6 @@ pygments-parser|Pygments plug-in parser:\
 	:langmap=Aspx-cs\:.aspx.asax.ascx.ashx.asmx.axd:\
 	:langmap=Asymptote\:.asy:\
 	:langmap=AutoIt\:.au3:\
-	:langmap=Awk\:.awk.gawk.mawk:\
 	:langmap=BUGS\:.bug:\
 	:langmap=Bash\:.sh.ksh.bash.ebuild.eclass:\
 	:langmap=Bat\:.bat.cmd:\
@@ -260,7 +255,6 @@ pygments-parser|Pygments plug-in parser:\
 	:langmap=Redcode\:.cw:\
 	:langmap=RobotFramework\:.robot:\
 	:langmap=Ruby\:.rb.rbw.rake.gemspec.rbx.duby:\
-	:langmap=Rust\:.rs.rc:\
 	:langmap=S\:.S.R:\
 	:langmap=Scala\:.scala:\
 	:langmap=Scaml\:.scaml:\
@@ -268,7 +262,6 @@ pygments-parser|Pygments plug-in parser:\
 	:langmap=Scilab\:.sci.sce.tst:\
 	:langmap=Smalltalk\:.st:\
 	:langmap=Smarty\:.tpl:\
-	:langmap=Sml\:.sml.sig.fun:\
 	:langmap=Snobol\:.snobol:\
 	:langmap=SourcePawn\:.sp:\
 	:langmap=Spitfire\:.spt:\
@@ -301,7 +294,6 @@ pygments-parser|Pygments plug-in parser:\
 	:gtags_parser=Aspx-cs\:/usr/bin/lib/gtags/pygments-parser.la:\
 	:gtags_parser=Asymptote\:/usr/bin/lib/gtags/pygments-parser.la:\
 	:gtags_parser=AutoIt\:/usr/bin/lib/gtags/pygments-parser.la:\
-	:gtags_parser=Awk\:/usr/bin/lib/gtags/pygments-parser.la:\
 	:gtags_parser=BUGS\:/usr/bin/lib/gtags/pygments-parser.la:\
 	:gtags_parser=Bash\:/usr/bin/lib/gtags/pygments-parser.la:\
 	:gtags_parser=Bat\:/usr/bin/lib/gtags/pygments-parser.la:\
@@ -414,7 +406,6 @@ pygments-parser|Pygments plug-in parser:\
 	:gtags_parser=Redcode\:/usr/bin/lib/gtags/pygments-parser.la:\
 	:gtags_parser=RobotFramework\:/usr/bin/lib/gtags/pygments-parser.la:\
 	:gtags_parser=Ruby\:/usr/bin/lib/gtags/pygments-parser.la:\
-	:gtags_parser=Rust\:/usr/bin/lib/gtags/pygments-parser.la:\
 	:gtags_parser=S\:/usr/bin/lib/gtags/pygments-parser.la:\
 	:gtags_parser=Scala\:/usr/bin/lib/gtags/pygments-parser.la:\
 	:gtags_parser=Scaml\:/usr/bin/lib/gtags/pygments-parser.la:\
@@ -422,7 +413,6 @@ pygments-parser|Pygments plug-in parser:\
 	:gtags_parser=Scilab\:/usr/bin/lib/gtags/pygments-parser.la:\
 	:gtags_parser=Smalltalk\:/usr/bin/lib/gtags/pygments-parser.la:\
 	:gtags_parser=Smarty\:/usr/bin/lib/gtags/pygments-parser.la:\
-	:gtags_parser=Sml\:/usr/bin/lib/gtags/pygments-parser.la:\
 	:gtags_parser=Snobol\:/usr/bin/lib/gtags/pygments-parser.la:\
 	:gtags_parser=SourcePawn\:/usr/bin/lib/gtags/pygments-parser.la:\
 	:gtags_parser=Spitfire\:/usr/bin/lib/gtags/pygments-parser.la:\

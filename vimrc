@@ -29,6 +29,8 @@ filetype off                   " required!
       " Use :Gstatus with "-" to add files to cache
       " Use :Gcommit
    " Bundle 'tpope/vim-sleuth' indent-detector is mod to be better
+   Bundle 'tommcdo/vim-fubitive'
+
    Bundle 'tpope/vim-sensible'
    Bundle 'tpope/vim-scriptease'
       " Try :Verbose map
@@ -51,10 +53,19 @@ filetype off                   " required!
       " [ou	]ou	cou	'cursorcolumn'
       " [ow	]ow	cow	'wrap'
       " [ox	]ox	cox	'cursorline' 'cursorcolumn' (x as in crosshairs)
+      " [op ]op yop set paste as o O 0C (zero)
    Bundle 'tpope/vim-commentary'
       " gcc to un/comment a line
       " gc  to un/comment a motion/visual
    Bundle 'tpope/vim-vinegar'
+      " -  hop up to the directory listing and seek to the file you just came from
+      " nmap - <Plug>VinegarVerticalSplitUp
+      nmap - :Vex<CR>
+      " I  toggle banner
+      " gh toggle dot file hiding
+      " .  to push filename to cmdline
+      " y. to yank filename
+      " ~  to go home
    Bundle 'Valloric/ListToggle'
       " Location/Quick Toogle set to <leader>l and <leader>q, respectively.
    Bundle 'vivien/vim-linux-coding-style'
@@ -81,18 +92,18 @@ filetype off                   " required!
       " <Leader>N            | Jump to latest "/" or "?" backward. See N.
       " <Leader>s            | Find(Search) {char} forward and backward
       let g:EasyMotion_do_mapping = 0 " Disable default mappings
-		" Jump to anywhere you want with minimal keystrokes, with just one key binding.
-		" `s{char}{label}`
-		nmap <Leader>s <Plug>(easymotion-overwin-f)
-		" or
-		" `s{char}{char}{label}`
-		" Need one more keystroke, but on average, it may be more comfortable.
-		" nmap s <Plug>(easymotion-overwin-f2)
-		" Turn on case insensitive feature
-		let g:EasyMotion_smartcase = 1
-		" JK motions: Line motions
-		map <Leader>j <Plug>(easymotion-j)
-		map <Leader>k <Plug>(easymotion-k)
+      " Jump to anywhere you want with minimal keystrokes, with just one key binding.
+      " `s{char}{label}`
+      nmap <Leader>s <Plug>(easymotion-overwin-f)
+      " or
+      " `s{char}{char}{label}`
+      " Need one more keystroke, but on average, it may be more comfortable.
+      " nmap s <Plug>(easymotion-overwin-f2)
+      " Turn on case insensitive feature
+      let g:EasyMotion_smartcase = 1
+      " JK motions: Line motions
+      map <Leader>j <Plug>(easymotion-j)
+      map <Leader>k <Plug>(easymotion-k)
    Bundle 'ifdef-highlighting'
       "  make a '.defines' file in local folder
       " ----.defines-------
@@ -196,7 +207,7 @@ filetype off                   " required!
       nmap <Leader>t :Files<CR>
       nmap <Leader>r :Tags<CR>
    Bundle 'ajmwagar/vim-dues'
-   Bundle 'gregsexton/gitv'
+   " Bundle 'gregsexton/gitv'
       "Type :Gitv for log
       "
       "colors dues
@@ -230,7 +241,7 @@ filetype off                   " required!
       " let g:vimwiki_list = [{'path': '~/vimwiki/', 'auto_toc': 1 }]
       let g:vimwiki_list = [{'path': '~/vimwiki/', 'auto_toc': 1, 'syntax': 'markdown', 'ext': '.md'}]
       let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
-      let g:vimwiki_url_maxsave = 0
+      " let g:vimwiki_url_maxsave = 0
       " nnoremap <leader>wb <Plug>VimwikiGoBackLink :VimwikiGoBackLink<CR>
       " nnoremap <leader>wb :VimwikiGoBackLink<CR>
    " Bundle 'suan/vim-instant-markdown'
@@ -256,6 +267,8 @@ filetype off                   " required!
       "  string started in the previous line, without any content in it already:
       " g:python_pep8_indent_hang_closing=[0|-1]
       " Control closing bracket indentation with python_pep8_indent_hang_closing
+   Bundle 'okcompute/vim-python-match'
+      " % g% [% ]%
 
    " ...All your other bundles...
    if iCanHazVundle == 0
@@ -419,6 +432,7 @@ let GtagsCscope_Auto_Map = 1
 "	let GtagsCscope_Keep_Alive = 1
 " If you hope auto loading:
 let GtagsCscope_Auto_Load = 1
+let GtagsCscope_Use_Old_Key_Map = 1
 
 set clipboard=unnamed
 if has('unnamedplus')
@@ -470,7 +484,41 @@ set spellfile=$HOME/en.utf-8.add
 "autocmd FileType gitcommit match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$' | setlocal spell
 autocmd FileType gitcommit setlocal spell
 autocmd FileType vimwiki set nonumber | set norelativenumber
-
 " To view NFO files correctly in Vim, create a ~/.vim/after/ftplugin/nfo.vim file with the following content:
 " try | silent edit ++enc=cp437 | catch | endtry
 autocmd BufRead,BufNewFile *.nfo,*.NFO set ft=nfo
+
+" -----------------------------
+" NERDTree-like but using netrw
+" -----------------------------
+" autocmd FileType netrw setl bufhidden=wipe
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 30
+" let g:netrw_preview = 1
+
+" function! ToggleVExplorer()
+"   if exists("t:expl_buf_num")
+"       let expl_win_num = bufwinnr(t:expl_buf_num)
+"       if expl_win_num != -1
+"           let cur_win_nr = winnr()
+"           exec expl_win_num . 'wincmd w'
+"           close
+"           exec cur_win_nr . 'wincmd w'
+"           unlet t:expl_buf_num
+"       else
+"           unlet t:expl_buf_num
+"       endif
+"   else
+"       exec '1wincmd w'
+"       Vexplore
+"       let t:expl_buf_num = bufnr("%")
+"   endif
+" endfunction
+" map <silent> <C-E> :call ToggleVExplorer()<CR>
+" close if final buffer is netrw or the quickfix
+
+vnoremap < <gv
+vnoremap > >gv
