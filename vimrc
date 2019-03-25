@@ -21,7 +21,9 @@ filetype off                   " required!
    Bundle 'comment.vim'
       let g:Author = 'rbelaire'
       " use .c .C to #ifdef out code
+   " A Git wrapper
    Bundle 'tpope/vim-fugitive'
+      autocmd QuickFixCmdPost *grep* cwindow
       " vimdiff current vs git head (fugitive extension)
       nnoremap @gd :Gdiff<cr>
       " switch back to current file and closes fugitive buffer
@@ -29,11 +31,14 @@ filetype off                   " required!
       " Use :Gstatus with "-" to add files to cache
       " Use :Gcommit
    " Bundle 'tpope/vim-sleuth' indent-detector is mod to be better
+   " GitHub extension for fugitive.vim
+   Bundle 'tpope/vim-rhubarb'
+   " Add Bitbucket URL support to fugitive.vim's :Gbrowse command
    Bundle 'tommcdo/vim-fubitive'
-
    Bundle 'tpope/vim-sensible'
    Bundle 'tpope/vim-scriptease'
       " Try :Verbose map
+   " Quoting/parenthesizing made simple
    Bundle 'tpope/vim-surround'
       " 'Hello *world!'           ds'         Hello world!
       " [123+4*56]/2              cs])        (123+456)/2
@@ -238,8 +243,15 @@ filetype off                   " required!
    " Bundle 'cscope.vim'
    " Bundle 'taglist.vim'
    Bundle 'vimwiki/vimwiki'
-      " let g:vimwiki_list = [{'path': '~/vimwiki/', 'auto_toc': 1 }]
-      let g:vimwiki_list = [{'path': '~/vimwiki/', 'auto_toc': 1, 'syntax': 'markdown', 'ext': '.md'}]
+      " let g:vimwiki_list = [{'path': '~/vimwiki/', 'auto_toc': 1, 'syntax': 'markdown', 'ext': '.md'}]
+      let wiki_1 = {}
+      let wiki_1.path            = '~/vimwiki/'
+      let wiki_1.auto_toc        = 1
+      let wiki_1.syntax          = 'markdown'
+      let wiki_1.ext             = '.md'
+      " let wiki_1.nested_syntaxes = {'python': 'python', 'c++': 'cpp'}
+      " let wiki_1.automatic_nested_syntaxes = 1
+      let g:vimwiki_list = [wiki_1]
       let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
       " let g:vimwiki_url_maxsave = 0
       " nnoremap <leader>wb <Plug>VimwikiGoBackLink :VimwikiGoBackLink<CR>
@@ -269,6 +281,12 @@ filetype off                   " required!
       " Control closing bracket indentation with python_pep8_indent_hang_closing
    Bundle 'okcompute/vim-python-match'
       " % g% [% ]%
+   " Search OpenGrok from Vim
+   Bundle 'jdevera/vim-opengrok-search'
+      let g:ogs_app_url = 'http://test-opengrok.ciena.com/source'
+      let g:ogs_project = 'valimar'
+      " let g:ogs_browser_command = 'firefox'
+
 
    " ...All your other bundles...
    if iCanHazVundle == 0
