@@ -540,3 +540,12 @@ let g:netrw_winsize = 30
 
 vnoremap < <gv
 vnoremap > >gv
+" set list
+" set listchars=tab:>-,trail:·,space:·
+" highlight SpecialKey ctermfg=255 guifg=Grey
+
+" show invisible
+set list
+set list listchars=tab:▸·,trail:·,precedes:←,extends:→,eol:↲,nbsp:␣
+hi NonText ctermfg=250 guifg=#e0e0e0
+hi SpecialKey ctermfg=250 guifg=#e0e0e0
