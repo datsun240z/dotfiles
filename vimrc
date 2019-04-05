@@ -285,9 +285,30 @@ filetype off                   " required!
    Bundle 'jdevera/vim-opengrok-search'
       let g:ogs_app_url = 'http://test-opengrok.ciena.com/source'
       let g:ogs_project = 'valimar'
-      " let g:ogs_browser_command = 'firefox'
-
-
+      if has('mac')
+         let g:ogs_browser_command = 'open -a firefox'
+      else
+         let g:ogs_browser_command = 'firefox'
+      endif
+      " Default Map    Description           Mapping targets~
+      " <Leader>ogf    Search full text      <Plug>OpenGrokSearchFull
+      "                                      <Plug>OpenGrokSearchSelectedFull
+      "
+      " <Leader>ogd    Search definitions    <Plug>OpenGrokSearchDefs
+      "                                      <Plug>OpenGrokSearchSelectedDefs
+      "
+      " <Leader>ogr    Search symbols        <Plug>OpenGrokSearchRefs
+      "                                      <Plug>OpenGrokSearchSelectedRefs
+      "
+      " <Leader>ogp    Search file paths     <Plug>OpenGrokSearchPath
+      "                                      <Plug>OpenGrokSearchSelectedPath
+      "
+      " <Leader>ogh    Search file paths     <Plug>OpenGrokSearchHist
+      "                                      <Plug>OpenGrokSearchSelectedHist
+      " Use selected text to perform a symbol references search
+      vmap @or <Plug>OpenGrokSearchSelectedRefs
+      " Use the word under the cursor for a symbol search
+      nmap @or <Plug>OpenGrokSearchRefs
    " ...All your other bundles...
    if iCanHazVundle == 0
       echo "Installing Bundles, please ignore key map error messages"
@@ -549,3 +570,10 @@ set list
 set list listchars=tab:▸·,trail:·,precedes:←,extends:→,eol:↲,nbsp:␣
 hi NonText ctermfg=250 guifg=#e0e0e0
 hi SpecialKey ctermfg=250 guifg=#e0e0e0
+
+" Crunch backspaces into deletes
+" Useful for logs
+function! Crunch() abort
+    g//while getline('.') =~ '[^]' | s/[^]//g | endwhile
+endfunction
+com! CRUNCH call Crunch()
