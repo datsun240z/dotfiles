@@ -283,7 +283,7 @@ filetype off                   " required!
       " % g% [% ]%
    " Search OpenGrok from Vim
    Bundle 'jdevera/vim-opengrok-search'
-      let g:ogs_app_url = 'http://test-opengrok.ciena.com/source'
+      let g:ogs_app_url = 'https://opengrok.ciena.com/psa/'
       let g:ogs_project = 'valimar'
       if has('mac')
          let g:ogs_browser_command = 'open -a firefox'
