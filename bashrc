@@ -133,6 +133,7 @@ fi
 
 # enable color support of ls and also add handy aliases
 
+alias duck="BROWSER=w3m ddgr "
 alias ll='ls -l'
 alias la='ls -A'
 #alias ls='ls -lut'
