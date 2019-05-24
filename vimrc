@@ -309,6 +309,9 @@ filetype off                   " required!
       vmap @or <Plug>OpenGrokSearchSelectedRefs
       " Use the word under the cursor for a symbol search
       nmap @or <Plug>OpenGrokSearchRefs
+   Bundle 'bkad/CamelCaseMotion'
+      call camelcasemotion#CreateMotionMappings('<leader>')
+
    " ...All your other bundles...
    if iCanHazVundle == 0
       echo "Installing Bundles, please ignore key map error messages"
@@ -522,7 +525,7 @@ set spellfile=$HOME/en.utf-8.add
 " endif
 "autocmd FileType gitcommit match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$' | setlocal spell
 autocmd FileType gitcommit setlocal spell
-autocmd FileType vimwiki set nonumber | set norelativenumber
+autocmd FileType vimwiki set nonumber | set norelativenumber | set list listchars=
 " To view NFO files correctly in Vim, create a ~/.vim/after/ftplugin/nfo.vim file with the following content:
 " try | silent edit ++enc=cp437 | catch | endtry
 autocmd BufRead,BufNewFile *.nfo,*.NFO set ft=nfo
