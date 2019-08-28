@@ -256,6 +256,7 @@ filetype off                   " required!
       " let g:vimwiki_url_maxsave = 0
       " nnoremap <leader>wb <Plug>VimwikiGoBackLink :VimwikiGoBackLink<CR>
       " nnoremap <leader>wb :VimwikiGoBackLink<CR>
+   Bundle 'mzlogin/vim-markdown-toc'
    " Bundle 'suan/vim-instant-markdown'
       " let g:instant_markdown_autostart = 0
       " map <leader>md :InstantMarkdownPreview<CR>

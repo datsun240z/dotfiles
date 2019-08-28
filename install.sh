@@ -8,7 +8,8 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="bash_profile bashrc vimrc gvimrc screenrc ackrc inputrc"    # list of files/folders to symlink in homedir
+# list of files/folders to symlink in homedir
+files="ackrc bash_profile bashrc gvimrc inputrc screenrc vimrc xsession Xmodmap"
 
 ##########
 

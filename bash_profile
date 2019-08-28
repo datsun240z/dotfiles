@@ -16,9 +16,6 @@ fi
 
 if [[ '' = "$TMUX" ]]; then
   # set PATH so it includes user's private bin if it exists
-  CHECKME=~/bin
-  if [ -d $CHECKME ] ; then PATH="$PATH":$CHECKME; fi
-
   CHECKME=~/usr/bin
   if [ -d $CHECKME ] ; then PATH="$PATH":$CHECKME; fi
 
@@ -31,10 +28,10 @@ if [[ '' = "$TMUX" ]]; then
   CHECKME=~/usr/bin/p4u
   if [ -d $CHECKME ] ; then PATH="$PATH":$CHECKME; fi
 
-  CHECKME=/localdata/rbelaire/yocto/source/evernight/poky/scripts
+  CHECKME=~/ybin
   if [ -d $CHECKME ] ; then PATH="$PATH":$CHECKME; fi
 
-  CHECKME=~/ybin
+  CHECKME=~/bin
   if [ -d $CHECKME ] ; then PATH="$PATH":$CHECKME; fi
 
 fi
