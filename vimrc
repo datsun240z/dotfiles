@@ -530,6 +530,7 @@ autocmd FileType vimwiki set nonumber | set norelativenumber | set list listchar
 " To view NFO files correctly in Vim, create a ~/.vim/after/ftplugin/nfo.vim file with the following content:
 " try | silent edit ++enc=cp437 | catch | endtry
 autocmd BufRead,BufNewFile *.nfo,*.NFO set ft=nfo
+autocmd FileType set nolist
 
 " -----------------------------
 " NERDTree-like but using netrw
