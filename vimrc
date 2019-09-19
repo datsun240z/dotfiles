@@ -172,7 +172,9 @@ filetype off                   " required!
       let g:airline#extensions#tabline#left_sep = ' '
       let g:airline#extensions#tabline#left_alt_sep = '|'
       let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-      " let g:airline_section_z = airline#section#create(['windowswap', 'obsession', '%3p%%'.g:airline_symbols.space, 'linenr', 'maxlinenr', g:airline_symbols.space.':%5(%c%V%)'])
+      let g:airline#extensions#whitespace#mixed_indent_algo = 2
+      let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing', 'long', 'mixed-indent-file', 'conflicts' ]
+      " let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing', 'long', 'mixed-indent-file', 'conflicts' ]
    " Bundle 'mbadran/headlights'
       " Informs you of all the Bundles installed
    Bundle 'nathanaelkane/vim-indent-guides'
@@ -183,7 +185,7 @@ filetype off                   " required!
       " ]c      [c  Next/Prev Hunk
       " \hs and \hu Stage/Unstage Hunk
       " :GitGutterToggle  :GitGutterSignsToggle  :GitGutterLineHighlightsToggle
-   Bundle 'luochen1990/indent-detector.vim'
+   " Bundle 'luochen1990/indent-detector.vim'
       " manually patch indent_detector#search_nearby('^ [^\t \*]')
    Bundle "daylerees/colour-schemes", { "rtp": "vim/" }
    " Bundle 'wesQ3/vim-windowswap'
