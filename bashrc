@@ -94,7 +94,7 @@ case "$TERM" in
         ;;
       *)
         # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]$(eval "sps")\[\033[00m\]\$ '
-        GIT_PS1_SHOWDIRTYSTATE=true
+        # GIT_PS1_SHOWDIRTYSTATE=true
         # export PS1='[\u@\h \w$(__git_ps1)]\$ '
         # source ~/.git-prompt.sh
         # PROMPT_COMMAND='q="- $(__git_ps1 "(%s)") $(date +%T)"; while [[ ${#q} -lt $COLUMNS ]]; do q="${q:0:1}$q"; done; echo -e "\033[0;32m$q";'
@@ -263,6 +263,8 @@ export FZF_TMUX='0'
 # https://superuser.com/questions/1103963/neovim-fzf-hidden-files
 export FZF_DEFAULT_COMMAND="find . -path '*/\.*' -type d -prune -o -type f -print -o -type l -print 2> /dev/null | sed s/^..//"
 export FZF_CTRL_T_COMMAND="find . -path '*/\.*' -type d -prune -o -type f -print -o -type l -print 2> /dev/null | sed s/^..//"
+
+[ -f ~/code/forgit/forgit.plugin.sh ] && source ~/code/forgit/forgit.plugin.sh
 
 # [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
