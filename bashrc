@@ -41,14 +41,10 @@ case "$TERM" in
           export CSCOPE_EDITOR='/usr/bin/gvim'
           source ~/setPythonPaths
         else
-          # export EDITOR='/usr/bin/gvim -v'
           export CSCOPE_EDITOR='/usr/bin/gvim -v'
         fi
         alias ls='ls -G --color --classify'
         export GTAGSCONF=~/dotfiles/globalrc
-        #export PROMPT_COMMAND='printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/~}"'
-        #PS1="[e]0;wa]\$ "
-        #PROMPT_COMMAND='echo -ne "${USER}@${HOSTNAME}:${PWD/#$HOME/~}"'
         ;;
       *)
         export EDITOR='/usr/local/bin/gvim -f'
@@ -73,9 +69,6 @@ sps() {
       python -c "import sys; dirs = sys.argv[1].split('/'); print '/'.join(d[:2] for d in dirs[:-1]) + '/' + dirs[-1]" $PWD
     }
 
-# Comment in the above and uncomment this below for a color prompt
-# PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-
 # If this is an xterm set the title to user@host:dir
 function _update_ps1() {
     PS1=$(powerline-shell $?)
@@ -89,15 +82,9 @@ case "$TERM" in
           PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]$(eval "sps")\[\033[00m\]\$ '
           source ~/.git-prompt.sh
           PROMPT_COMMAND='q="- $(__git_ps1 "(%s)") $(date +%T)"; while [[ ${#q} -lt $COLUMNS ]]; do q="${q:0:1}$q"; done; echo -e "\033[0;32m$q";'
-          # export GREP_OPTIONS='--color=auto'
         fi
         ;;
       *)
-        # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]$(eval "sps")\[\033[00m\]\$ '
-        # GIT_PS1_SHOWDIRTYSTATE=true
-        # export PS1='[\u@\h \w$(__git_ps1)]\$ '
-        # source ~/.git-prompt.sh
-        # PROMPT_COMMAND='q="- $(__git_ps1 "(%s)") $(date +%T)"; while [[ ${#q} -lt $COLUMNS ]]; do q="${q:0:1}$q"; done; echo -e "\033[0;32m$q";'
         # https://github.com/b-ryan/powerline-shell
         if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
           PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
@@ -109,7 +96,6 @@ case "$TERM" in
     if [ "$HOSTNAME" != "ThinkPad-T420" ]; then
       export PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
     fi
-    # export PS1="\u@\h \w> "
     ;;
   screen*)
     ;;
@@ -136,7 +122,6 @@ fi
 alias duck="BROWSER=w3m ddgr "
 alias ll='ls -l'
 alias la='ls -A'
-#alias ls='ls -lut'
 alias h='history'
 alias b='cd ..'
 alias p='cd -'
