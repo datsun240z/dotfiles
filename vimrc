@@ -245,7 +245,6 @@ filetype off                   " required!
    " Bundle 'cscope.vim'
    " Bundle 'taglist.vim'
    Bundle 'vimwiki/vimwiki'
-      " let g:vimwiki_list = [{'path': '~/vimwiki/', 'auto_toc': 1, 'syntax': 'markdown', 'ext': '.md'}]
       let wiki_1 = {}
       let wiki_1.path            = '~/vimwiki/'
       let wiki_1.auto_toc        = 1
@@ -254,7 +253,10 @@ filetype off                   " required!
       " let wiki_1.nested_syntaxes = {'python': 'python', 'c++': 'cpp'}
       " let wiki_1.automatic_nested_syntaxes = 1
       let g:vimwiki_list = [wiki_1]
-      let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
+      let g:vimwiki_ext2syntax = {
+			      \'.md'      : 'markdown',
+			      \'.markdown': 'markdown',
+			      \'.mdown'   : 'markdown'}
       " let g:vimwiki_url_maxsave = 0
       " nnoremap <leader>wb <Plug>VimwikiGoBackLink :VimwikiGoBackLink<CR>
       " nnoremap <leader>wb :VimwikiGoBackLink<CR>
@@ -533,6 +535,7 @@ autocmd FileType vimwiki set nonumber | set norelativenumber | set list listchar
 " try | silent edit ++enc=cp437 | catch | endtry
 autocmd BufRead,BufNewFile *.nfo,*.NFO set ft=nfo
 autocmd FileType set nolist
+autocmd FileType python setlocal shiftwidth=4 softtabstop=4 expandtab
 
 " -----------------------------
 " NERDTree-like but using netrw
