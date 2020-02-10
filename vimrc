@@ -316,6 +316,7 @@ filetype off                   " required!
       nmap @or <Plug>OpenGrokSearchRefs
    Bundle 'bkad/CamelCaseMotion'
       call camelcasemotion#CreateMotionMappings('<leader>')
+   Bundle 'ConradIrwin/vim-bracketed-paste'
 
    " ...All your other bundles...
    if iCanHazVundle == 0
