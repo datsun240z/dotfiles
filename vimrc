@@ -588,3 +588,10 @@ function! Crunch() abort
     g//while getline('.') =~ '[^]' | s/[^]//g | endwhile
 endfunction
 com! CRUNCH call Crunch()
+
+" Uncomment the following to have Vim jump to the last position when
+" reopening a file
+autocmd BufReadPost *
+\ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+\ |   exe "normal! g`\""
+\ | endif
