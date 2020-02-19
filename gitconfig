@@ -27,9 +27,9 @@
 [core]
 	editor = vim
 	whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
-	pager = /home/rbelaire/code/diff-so-fancy/diff-so-fancy | less --tabs=4 -RFX
+	pager = ~/code/diff-so-fancy/diff-so-fancy | less --tabs=4 -RFX
 	autocrlf = input
-	excludesfile = /home/rbelaire/.gitignore
+	excludesfile = ~/.gitignore
 [alias]
 	st = status --short --branch
 	ci = commit
