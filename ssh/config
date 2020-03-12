@@ -1,0 +1,47 @@
+Host 10.*
+  StrictHostKeyChecking no
+  UserKnownHostsFile /dev/null
+
+Host *bitbucket.ciena.com
+   IdentityFile ~/.ssh/bitbucket.rsa
+   ForwardX11 no
+
+Host *stash.ciena.com
+   IdentityFile ~/.ssh/bitbucket.rsa
+   ForwardX11 no
+
+Host *onx-rbelaire-01*
+   HostName 10.176.103.184
+   IdentityFile ~/.ssh/onx-rbelaire-01.rsa
+   ForwardX11 yes
+
+Host thinkpad.belaire.net
+   IdentityFile ~/.ssh/onx-rbelaire-01.rsa
+   ForwardX11 no
+
+Host raspberrypi-cam
+   HostName 192.168.1.25
+   IdentityFile ~/.ssh/onx-rbelaire-01.rsa
+   ForwardX11 no
+
+Host raspberrypi-alarm
+   HostName 192.168.1.28
+   IdentityFile ~/.ssh/onx-rbelaire-01.rsa
+   ForwardX11 no
+
+Host raspberrypi-display
+   HostName 192.168.2.31
+   IdentityFile ~/.ssh/onx-rbelaire-01.rsa
+   User pi
+   ForwardX11 no
+
+Host digo
+   HostName 159.203.13.87
+   IdentityFile ~/.ssh/onx-rbelaire-01.rsa
+   ForwardX11 no
+   User root
+
+Host *github.com
+   User datsun240z
+   IdentityFile ~/.ssh/id_rsa_github
+   ForwardX11 no
