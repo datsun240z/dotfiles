@@ -110,11 +110,7 @@ filetype off                   " required!
       map <Leader>j <Plug>(easymotion-j)
       map <Leader>k <Plug>(easymotion-k)
    Bundle 'ifdef-highlighting'
-      "  make a '.defines' file in local folder
-      " ----.defines-------
-      " undefined=*
-      " defined=WIN32;__MT
-      " undefined=DEBUG,DBG
+      " use :Define <keyword> or :Undefine <keyword> to dynamically specify
    Bundle 'Align'
       " \t=  : align assignments (don't count logic, like == or !=)
       " \t,  : align on commas
