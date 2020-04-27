@@ -244,6 +244,7 @@ dnif () {
 }
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f ~/.vim/bundle/fzf/shell/key-bindings.bash ] && source ~/.vim/bundle/fzf/shell/key-bindings.bash
 export FZF_TMUX='0'
 # https://superuser.com/questions/1103963/neovim-fzf-hidden-files
 export FZF_DEFAULT_COMMAND="find . -path '*/\.*' -type d -prune -o -type f -print -o -type l -print 2> /dev/null | sed s/^..//"
