@@ -170,7 +170,6 @@ filetype off                   " required!
       let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
       let g:airline#extensions#whitespace#mixed_indent_algo = 2
       let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing', 'long', 'mixed-indent-file', 'conflicts' ]
-      " let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing', 'long', 'mixed-indent-file', 'conflicts' ]
    " Bundle 'mbadran/headlights'
       " Informs you of all the Bundles installed
    Bundle 'nathanaelkane/vim-indent-guides'
@@ -371,6 +370,7 @@ set nomousehide
 set directory=/tmp
 set guioptions+=a
 set guioptions-=T
+set textwidth=100
 " set formatoptions-=t    " kill auto-wrap
 " set tabstop=4 expandtab shiftwidth=4 nowrap
 " set patchmode=.org
