@@ -36,7 +36,7 @@ case "$TERM" in
   xterm-256color|xterm)
     case "$OSTYPE" in
       linux-gnu)
-        if [ "$HOSTNAME" != "ThinkPad-T420" ]; then
+        if [[ ! "$HOSTNAME" =~ "ThinkPad-T4" ]]; then
           export EDITOR='/usr/bin/gvim'
           export CSCOPE_EDITOR='/usr/bin/gvim'
           source ~/setPythonPaths
@@ -78,7 +78,7 @@ case "$TERM" in
   xterm-256color)
     case "$OSTYPE" in
       linux-gnu)
-        if [ "$HOSTNAME" != "ThinkPad-T420" ]; then
+        if [[ ! "$HOSTNAME" =~ "ThinkPad-T4" ]]; then
           PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]$(eval "sps")\[\033[00m\]\$ '
           source ~/.git-prompt.sh
           PROMPT_COMMAND='q="- $(__git_ps1 "(%s)") $(date +%T)"; while [[ ${#q} -lt $COLUMNS ]]; do q="${q:0:1}$q"; done; echo -e "\033[0;32m$q";'
@@ -93,7 +93,7 @@ case "$TERM" in
     esac
     ;;
   xterm*|rxvt*)
-    if [ "$HOSTNAME" != "ThinkPad-T420" ]; then
+    if [[ ! "$HOSTNAME" =~ "ThinkPad-T4" ]]; then
       export PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
     fi
     ;;
@@ -103,7 +103,7 @@ case "$TERM" in
     ;;
 esac
 
-if [ "$HOSTNAME" != "ThinkPad-T420" ]; then
+if [[ ! "$HOSTNAME" =~ "ThinkPad-T4" ]]; then
   alias vim='gvim -v'
   alias view='gview -v'
 fi
@@ -179,7 +179,7 @@ if [ -f ~/bash_completion_lib-1.3.1/bash_completion_lib ]; then
   source ~/bash_completion_lib-1.3.1/bash_completion_lib
 fi
 
-if [ "$HOSTNAME" != "ThinkPad-T420" ]; then
+if [[ ! "$HOSTNAME" =~ "ThinkPad-T4" ]]; then
   if [ -f /etc/bash_completion ]; then
     source /etc/bash_completion
   fi
@@ -272,11 +272,18 @@ export "SSH_AUTH_SOCK=${HOME}/.gnupg/S.gpg-agent.ssh"
 # --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
-if [ "$HOSTNAME" = "ThinkPad-T420" ]; then
+if [[ "$HOSTNAME" =~ "ThinkPad-T4" ]]; then
+  # If not running interactively, don't do anything
+  case $- in
+    *i*) ;;
+    *) return;;
+  esac
+
   # Path to the bash it configuration
   export BASH_IT="${HOME}/.bash_it"
 
   # Lock and Load a custom theme file
+  # Leave empty to disable theming.
   # location /.bash_it/themes/
   export BASH_IT_THEME='bobby'
 
@@ -298,6 +305,11 @@ if [ "$HOSTNAME" = "ThinkPad-T420" ]; then
 
   # Set this to false to turn off version control status checking within the prompt for all themes
   export SCM_CHECK=true
+
+  # Set to actual location of gitstatus directory if installed
+  #export SCM_GIT_GITSTATUS_DIR="$HOME/gitstatus"
+  # per default gitstatus uses 2 times as many threads as CPU cores, you can change this here if you must
+  #export GITSTATUS_NUM_THREADS=8
 
   # Set Xterm/screen/Tmux title with only a short hostname.
   # Uncomment this (or set SHORT_HOSTNAME to something else),
@@ -321,6 +333,9 @@ if [ "$HOSTNAME" = "ThinkPad-T420" ]; then
   # after enabling or disabling aliases, plugins, and completions.
   # export BASH_IT_AUTOMATIC_RELOAD_AFTER_CONFIG_CHANGE=1
 
+  # Uncomment this to make Bash-it create alias reload.
+  # export BASH_IT_RELOAD_LEGACY=1
+
   # Load Bash It
   source "$BASH_IT"/bash_it.sh
 fi
@@ -330,3 +345,4 @@ vimq() {
     vim -q <(rg --vimgrep $1)
 }
 
+# vim: tabstop=2:expandtab:shiftwidth=2:nowrap
