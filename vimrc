@@ -209,6 +209,13 @@ filetype off                   " required!
       nmap ; :Buffers<CR>
       nmap <Leader>t :Files<CR>
       nmap <Leader>r :Tags<CR>
+      " remap `gf` to pick up files anywhere inside current directory rather than just the literal `<cfile>`
+      " when you want the same for some *other* directory, you put your cursor on the filename and type `:GF other-dir`
+      function! GF(...)
+         call fzf#run({'dir': a:1, 'source': 'find . -type f', 'options':['-1', '--query', expand('<cfile>')], 'sink': 'e'})
+      endfunction
+      command! -nargs=* GF :call GF(<f-args>)
+      nnoremap gf :GF .<CR>
    Bundle 'ajmwagar/vim-dues'
    " Bundle 'gregsexton/gitv'
       "Type :Gitv for log
@@ -345,6 +352,7 @@ filetype plugin indent on     " required!
 " the root '/' directory.
 set tags=tags;/
 set path=.
+set path+=**
 " set incsearch Done in sensible.vim
 set hlsearch
 " Make searches case-sensitive only if they contain upper-case characters
