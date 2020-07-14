@@ -75,7 +75,7 @@ function _update_ps1() {
 }
 
 case "$TERM" in
-  xterm-256color)
+  xterm-256color|screen-256color)
     case "$OSTYPE" in
       linux-gnu)
         if [[ ! "$HOSTNAME" =~ "ThinkPad-T4" ]]; then
@@ -97,9 +97,7 @@ case "$TERM" in
       export PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
     fi
     ;;
-  screen*)
-    ;;
-*)
+  *)
     ;;
 esac
 
@@ -132,32 +130,12 @@ alias p4h='p4 changes -l -m1 "...#have"'
 alias weather='curl -4 http://wttr.in'
 # alias git-vimunstaged='$EDITOR $(git status -s | cut -f3 -d" ")'
 alias superm1i='ipmitool -H 10.183.49.111 -U ADMIN -P ADMIN -e [ -I lanplus sol activate'
-alias superm2i='ipmitool -H 10.183.49.112 -U ADMIN -P ADMIN -e [ -I lanplus sol activate'
-alias superm3i='ipmitool -H 10.183.49.113 -U ADMIN -P ADMIN -e [ -I lanplus sol activate'
-alias superm4i='ipmitool -H 10.183.49.114 -U ADMIN -P ADMIN -e [ -I lanplus sol activate'
-alias superm5i='ipmitool -H 10.183.49.115 -U ADMIN -P ADMIN -e [ -I lanplus sol activate'
-alias superm6i='ipmitool -H 10.183.49.116 -U ADMIN -P ADMIN -e [ -I lanplus sol activate'
-alias superm7i='ipmitool -H 10.183.49.117 -U ADMIN -P ADMIN -e [ -I lanplus sol activate'
-alias superm8i='ipmitool -H 10.183.49.118 -U ADMIN -P ADMIN -e [ -I lanplus sol activate'
 #
 alias superm1p='ipmitool -H 10.183.49.111 -U ADMIN -P ADMIN -e [ -I lanplus power cycle'
-alias superm2p='ipmitool -H 10.183.49.112 -U ADMIN -P ADMIN -e [ -I lanplus power cycle'
-alias superm3p='ipmitool -H 10.183.49.113 -U ADMIN -P ADMIN -e [ -I lanplus power cycle'
-alias superm4p='ipmitool -H 10.183.49.114 -U ADMIN -P ADMIN -e [ -I lanplus power cycle'
-alias superm5p='ipmitool -H 10.183.49.115 -U ADMIN -P ADMIN -e [ -I lanplus power cycle'
-alias superm6p='ipmitool -H 10.183.49.116 -U ADMIN -P ADMIN -e [ -I lanplus power cycle'
-alias superm7p='ipmitool -H 10.183.49.117 -U ADMIN -P ADMIN -e [ -I lanplus power cycle'
-alias superm8p='ipmitool -H 10.183.49.118 -U ADMIN -P ADMIN -e [ -I lanplus power cycle'
 
 alias 3906-8ipmi='ipmitool -H 10.183.49.118 -U ADMIN -P ADMIN -e [ -I lanplus power cycle'
-alias 3906-8telnet='telnet 10.183.50.137'
-alias 3906-8console='telnet 10.183.83.14 2011'
-
-alias 3906-7telnet='telnet 10.183.50.136'
 
 alias findh="find ~  -type d  -name '.?*' -prune -o -print"
-alias fut="scp build/saos-frerin/frerin-tool/chassis/x86-64/32/frerin-tool   diag@10.183.49.40:"
-alias fso="scp build/saos-frerin/libfrerin.so/chassis/x86-64/32/libfrerin.so diag@10.183.49.40:"
 
 findlastest() {
   find . -name "$1" -exec ls -latR {} +
@@ -224,8 +202,6 @@ umask 002
 export P4USER="rbelaire"
 export P4PORT="on-p4proxy1.ciena.com:2003"
 export P4CONFIG=".p4config.txt"
-#export P4DIFF="diff -Naur"
-#export P4DIFF="meld"
 export P4MERGE="/opt/tools/bin/p4merge"
 export P4EDITOR="gvim -f"
 export P4DIFF=meld p4 diff
@@ -247,7 +223,7 @@ dnif () {
 [ -f ~/.vim/bundle/fzf/shell/key-bindings.bash ] && source ~/.vim/bundle/fzf/shell/key-bindings.bash
 export FZF_TMUX='0'
 # https://superuser.com/questions/1103963/neovim-fzf-hidden-files
-export FZF_DEFAULT_COMMAND="find . -path '*/\.*' -type d -prune -o -type f -print -o -type l -print 2> /dev/null | sed s/^..//"
+# export FZF_DEFAULT_COMMAND="find . -path '*/\.*' -type d -prune -o -type f -print -o -type l -print 2> /dev/null | sed s/^..//"
 export FZF_CTRL_T_COMMAND="find . -path '*/\.*' -type d -prune -o -type f -print -o -type l -print 2> /dev/null | sed s/^..//"
 
 [ -f ~/code/forgit/forgit.plugin.sh ] && source ~/code/forgit/forgit.plugin.sh
@@ -265,6 +241,7 @@ function tabname {
 export "GPG_TTY=$(tty)"
 export "SSH_AUTH_SOCK=${HOME}/.gnupg/S.gpg-agent.ssh"
 
+# https://medium.com/@crashybang/supercharge-vim-with-fzf-and-ripgrep-d4661fc853d2
 # --files: List files that would be searched but do not search
 # --no-ignore: Do not respect .gitignore, etc...
 # --hidden: Search hidden files and folders
