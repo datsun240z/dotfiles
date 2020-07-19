@@ -622,3 +622,9 @@ autocmd BufReadPost *
 "     autocmd!
 "     autocmd TextYankPost * if v:event.operator ==# 'y' | call Osc52Yank() | endif
 " augroup END
+"
+
+" This outputs the shortcuts, with where they were defined, to a text file
+" :redir! > vim_keys.txt
+" :silent verbose map
+" :redir END
