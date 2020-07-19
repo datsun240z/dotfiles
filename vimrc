@@ -215,6 +215,8 @@ filetype off                   " required!
       endfunction
       command! -nargs=* GF :call GF(<f-args>)
       nnoremap gf :GF .<CR>
+      " https://errong.win/make-vim-like-source-insight-effective-c-c-ide
+      " let g:fzf_tags_command = 'gtags'
    Bundle 'ajmwagar/vim-dues'
    " Bundle 'gregsexton/gitv'
       "Type :Gitv for log
@@ -344,14 +346,19 @@ filetype plugin indent on     " required!
 " colorscheme by http://bytefluent.com/vivify/
 " colorscheme jellybeans
 
+" SET:
+" To see current value ":set hidden?"
+" To see WHERE   value ":verbose set hidden?"
+" To unset       value ":set nohidden"
+" To help        value ":help nohidden"
+"
 " set viminfo+='21,nC:/vim/_viminfo
 " Vim will search for the file named 'tags', starting with the current
 " directory and then going to the parent directory and then recursively to the
 " directory one level above, till it either locates the 'tags' file or reaches
 " the root '/' directory.
-set tags=tags;/
+" set tags=tags;/ Done in sensible.vim
 set path=.
-set path+=**
 " set incsearch Done in sensible.vim
 set hlsearch
 " Make searches case-sensitive only if they contain upper-case characters
@@ -390,7 +397,10 @@ noremap <F36> :set ts=4   et sw=4 nowrap<CR>
 noremap <F12> :set ts=8 noet sw=8 nowrap<CR>
 noremap <F37> :set ts=8 noet sw=8 nowrap<CR>
 set cscopeprg=gtags-cscope
-" set cscopetag cscopeverbose
+" These two lines FIX gtags-cscope in vim 8.2
+set cscopetag
+set cscopetagorder=0
+" set cscopeverbose
 noremap <F5> :cp<CR>
 noremap <F6> :cn<CR>
 noremap <M-F9> %
@@ -601,14 +611,14 @@ autocmd BufReadPost *
 \ | endif
 
 
-function! Osc52Yank()
-    let buffer=system('base64 -w0', @0)
-    let buffer=substitute(buffer, "\n$", "", "")
-    let buffer='\e]52;c;'.buffer.'\x07'
-    silent exe "!echo -ne ".shellescape(buffer)." > ".shellescape("/dev/tty")
-endfunction
-command! Osc52CopyYank call Osc52Yank()
-augroup Example
-    autocmd!
-    autocmd TextYankPost * if v:event.operator ==# 'y' | call Osc52Yank() | endif
-augroup END
+" function! Osc52Yank()
+"     let buffer=system('base64 -w0', @0)
+"     let buffer=substitute(buffer, "\n$", "", "")
+"     let buffer='\e]52;c;'.buffer.'\x07'
+"     silent exe "!echo -ne ".shellescape(buffer)." > ".shellescape("/dev/tty")
+" endfunction
+" command! Osc52CopyYank call Osc52Yank()
+" augroup Example
+"     autocmd!
+"     autocmd TextYankPost * if v:event.operator ==# 'y' | call Osc52Yank() | endif
+" augroup END
