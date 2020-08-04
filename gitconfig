@@ -7,18 +7,18 @@
 	ui = auto # covers diff = true, status = auto, branch = auto
 	interactive = auto
 [color "branch"]
-	current = yellow reverse
-	local = yellow
+	current = blue reverse
+	local = blue
 	remote = green
 [color "diff"]
-	meta = 11
+	meta = blue
 	frag = magenta bold
 	old = red bold
 	new = green bold
 	whitespace = red reverse
-	commit = yellow bold
+	commit = blue bold
 [color "status"]
-	added = yellow
+	added = blue
 	changed = green
 	untracked = cyan
 [git-p4]
@@ -27,7 +27,7 @@
 [core]
 	editor = vim
 	whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
-	pager = ~/code/diff-so-fancy/diff-so-fancy | less --tabs=4 -RFX
+	pager = diff-so-fancy | less --tabs=4 -RFX
 	autocrlf = input
 	excludesfile = ~/.gitignore
 [alias]
@@ -82,3 +82,5 @@
 [diff-so-fancy]
 	markEmptyLines = false
 	changeHunkIndicators = true
+[init]
+	templatedir = ~/.git-templates

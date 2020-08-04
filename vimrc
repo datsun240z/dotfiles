@@ -45,20 +45,20 @@ filetype off                   " required!
       " if *x>3 {                 ysW(        if ( x>3 ) {
    Bundle 'tpope/vim-repeat'
    Bundle 'tpope/vim-unimpaired'
-      " [b ]b buffer next/previous
-      " [q ]q errors next/previous
-      " [f ]f file   next/previous
-      " [n ]n diff   next/previous
+      " [b ]b             buffer next/previous
+      " [q ]q             errors next/previous
+      " [f ]f             file   next/previous
+      " [n ]n             diff   next/previous
       " [<Space> ]<Space> Add [count] blank lines above/below the cursor.
-      " [e ]e Exchange the current line with [count] lines above/below it
-      " [oc	]oc	coc	'cursorline'
-      " [ol	]ol	col	'list'
-      " [on	]on	con	'number'
-      " [or	]or	cor	'relativenumber'
-      " [ou	]ou	cou	'cursorcolumn'
-      " [ow	]ow	cow	'wrap'
-      " [ox	]ox	cox	'cursorline' 'cursorcolumn' (x as in crosshairs)
-      " [op ]op yop set paste as o O 0C (zero)
+      " [e ]e             Exchange the current line with [count] lines above/below it
+      " [oc ]oc coc       'cursorline'
+      " [ol ]ol col       'list'
+      " [on ]on con       'number'
+      " [or ]or cor       'relativenumber'
+      " [ou ]ou cou       'cursorcolumn'
+      " [ow ]ow cow       'wrap'
+      " [ox ]ox cox       'cursorline' 'cursorcolumn' (x as in crosshairs)
+      " [op ]op yop       set paste as o O 0C (zero)
    Bundle 'tpope/vim-commentary'
       " gcc to un/comment a line
       " gc  to un/comment a motion/visual
@@ -177,6 +177,11 @@ filetype off                   " required!
       " Use '\ig' to toggle
       let g:indent_guides_color_change_percent = 50
    Bundle 'airblade/vim-gitgutter'
+        highlight clear SignColumn
+        highlight GitGutterAdd ctermfg=darkgreen guifg=darkgreen
+        highlight GitGutterChange ctermfg=darkyellow guifg=darkyellow
+        highlight GitGutterDelete ctermfg=darkred guifg=darkred
+        highlight GitGutterChangeDelete ctermfg=darkyellow guifg=darkyellow
       " ]c      [c  Next/Prev Hunk
       " \hs and \hu Stage/Unstage Hunk
       " :GitGutterToggle  :GitGutterSignsToggle  :GitGutterLineHighlightsToggle
@@ -258,9 +263,9 @@ filetype off                   " required!
       " let wiki_1.automatic_nested_syntaxes = 1
       let g:vimwiki_list = [wiki_1]
       let g:vimwiki_ext2syntax = {
-			      \'.md'      : 'markdown',
-			      \'.markdown': 'markdown',
-			      \'.mdown'   : 'markdown'}
+                              \'.md'      : 'markdown',
+                              \'.markdown': 'markdown',
+                              \'.mdown'   : 'markdown'}
       " let g:vimwiki_url_maxsave = 0
       " nnoremap <leader>wb <Plug>VimwikiGoBackLink :VimwikiGoBackLink<CR>
       " nnoremap <leader>wb :VimwikiGoBackLink<CR>
@@ -369,8 +374,6 @@ set wildmode=longest,full
 " set columns=120
 " set lines=34
 set hidden
-set number
-set relativenumber
 set cindent
 set cinoptions+=(0
 set nomousehide
@@ -392,6 +395,7 @@ set t_Co=256 " 256 colors
 " set grepformat=%f:%l:%m
 noremap <C-Up> <C-Y>
 noremap <C-Down> <C-E>
+noremap <F10> :set ts=4   et sw=4 nowrap<CR>
 noremap <F11> :set ts=4   et sw=4 nowrap<CR>
 noremap <F36> :set ts=4   et sw=4 nowrap<CR>
 noremap <F12> :set ts=8 noet sw=8 nowrap<CR>
@@ -407,27 +411,27 @@ noremap <M-F9> %
 noremap! <C-F> <Esc>gUiw`]a
 noremap ;' :%s:::cg<Left><Left><Left><Left>
 vmap ;' :s:::cg<Left><Left><Left><Left>
-noremap <M-l> V
-nmap <C-PageDown> ]m
-nmap <C-PageUp> [m
-nmap <C-Right> w
-nmap <C-Left> b
-nmap <C-Insert> "+yy
-nmap <S-Insert> "*P
-onoremap af :<C-u>normal! ggVG<CR>
-imap <S-Insert> <C-R>*
-nmap <C-Del> dw
-nmap <S-Del> "+dd
-noremap <C-k>     : bnext<CR>
-noremap <C-j>     : bprev<CR>
-nmap <C-d>        : bdelete<CR>
-noremap <C-Tab>   : bnext<CR>
-noremap <C-S-Tab> : bprev<CR>
-nmap <C-F4>       : bdelete<CR>
-imap <S-Tab> <C-D>
-imap <C-Del> <C-Right><C-W>
-noremap <M-k> viw
-vmap <M-k> <ESC>
+noremap <M-l>      V
+nmap    <C-PageDown> ]m
+nmap    <C-PageUp> [m
+nmap    <C-Right>  w
+nmap    <C-Left>   b
+nmap    <C-Insert> "+yy
+nmap    <S-Insert> "*P
+onoremap af        :<C-u>normal! ggVG<CR>
+imap    <S-Insert> <C-R>*
+nmap    <C-Del>    dw
+nmap    <S-Del>    "+dd
+noremap <C-k>      : bnext<CR>
+noremap <C-j>      : bprev<CR>
+nmap    <C-d>      : bdelete<CR>
+noremap <C-Tab>    : bnext<CR>
+noremap <C-S-Tab>  : bprev<CR>
+nmap    <C-F4>     : bdelete<CR>
+imap    <S-Tab>    <C-D>
+imap    <C-Del>    <C-Right><C-W>
+noremap <M-k>      viw
+vmap    <M-k>      <ESC>
 " visual selection turns into thing to search for
 vmap / y/<C-R>"
 " Get me the function name!
@@ -487,11 +491,11 @@ set visualbell
 " To use the default key/mouse mapping:
 let GtagsCscope_Auto_Map = 1
 " To ignore letter case when searching:
-"	let GtagsCscope_Ignore_Case = 1
+"       let GtagsCscope_Ignore_Case = 1
 " To use absolute path name:
 "       let GtagsCscope_Absolute_Path = 1
 " To deterring interruption:
-"	let GtagsCscope_Keep_Alive = 1
+"   i   let GtagsCscope_Keep_Alive = 1
 " If you hope auto loading:
 let GtagsCscope_Auto_Load = 1
 let GtagsCscope_Use_Old_Key_Map = 1
@@ -556,10 +560,9 @@ autocmd FileType python setlocal shiftwidth=4 softtabstop=4 expandtab
 " NERDTree-like but using netrw
 " -----------------------------
 " autocmd FileType netrw setl bufhidden=wipe
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
+" let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
-let g:netrw_altv = 1
+" let g:netrw_altv = 1
 let g:netrw_winsize = 30
 " let g:netrw_preview = 1
 
@@ -586,15 +589,13 @@ let g:netrw_winsize = 30
 
 vnoremap < <gv
 vnoremap > >gv
-" set list
-" set listchars=tab:>-,trail:·,space:·
-" highlight SpecialKey ctermfg=255 guifg=Grey
-
 " show invisible
+" set listchars=space:·
+" highlight SpecialKey ctermfg=255 guifg=Grey
 set list
 set list listchars=tab:▸·,trail:·,precedes:←,extends:→,eol:↲,nbsp:␣
-hi NonText ctermfg=250 guifg=#e0e0e0
-hi SpecialKey ctermfg=250 guifg=#e0e0e0
+highlight NonText    ctermfg=250 guifg=#e0e0e0
+highlight SpecialKey ctermfg=250 guifg=#e0e0e0
 
 " Crunch backspaces into deletes
 " Useful for logs
@@ -610,7 +611,6 @@ autocmd BufReadPost *
 \ |   exe "normal! g`\""
 \ | endif
 
-
 " function! Osc52Yank()
 "     let buffer=system('base64 -w0', @0)
 "     let buffer=substitute(buffer, "\n$", "", "")
@@ -623,8 +623,14 @@ autocmd BufReadPost *
 "     autocmd TextYankPost * if v:event.operator ==# 'y' | call Osc52Yank() | endif
 " augroup END
 "
-
 " This outputs the shortcuts, with where they were defined, to a text file
 " :redir! > vim_keys.txt
 " :silent verbose map
 " :redir END
+
+" Type :CLEAR to prep for mouse copy
+function! Clear() abort
+    set nolist nonumber norelativenumber
+    GitGutterDisable
+endfunction
+command! CLEAR call Clear()

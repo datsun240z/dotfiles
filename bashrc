@@ -54,8 +54,8 @@ case "$TERM" in
     esac
     ;;
   tmux-256color|screen-256color)
-    export EDITOR='/usr/bin/gvim -v'
-    export CSCOPE_EDITOR='/usr/bin/gvim -v'
+    export EDITOR='vim'
+    export CSCOPE_EDITOR='vim'
     export SVN_EDITOR='/usr/bin/gvim -f -v'
     alias ls='ls -G --color --classify'
     ;;
@@ -100,11 +100,6 @@ case "$TERM" in
   *)
     ;;
 esac
-
-if [[ ! "$HOSTNAME" =~ "ThinkPad-T4" ]]; then
-  alias vim='gvim -v'
-  alias view='gview -v'
-fi
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -182,6 +177,10 @@ fi
 
 if [ -f  ${HOME}/.bash_completion_lib.d/completions/complete/bitbake ]; then
   source ${HOME}/.bash_completion_lib.d/completions/complete/bitbake
+fi
+
+if [ -f  ~/.bash_completion_lib.d/completions/complete/global.completion ]; then
+  source ~/.bash_completion_lib.d/completions/complete/global.completion
 fi
 
 if [ -f ~/.local/bin/bashmarks.sh ]; then
@@ -318,7 +317,6 @@ if [[ "$HOSTNAME" =~ "ThinkPad-T4" ]]; then
 fi
 
 vimq() {
-    # vim -v -q <($(fc -nl -1))
     vim -q <(rg --vimgrep $1)
 }
 
