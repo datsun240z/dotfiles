@@ -112,25 +112,39 @@ esac
 
 # enable color support of ls and also add handy aliases
 
-alias duck="BROWSER=w3m ddgr "
-alias ll='ls -l'
-alias la='ls -A'
-alias h='history'
+alias 3906-8ipmi='ipmitool -H 10.183.49.118 -U ADMIN -P ADMIN -e [ -I lanplus power cycle'
 alias b='cd ..'
+alias duck="BROWSER=w3m ddgr "
+alias findh="find ~  -type d  -name '.?*' -prune -o -print"
+alias h='history'
+alias la='ls -A'
+alias ll='ls -l'
+alias mnt="mount | awk -F' ' '{ printf \"%s\t%s\n\",\$1,\$3; }' | column -t | egrep ^/dev/ | sort"
+alias Ufispace-fabric-1='ipmitool -H 10.183.83.130 -U admin -P admin -I lanplus -e [ sol activate'
+alias Ufispace-fabric-1bmc='ipmitool -H 10.183.83.130 -U admin -P admin -I lanplus mc reset cold'
+alias Ufispace-fabric-1pwr='ipmitool -H 10.183.83.130 -U admin -P admin -I lanplus chassis power cycle'
+alias Ufispace-fabric-2='ipmitool -H 10.183.83.134 -U admin -P admin -I lanplus -e [ sol activate'
+alias Ufispace-fabric-3='ipmitool -H 10.183.83.156 -U admin -P admin -I lanplus -e [ sol activate'
+alias Ufispace-fabric-4='ipmitool -H 10.183.83.158 -U admin -P admin -I lanplus -e [ sol activate'
+alias Ufispace-fabric-5='ipmitool -H 10.183.83.160 -U admin -P admin -I lanplus -e [ sol activate'
+alias Ufispace-packet-1='ipmitool -H 10.183.83.132 -U admin -P admin -I lanplus -e [ sol activate'
+alias Ufispace-packet-2='ipmitool -H 10.183.83.136 -U admin -P admin -I lanplus -e [ sol activate'
+alias Ufispace-packet-3='ipmitool -H 10.183.83.138 -U admin -P admin -I lanplus -e [ sol activate'
+alias Ufispace-packet-4='ipmitool -H 10.183.83.140 -U admin -P admin -I lanplus -e [ sol activate'
+alias Ufispace-packet-5='ipmitool -H 10.183.83.150 -U admin -P admin -I lanplus -e [ sol activate'
+alias Ufispace-packet-6='ipmitool -H 10.183.83.152 -U admin -P admin -I lanplus -e [ sol activate'
+alias Ufispace-packet-7='ipmitool -H 10.183.83.154 -U admin -P admin -I lanplus -e [ sol activate'
+alias p4h='p4 changes -l -m1 "...#have"'
+alias p4-syncable='p4 changes -L "...#>have"'
 alias p='cd -'
 alias psrt='ps -eHo pid,tid,class,rtprio,ni,pri,psr,pcpu,stat,wchan:14,comm'
-alias p4-syncable='p4 changes -L "...#>have"'
-alias p4h='p4 changes -l -m1 "...#have"'
-# alias gitlog='git log --graph --full-history --all --color --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20[%cn] %s"'
+alias Superm7='ipmitool -H 10.183.49.117 -U ADMIN -P ADMIN -e [ -I lanplus sol activate'
+alias Superm7p='ipmitool -H 10.183.49.117 -U ADMIN -P ADMIN -e [ -I lanplus power cycle'
 alias weather='curl -4 http://wttr.in'
+alias bt2='babeltrace2 --clock-gmt --clock-date'
 # alias git-vimunstaged='$EDITOR $(git status -s | cut -f3 -d" ")'
-alias superm1i='ipmitool -H 10.183.49.111 -U ADMIN -P ADMIN -e [ -I lanplus sol activate'
-#
-alias superm1p='ipmitool -H 10.183.49.111 -U ADMIN -P ADMIN -e [ -I lanplus power cycle'
+# alias gitlog='git log --graph --full-history --all --color --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20[%cn] %s"'
 
-alias 3906-8ipmi='ipmitool -H 10.183.49.118 -U ADMIN -P ADMIN -e [ -I lanplus power cycle'
-
-alias findh="find ~  -type d  -name '.?*' -prune -o -print"
 
 findlastest() {
   find . -name "$1" -exec ls -latR {} +

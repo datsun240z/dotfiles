@@ -35,6 +35,7 @@ filetype off                   " required!
    Bundle 'tpope/vim-rhubarb'
    " Add Bitbucket URL support to fugitive.vim's :Gbrowse command
    Bundle 'tommcdo/vim-fubitive'
+      let g:fubitive_domain_pattern = 'bitbucket\.ciena\.com'
    Bundle 'tpope/vim-sensible'
    Bundle 'tpope/vim-scriptease'
       " Try :Verbose map
@@ -62,10 +63,10 @@ filetype off                   " required!
    Bundle 'tpope/vim-commentary'
       " gcc to un/comment a line
       " gc  to un/comment a motion/visual
-   Bundle 'tpope/vim-vinegar'
+   " Bundle 'tpope/vim-vinegar'
       " -  hop up to the directory listing and seek to the file you just came from
       " nmap - <Plug>VinegarVerticalSplitUp
-      nmap - :Vex<CR>
+      " nmap - :Vex<CR>
       " I  toggle banner
       " gh toggle dot file hiding
       " .  to push filename to cmdline
@@ -84,7 +85,7 @@ filetype off                   " required!
       " <Leader>t{char}      | Till before the {char} to the right. See t.
       " <Leader>T{char}      | Till after the {char} to the left. See T.
       " <Leader>w            | Beginning of word forward. See w.
-      " <Leader>W            | Beginning of WORD forward. See W.
+      "<Leader>W            | Beginning of WORD forward. See W.
       " <Leader>b            | Beginning of word backward. See b.
       " <Leader>B            | Beginning of WORD backward. See B.
       " <Leader>e            | End of word forward. See e.
@@ -96,9 +97,10 @@ filetype off                   " required!
       " <Leader>n            | Jump to latest "/" or "?" forward. See n.
       " <Leader>N            | Jump to latest "/" or "?" backward. See N.
       " <Leader>s            | Find(Search) {char} forward and backward
-      let g:EasyMotion_do_mapping = 0 " Disable default mappings
+      " let g:EasyMotion_do_mapping = 0 " Disable default mappings
       " Jump to anywhere you want with minimal keystrokes, with just one key binding.
       " `s{char}{label}`
+      " map \ <Plug>(easymotion-prefix)
       nmap <Leader>s <Plug>(easymotion-overwin-f)
       " or
       " `s{char}{char}{label}`
@@ -122,9 +124,9 @@ filetype off                   " required!
    " Bundle 'w0rp/ale'
    " Bundle 'vim-indent-object'
    " Bundle 'rust-lang/rust.vim'
-   Bundle 'bufexplorer.zip'
+   " Bundle 'bufexplorer.zip'
       " CTRL+b opens the buffer list
-      noremap <C-b> <esc>:BufExplorer<CR>
+      " noremap <C-b> <esc>:BufExplorer<CR>
    " Bundle 'The-NERD-tree'
    "    noremap <F3> :NERDTreeToggle<CR>
    "    noremap <F4> :NERDTreeFind<CR>
@@ -150,7 +152,6 @@ filetype off                   " required!
       "                         omitted) in all listed buffers and set the error list
       "                         to the matches.
    Bundle 'mhinz/vim-grepper'
-      nnoremap <leader>g :Grepper -cword<cr>
       nnoremap <leader>* :Grepper -tool ag -cword -noprompt<cr>
       nmap gs  <plug>(GrepperOperator)
       xmap gs  <plug>(GrepperOperator)
@@ -213,6 +214,7 @@ filetype off                   " required!
       nmap ; :Buffers<CR>
       nmap <Leader>t :Files<CR>
       nmap <Leader>r :Tags<CR>
+      nmap <leader>g :Rg <c-r>=expand("<cword>")<cr>
       " remap `gf` to pick up files anywhere inside current directory rather than just the literal `<cfile>`
       " when you want the same for some *other* directory, you put your cursor on the filename and type `:GF other-dir`
       function! GF(...)
