@@ -352,6 +352,7 @@ filetype plugin indent on     " required!
 
 " colorscheme by http://bytefluent.com/vivify/
 " colorscheme jellybeans
+colorscheme elflord
 
 " SET:
 " To see current value ":set hidden?"
