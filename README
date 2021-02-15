@@ -1,4 +1,4 @@
- git clone https://github.com/datsun240z/dotfiles.git
+ git clone git@github.com:datsun240z/dotfiles.git
  git status
  git add bashrc screenrc vimrc
  git status
