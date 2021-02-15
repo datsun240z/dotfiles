@@ -328,6 +328,7 @@ filetype off                   " required!
    Bundle 'bkad/CamelCaseMotion'
       call camelcasemotion#CreateMotionMappings('<leader>')
    Bundle 'ConradIrwin/vim-bracketed-paste'
+   Bundle 'Yggdroot/indentLine'
 
    " ...All your other bundles...
    if iCanHazVundle == 0
@@ -366,7 +367,7 @@ colorscheme elflord
 " directory one level above, till it either locates the 'tags' file or reaches
 " the root '/' directory.
 " set tags=tags;/ Done in sensible.vim
-set path=.
+set path=.,**
 " set incsearch Done in sensible.vim
 set hlsearch
 " Make searches case-sensitive only if they contain upper-case characters

@@ -88,3 +88,7 @@ fi
 test -e ${HOME}/.iterm2_shell_integration.bash && source ${HOME}/.iterm2_shell_integration.bash
 
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+
+CHECKME=~/code/diff-so-fancy
+if [ -d $CHECKME ] ; then PATH="$PATH":$CHECKME; fi
+
