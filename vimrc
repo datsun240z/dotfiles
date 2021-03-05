@@ -458,13 +458,13 @@ xnoremap p "_dP
 " vim *.bin or *.exe : edit binary using xxd-format!
 augroup Binary
    autocmd!
-   autocmd BufReadPre   *.elf,*.bin,*.exe,*.dll,*.jic let &bin=1
-   autocmd BufReadPost  *.elf,*.bin,*.exe,*.dll,*.jic if &bin | %!xxd -g1
-   autocmd BufReadPost  *.elf,*.bin,*.exe,*.dll,*.jic set ft=xxd | endif
-   autocmd BufWritePre  *.elf,*.bin,*.exe,*.dll,*.jic if &bin | %!xxd -r
-   autocmd BufWritePre  *.elf,*.bin,*.exe,*.dll,*.jic endif
-   autocmd BufWritePost *.elf,*.bin,*.exe,*.dll,*.jic if &bin | %!xxd
-   autocmd BufWritePost *.elf,*.bin,*.exe,*.dll,*.jic set nomod | endif
+   autocmd BufReadPre   *.elf,*.bin,*.exe,*.dll,*.jic,*.ffs,*.cpio let &bin=1
+   autocmd BufReadPost  *.elf,*.bin,*.exe,*.dll,*.jic,*.ffs,*.cpio if &bin | %!xxd -g1
+   autocmd BufReadPost  *.elf,*.bin,*.exe,*.dll,*.jic,*.ffs,*.cpio set ft=xxd | endif
+   autocmd BufWritePre  *.elf,*.bin,*.exe,*.dll,*.jic,*.ffs,*.cpio if &bin | %!xxd -r
+   autocmd BufWritePre  *.elf,*.bin,*.exe,*.dll,*.jic,*.ffs,*.cpio endif
+   autocmd BufWritePost *.elf,*.bin,*.exe,*.dll,*.jic,*.ffs,*.cpio if &bin | %!xxd
+   autocmd BufWritePost *.elf,*.bin,*.exe,*.dll,*.jic,*.ffs,*.cpio set nomod | endif
 augroup END
 
 set nobackup
@@ -638,3 +638,18 @@ function! Clear() abort
     GitGutterDisable
 endfunction
 command! CLEAR call Clear()
+
+" Cursor to yellow on insert mode
+" Blue on command/other mode
+" Note the use of hex codes (ie 3971ED)
+if exists('$TMUX')
+    let &t_EI = "\<Esc>Ptmux;\<Esc>\033]Pl3971ED\033\\"
+    let &t_SI = "\<Esc>Ptmux;\<Esc>\033]PlFBA922\033\\"
+    silent !echo -ne "\<Esc>Ptmux;\<Esc>\033]Pl3971ED\033\\"
+    autocmd VimLeave * silent !echo -ne "\<Esc>Ptmux;\<Esc>\033]Pl3971ED\033\\"
+else
+    let &t_EI = "\033]Pl3971ED\033\\"
+    let &t_SI = "\033]PlFBA922\033\\"
+    silent !echo -ne "\033]Pl3971ED\033\\"
+    autocmd VimLeave * silent !echo -ne "\033]Pl3971ED\033\\"
+endif
