@@ -75,7 +75,7 @@ filetype off                   " required!
    Bundle 'Valloric/ListToggle'
       " Location/Quick Toogle set to <leader>l and <leader>q, respectively.
    Bundle 'vivien/vim-linux-coding-style'
-      let g:linuxsty_patterns = [ "/usr/src/", "/linux/", "/ko/" ]
+      let g:linuxsty_patterns = [ "/oneos-linux", "/linux", "/ko", "/klm" ]
       " or :LinuxCodingStyle
    Bundle 'easymotion/vim-easymotion'
       " Default Mapping      | Details
@@ -262,7 +262,7 @@ filetype off                   " required!
       let wiki_1.syntax          = 'markdown'
       let wiki_1.ext             = '.md'
       " let wiki_1.nested_syntaxes = {'python': 'python', 'c++': 'cpp'}
-      " let wiki_1.automatic_nested_syntaxes = 1
+      let wiki_1.automatic_nested_syntaxes = 1
       let g:vimwiki_list = [wiki_1]
       let g:vimwiki_ext2syntax = {
                               \'.md'      : 'markdown',
