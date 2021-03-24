@@ -134,6 +134,8 @@ alias Ufispace-packet-4='ipmitool -H 10.183.83.140 -U admin -P admin -I lanplus 
 alias Ufispace-packet-5='ipmitool -H 10.183.83.150 -U admin -P admin -I lanplus -e [ sol activate'
 alias Ufispace-packet-6='ipmitool -H 10.183.83.152 -U admin -P admin -I lanplus -e [ sol activate'
 alias Ufispace-packet-7='ipmitool -H 10.183.83.154 -U admin -P admin -I lanplus -e [ sol activate'
+alias Ufispace-fabric-sj='ipmitool -H 10.33.22.17  -U admin -P admin -I lanplus -e [ sol activate'
+alias Ufispace-packet-sj='ipmitool -H 10.33.22.14  -U admin -P admin -I lanplus -e [ sol activate'
 alias p4h='p4 changes -l -m1 "...#have"'
 alias p4-syncable='p4 changes -L "...#>have"'
 alias p='cd -'
@@ -142,6 +144,7 @@ alias Superm7='ipmitool -H 10.183.49.117 -U ADMIN -P ADMIN -e [ -I lanplus sol a
 alias Superm7p='ipmitool -H 10.183.49.117 -U ADMIN -P ADMIN -e [ -I lanplus power cycle'
 alias weather='curl -4 http://wttr.in'
 alias bt2='babeltrace2 --clock-gmt --clock-date'
+alias week='date +%V'
 # alias git-vimunstaged='$EDITOR $(git status -s | cut -f3 -d" ")'
 # alias gitlog='git log --graph --full-history --all --color --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20[%cn] %s"'
 
