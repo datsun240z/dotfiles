@@ -281,7 +281,7 @@ filetype off                   " required!
    Bundle 'google/vim-searchindex'
       " press g/ to display search index for the last search
    Bundle 'vim-scripts/confluencewiki.vim'
-   Bundle 'vim-scripts/rtorrent-syntax-file'
+   " Bundle 'vim-scripts/rtorrent-syntax-file'
    Bundle 'Vimjas/vim-python-pep8-indent'
       let g:python_pep8_indent_multiline_string=-1
       " g:python_pep8_indent_multiline_string=[0|-1|-2]
@@ -328,7 +328,7 @@ filetype off                   " required!
    Bundle 'bkad/CamelCaseMotion'
       call camelcasemotion#CreateMotionMappings('<leader>')
    Bundle 'ConradIrwin/vim-bracketed-paste'
-   Bundle 'Yggdroot/indentLine'
+   " Bundle 'Yggdroot/indentLine'
 
    " ...All your other bundles...
    if iCanHazVundle == 0
@@ -350,6 +350,12 @@ filetype plugin indent on     " required!
 " NOTE: comments after Bundle command are not allowed..
 
 " Vundle Bundle STOP ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+" https://gist.github.com/romainl/379904f91fa40533175dfaec4c833f2f
+augroup MyColours
+autocmd!
+autocmd ColorScheme * highlight SpecialKey ctermfg=20
+augroup END
 
 " colorscheme by http://bytefluent.com/vivify/
 " colorscheme jellybeans
@@ -426,13 +432,16 @@ onoremap af        :<C-u>normal! ggVG<CR>
 imap    <S-Insert> <C-R>*
 nmap    <C-Del>    dw
 nmap    <S-Del>    "+dd
-noremap <C-k>      : bnext<CR>
-noremap <C-j>      : bprev<CR>
-nmap    <C-d>      : bdelete<CR>
-noremap <C-Tab>    : bnext<CR>
-noremap <C-S-Tab>  : bprev<CR>
-nmap    <C-F4>     : bdelete<CR>
-imap    <S-Tab>    <C-D>
+" noremap <C-k>      : bnext<CR>
+" noremap <C-j>      : bprev<CR>
+nnoremap  <silent>   <tab>  :bnext<CR>
+nnoremap  <silent> <s-tab>  :bprevious<CR>
+
+nmap    <C-d>      :bdelete<CR>
+noremap <C-tab>    :bnext<CR>
+noremap <C-S-tab>  :bprev<CR>
+nmap    <C-F4>     :bdelete<CR>
+imap    <S-tab>    <C-D>
 imap    <C-Del>    <C-Right><C-W>
 noremap <M-k>      viw
 vmap    <M-k>      <ESC>
@@ -471,7 +480,10 @@ set nobackup
 set writebackup
 set printoptions=left:5pc,number:y,paper:letter
 set nrformats=hex,alpha
-set makeprg=\./go\ TARG=saos-sds\ -k\ -j16\ USE_COLOUR=n
+
+" set makeprg=\./go\ TARG=saos-sds\ -k\ -j16\ USE_COLOUR=n
+set makeprg=cd\ /localdata/rbelaire/yocto/builds/evernight/evernight-generic-intel-x86-64\ &&\ bb\ nowait\ $*\\\|\ makeprg_filter
+let &errorformat ='| %f:%l:%c: %m'
 
 nnoremap @pfa       :!p4 add %<CR>:e<CR>
 nnoremap @pfe       :!p4 edit %<CR>:e<CR>
@@ -599,7 +611,8 @@ vnoremap > >gv
 set list
 set list listchars=tab:▸·,trail:·,precedes:←,extends:→,eol:↲,nbsp:␣
 highlight NonText    ctermfg=250 guifg=#e0e0e0
-highlight SpecialKey ctermfg=250 guifg=#e0e0e0
+highlight SpecialKey ctermfg=17 guifg=#e0e0e0
+" highlight SpecialKey term=bold ctermfg=81 guifg=Cyan
 
 " Crunch backspaces into deletes
 " Useful for logs
@@ -638,6 +651,11 @@ function! Clear() abort
     GitGutterDisable
 endfunction
 command! CLEAR call Clear()
+
+function! Dim() abort
+    highlight SpecialKey ctermfg=20
+endfunction
+command! DIM call Dim()
 
 " Cursor to yellow on insert mode
 " Blue on command/other mode
