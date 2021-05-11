@@ -482,7 +482,8 @@ set printoptions=left:5pc,number:y,paper:letter
 set nrformats=hex,alpha
 
 " set makeprg=\./go\ TARG=saos-sds\ -k\ -j16\ USE_COLOUR=n
-set makeprg=cd\ /localdata/rbelaire/yocto/builds/evernight/evernight-generic-intel-x86-64\ &&\ bb\ nowait\ $*\\\|\ makeprg_filter
+" set makeprg=cd\ /localdata/rbelaire/yocto/builds/evernight/evernight-generic-intel-x86-64\ &&\ bb\ nowait\ $*\\\|\ makeprg_filter
+set makeprg=makeprg_filter
 let &errorformat ='| %f:%l:%c: %m'
 
 nnoremap @pfa       :!p4 add %<CR>:e<CR>
