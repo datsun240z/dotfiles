@@ -1,5 +1,8 @@
 #!/bin/bash
-# Pass in the module recipe, e.i ciena-wr-spi or ciena-galvorn-mod
+# Pass in the module recipe, .i.e ciena-wr-spi or ciena-galvorn-mod
+# :make ciena-galvorn-mod
+# Use :cnext or :cprev to move around errors
+# Add the following to .vimrc
 # set makeprg=makeprg_filter
 # let &errorformat ='| %f:%l:%c: %m'
 recipe=$1

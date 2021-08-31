@@ -295,6 +295,12 @@ filetype off                   " required!
       "  string started in the previous line, without any content in it already:
       " g:python_pep8_indent_hang_closing=[0|-1]
       " Control closing bracket indentation with python_pep8_indent_hang_closing
+   Bundle 'nvie/vim-flake8'
+      "====================================================
+      "flake8.vim settings
+      "====================================================
+      let g:flake8_show_in_gutter=1
+      autocmd FileType python map <buffer> <Leader>f :call flake8#Flake8()<CR>
    Bundle 'okcompute/vim-python-match'
       " % g% [% ]%
    " Search OpenGrok from Vim
