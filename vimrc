@@ -335,6 +335,7 @@ filetype off                   " required!
       call camelcasemotion#CreateMotionMappings('<leader>')
    Bundle 'ConradIrwin/vim-bracketed-paste'
    " Bundle 'Yggdroot/indentLine'
+   Bundle 'vim-signature'
 
    " ...All your other bundles...
    if iCanHazVundle == 0
@@ -612,6 +613,8 @@ let g:netrw_winsize = 30
 
 vnoremap < <gv
 vnoremap > >gv
+noremap <leader>y "+y
+noremap <leader>p "+p
 " show invisible
 " set listchars=space:·
 " highlight SpecialKey ctermfg=255 guifg=Grey
@@ -678,3 +681,4 @@ else
     silent !echo -ne "\033]Pl3971ED\033\\"
     autocmd VimLeave * silent !echo -ne "\033]Pl3971ED\033\\"
 endif
+nnoremap <silent> <leader>m <cmd>Marks<cr>
