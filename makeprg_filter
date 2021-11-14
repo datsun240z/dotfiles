@@ -5,8 +5,9 @@
 # Add the following to .vimrc
 # set makeprg=makeprg_filter
 # let &errorformat ='| %f:%l:%c: %m'
+## cd /localdata/${USER}/yocto/builds/evernight/evernight-generic-intel-x86-64 && \
 recipe=$1
 repo=$(basename `git rev-parse --show-toplevel`)
-cd /localdata/${USER}/yocto/builds/evernight/evernight-generic-intel-x86-64 && \
+cd /localdata/${USER}/yocto/builds/evernight/evernight-generic-arm-aarch64 && \
 	bb nowait ${recipe} | \
 	sed 's!/localdata/'"${USER}"'/yocto/builds/evernight/evernight-generic-intel-x86-64/tmp/work/intel_x86_64-evernight-linux/'"${recipe}"'/[0-9\.]*+gitAUTOINC+[[:xdigit:]]*-r0/git!/localdata/rbelaire/yocto/source/evernight/ciena/'"${repo}"'!g'

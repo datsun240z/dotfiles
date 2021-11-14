@@ -74,6 +74,7 @@ filetype off                   " required!
       " ~  to go home
    Bundle 'Valloric/ListToggle'
       " Location/Quick Toogle set to <leader>l and <leader>q, respectively.
+   Bundle 'gyim/vim-boxdraw'
    Bundle 'vivien/vim-linux-coding-style'
       let g:linuxsty_patterns = [ "/oneos-linux", "/linux", "/ko", "/klm" ]
       " or :LinuxCodingStyle
@@ -490,6 +491,7 @@ set nrformats=hex,alpha
 
 " set makeprg=\./go\ TARG=saos-sds\ -k\ -j16\ USE_COLOUR=n
 " set makeprg=cd\ /localdata/rbelaire/yocto/builds/evernight/evernight-generic-intel-x86-64\ &&\ bb\ nowait\ $*\\\|\ makeprg_filter
+" Look at /home/rbelaire/usr/bin/makeprg_filter
 set makeprg=makeprg_filter
 let &errorformat ='| %f:%l:%c: %m'
 

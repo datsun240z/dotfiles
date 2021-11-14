@@ -16,10 +16,10 @@ export HISTCONTROL=ignoreboth
 
 # https://old.reddit.com/r/vim/comments/morzue/vim_has_a_native_plugin_that_allows_you_to_turn/
 # Shift Ctrl ] to follow links
-export MANPAGER="vim -M +MANPAGER \
-	-c 'set nolist nomod ft=man ts=8' \
-	-c 'set nonumber norelativenumber' \
-	-c 'let g:showmarks_enable=0' -"\
+# export MANPAGER="vim -M +MANPAGER \
+# 	-c 'set nolist nomod ft=man ts=8' \
+# 	-c 'set nonumber norelativenumber' \
+# 	-c 'let g:showmarks_enable=0' -"\
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
