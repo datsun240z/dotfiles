@@ -276,6 +276,12 @@ vimq() {
     vim -q <(rg --vimgrep $1)
 }
 
+# https://threkk.medium.com/how-to-use-bookmarks-in-bash-zsh-6b8074e40774
+if [ -d "$HOME/.bookmarks" ]; then
+    export CDPATH=".:$HOME/.bookmarks:/"
+    alias goto="cd -P"
+fi
+
 # vim: tabstop=2:expandtab:shiftwidth=2:nowrap
 
 # If not running interactively, don't do anything

@@ -199,6 +199,7 @@ filetype off                   " required!
       let GtagsCscope_Quiet=1
    " Bundle 'ludovicchabant/vim-gutentags.git' requires vim 8.0
    Bundle 'datsun240z/bitbake.vim'
+   " Bundle 'gyim/vim-boxdraw'
    Bundle 'datsun240z/GNOME-align-args'
       nmap ,a :GNOMEAlignArguments<CR>
    Bundle 'datsun240z/gtagsomnicomplete'
@@ -499,6 +500,15 @@ nnoremap @pfa       :!p4 add %<CR>:e<CR>
 nnoremap @pfe       :!p4 edit %<CR>:e<CR>
 nnoremap @pfd       :!p4 diff %<CR>
 command! Blame execute '!p4-annotate' . ' ' . expand('%:p') . ' ' . line('.')
+
+" Enable saving of undo history data from the buffer to a file.  Next
+" time Vim starts, the undo file is loaded.
+set undofile
+
+" Directory for the undo files.  This can be multiple entries separated
+" by comma, in which the first found one will be used.  "." means
+" current directory of the file.
+set undodir=~/.vim/undodir
 
 set wildignore+=*/build/*,*/cache/*
 set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png
