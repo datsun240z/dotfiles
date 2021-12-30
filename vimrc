@@ -110,8 +110,8 @@ filetype off                   " required!
       " Turn on case insensitive feature
       let g:EasyMotion_smartcase = 1
       " JK motions: Line motions
-      map <Leader>j <Plug>(easymotion-j)
-      map <Leader>k <Plug>(easymotion-k)
+      " map <Leader>j <Plug>(easymotion-j)
+      " map <Leader>k <Plug>(easymotion-k)
    Bundle 'ifdef-highlighting'
       " use :Define <keyword> or :Undefine <keyword> to dynamically specify
    Bundle 'Align'
@@ -226,6 +226,8 @@ filetype off                   " required!
       nnoremap gf :GF .<CR>
       " https://errong.win/make-vim-like-source-insight-effective-c-c-ide
       " let g:fzf_tags_command = 'gtags'
+      command! -bang -nargs=* WikiRg cd ~/vimwiki | call fzf#vim#grep('rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>) , 1, fzf#vim#with_preview(), <bang>0)
+
    Bundle 'ajmwagar/vim-dues'
    " Bundle 'gregsexton/gitv'
       "Type :Gitv for log
@@ -461,10 +463,12 @@ noremap _F ma[[k"xyy`a:echo @x<CR>
 " gq is a formatting command. It reflows and wraps the given text object
 " (defaults to a single line) to the textwidth set width.
 nnoremap Q gq
+
 " Make Y yank everything from the cursor to the end of the line. This makes Y
 " act more like C or D because by default, Y yanks the current line (i.e. the
 " same as yy).
 noremap Y y$
+
 " Make Ctrl-e jump to the end of the current line in the insert mode. This is
 " handy when you are in the middle of a line and would like to go to its end
 " without switching to the normal mode.
@@ -472,6 +476,21 @@ noremap Y y$
 "
 " http://vim.wikia.com/wiki/Replace_a_word_with_yanked_text
 xnoremap p "_dP
+
+" https://youtu.be/hSHATqh8svM
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ`z
+inoremap , ,<c-g>u
+" nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
+" nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+inoremap <C-j> <esc>:m .+1<CR>==i
+inoremap <C-k> <esc>:m .-2<CR>==i
+nnoremap <Leader>j :m .+1<CR>==
+nnoremap <Leader>k :m .-2<CR>==
+
 
 " vim *.bin or *.exe : edit binary using xxd-format!
 augroup Binary
