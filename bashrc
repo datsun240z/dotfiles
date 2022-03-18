@@ -67,6 +67,7 @@ case "$TERM" in
     alias ls='ls -G --color --classify'
     ;;
   *)
+    # tmux runs here
     export EDITOR='/usr/bin/gvim'
     export CSCOPE_EDITOR='/usr/bin/gvim'
     ;;
@@ -82,6 +83,8 @@ function _update_ps1() {
 }
 
 case "$TERM" in
+  linux)
+      ;;
   xterm-256color|screen-256color)
     case "$OSTYPE" in
       linux-gnu)
@@ -93,7 +96,7 @@ case "$TERM" in
         ;;
       *)
         # https://github.com/b-ryan/powerline-shell
-        if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
+        if [[ ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
           PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
         fi
         ;;
@@ -152,6 +155,7 @@ alias Superm7p='ipmitool -H 10.183.49.117 -U ADMIN -P ADMIN -e [ -I lanplus powe
 alias weather='curl -4 http://wttr.in'
 alias bt2='babeltrace2 --clock-gmt --clock-date'
 alias week='date +%V'
+alias rgg='rg -g '"'"'!oneos-linux'"'"''
 # alias git-vimunstaged='$EDITOR $(git status -s | cut -f3 -d" ")'
 # alias gitlog='git log --graph --full-history --all --color --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20[%cn] %s"'
 
@@ -168,16 +172,16 @@ if [ -f ~/.git-completion.bash ]; then
     export GIT_PS1_SHOWDIRTYSTATE=1
 fi
 
-if [ -f ~/.bash_completion_lib.d/completions/complete/gocompletion.sh ]; then
+if [ -f  ~/.bash_completion_lib.d/completions/complete/gocompletion.sh ]; then
   source ~/.bash_completion_lib.d/completions/complete/gocompletion.sh
 fi
 
-if [ -f ~/bash_completion_lib-1.3.1/bash_completion_lib ]; then
+if [ -f  ~/bash_completion_lib-1.3.1/bash_completion_lib ]; then
   source ~/bash_completion_lib-1.3.1/bash_completion_lib
 fi
 
 if [[ ! "$HOSTNAME" =~ "ThinkPad-T4" ]]; then
-  if [ -f /etc/bash_completion ]; then
+  if [ -f  /etc/bash_completion ]; then
     source /etc/bash_completion
   fi
 fi
@@ -207,12 +211,12 @@ if [ -f  ~/.bash_completion_lib.d/completions/complete/global.completion ]; then
   source ~/.bash_completion_lib.d/completions/complete/global.completion
 fi
 
-if [ -f ~/.local/bin/bashmarks.sh ]; then
-    source ~/.local/bin/bashmarks.sh
+if [ -f  ~/.local/bin/bashmarks.sh ]; then
+  source ~/.local/bin/bashmarks.sh
 fi
 
-if [ -f /etc/profile.d/vte.sh ]; then
-    source /etc/profile.d/vte.sh
+if [ -f  /etc/profile.d/vte.sh ]; then
+  source /etc/profile.d/vte.sh
 fi
 
 if [ -f  ${HOME}/.expect-liter ]; then
@@ -271,6 +275,7 @@ export "SSH_AUTH_SOCK=${HOME}/.gnupg/S.gpg-agent.ssh"
 # --follow: Follow symlinks
 # --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+export RIPGREP_CONFIG_PATH=~/.ripgreprc
 
 vimq() {
     vim -q <(rg --vimgrep $1)
@@ -360,3 +365,4 @@ export SCM_CHECK=true
 
 # Load Bash It
 source "$BASH_IT"/bash_it.sh
+. "$HOME/.cargo/env"

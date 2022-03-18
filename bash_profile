@@ -92,3 +92,4 @@ test -e ${HOME}/.iterm2_shell_integration.bash && source ${HOME}/.iterm2_shell_i
 CHECKME=~/code/diff-so-fancy
 if [ -d $CHECKME ] ; then PATH="$PATH":$CHECKME; fi
 
+. "$HOME/.cargo/env"

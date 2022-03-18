@@ -402,7 +402,7 @@ set directory=/tmp
 set guioptions+=a
 set guioptions-=T
 set textwidth=100
-" set formatoptions-=t    " kill auto-wrap
+set formatoptions-=t " do not automatically wrap text when typing
 " set tabstop=4 expandtab shiftwidth=4 nowrap
 " set patchmode=.org
 let g:is_bash=1
@@ -478,8 +478,8 @@ noremap Y y$
 xnoremap p "_dP
 
 " https://youtu.be/hSHATqh8svM
-nnoremap n nzzzv
-nnoremap N Nzzzv
+" nnoremap n nzzzv
+" nnoremap N Nzzzv
 nnoremap J mzJ`z
 inoremap , ,<c-g>u
 " nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
@@ -564,8 +564,17 @@ endif
 
 highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
 highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
-highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+highlight DiffChange cterm=bold ctermfg=10 ctermbg=89 gui=none guifg=bg guibg=Red
 highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
+" set cursorline
+" if &diff
+"     map ] ]c
+"     map [ [c
+"     highlight DiffAdd    ctermfg=233  ctermbg=LightGreen guifg=#003300 guibg=#DDFFDD gui=none cterm=none
+"     highlight DiffChange ctermbg=89   guibg=#ececec gui=none   cterm=none
+"     highlight DiffText   ctermfg=233  ctermbg=yellow  guifg=#000033 guibg=#DDDDFF gui=none cterm=none
+" endif
+
 
 set ttyfast
 set shortmess+=I
@@ -620,6 +629,8 @@ let g:netrw_browse_split = 4
 " let g:netrw_altv = 1
 let g:netrw_winsize = 30
 " let g:netrw_preview = 1
+let g:netrw_fastbrowse = 0
+autocmd FileType netrw setl bufhidden=delete
 
 " function! ToggleVExplorer()
 "   if exists("t:expl_buf_num")
@@ -690,6 +701,7 @@ autocmd BufReadPost *
 function! Clear() abort
     set nolist nonumber norelativenumber
     GitGutterDisable
+    SignatureToggle
 endfunction
 command! CLEAR call Clear()
 
