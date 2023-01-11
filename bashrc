@@ -156,6 +156,7 @@ alias weather='curl -4 http://wttr.in'
 alias bt2='babeltrace2 --clock-gmt --clock-date'
 alias week='date +%V'
 alias rgg='rg -g '"'"'!oneos-linux'"'"''
+alias vout='vim $($(fc -ln -1))'
 # alias git-vimunstaged='$EDITOR $(git status -s | cut -f3 -d" ")'
 # alias gitlog='git log --graph --full-history --all --color --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20[%cn] %s"'
 
@@ -167,8 +168,8 @@ findlastest() {
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
-if [ -f ~/.git-completion.bash ]; then
-    source ~/.git-completion.bash
+if [ -f ${HOME}/.git-completion.bash ]; then
+    source ${HOME}/.git-completion.bash
     export GIT_PS1_SHOWDIRTYSTATE=1
 fi
 
@@ -192,6 +193,10 @@ fi
 
 if [ -f  ${HOME}/.bash_completion_lib.d/completions/complete/bbconf.completion ]; then
   source ${HOME}/.bash_completion_lib.d/completions/complete/bbconf.completion
+fi
+
+if [ -f  ${HOME}/.bash_completion_lib.d/completions/complete/localize.completion ]; then
+  source ${HOME}/.bash_completion_lib.d/completions/complete/localize.completion
 fi
 
 if [ -f  ${HOME}/.bash_completion_lib.d/completions/complete/gitm.completion ]; then

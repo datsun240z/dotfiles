@@ -31,26 +31,28 @@
 	autocrlf = input
 	excludesfile = ~/.gitignore
 [alias]
-	st = status --short --branch
-	ci = commit
+	st = status --branch
 	br = branch
 	co = checkout
-	df = diff --color-words=.
-	dif = diff --word-diff=color
-	dfg = difftool --gui
-	lg = log --pretty='%Cred%h%Creset |%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %C(cyan)[%an]%Creset' --graph
-	lol = log --graph --decorate --pretty=oneline --abbrev-commit
-	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
-	ls = ls-files
+	log-pretty = log --graph --pretty='%Cred%h%Creset |%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %C(cyan)[%an]%Creset'
+	log-last = log -1 HEAD
+	log-grep = log --pretty=\"format:%Cgreen%H %Cblue%s\" --name-status --grep
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	ls = ls-files
 	type = cat-file -t
 	dump = cat-file -p
-	dirty = diff --name-only --cached
-	unstage = reset HEAD --
-	last = log -1 HEAD
-	d =
-	dt = difftool
-	cp = cherry-pick
+	unstage = reset --quiet HEAD --
+	diff-staged = diff --staged
+	diff-upstream = !git fetch origin && git diff master origin/master
+	restore-staged = restore --staged
+	fetch-prune = fetch --all --prune
+	precommit = diff --cached --diff-algorithm=minimal -w
+	uncommit = reset --mixed HEAD~
+	amend = commit --amend
+	discard = reset HEAD --hard
+	discard-chunk = checkout --patch
+	lb = !git reflog show --pretty=format:'%gs ~ %gd' --date=relative | grep 'checkout:' | grep -oE '[^ ]+ ~ .*' | awk -F~ '!seen[$1]++' | head -n 10 | awk -F' ~ HEAD@{' '{printf(\"  \\033[33m%s: \\033[37m %s\\033[0m\\n\", substr($2, 1, length($2)-1), $1)}'
+	; lb = !git reflog show --pretty=format:'%gs ~ %gd' --date=relative | grep 'checkout:' | grep -oE '[^ ]+ ~ .*' | awk -F~ '!seen[$1]++' | head -n 10 | awk -F' ~ HEAD@{' '{printf(\" %12s:\t%s\\n\", substr($2, 1, length($2) - 1), $1)}'
 [diff]
 	#tool = vimdiff
 	guitool = meld
