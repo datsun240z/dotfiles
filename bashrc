@@ -157,6 +157,9 @@ alias bt2='babeltrace2 --clock-gmt --clock-date'
 alias week='date +%V'
 alias rgg='rg -g '"'"'!oneos-linux'"'"''
 alias vout='vim $($(fc -ln -1))'
+PATH=${PATH}:/home/rbelaire/ybin
+alias ysrc='cd /localdata/rbelaire/yocto/source/evernight'
+alias ybld='cd /localdata/rbelaire/yocto/builds'
 # alias git-vimunstaged='$EDITOR $(git status -s | cut -f3 -d" ")'
 # alias gitlog='git log --graph --full-history --all --color --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20[%cn] %s"'
 
@@ -281,6 +284,9 @@ export "SSH_AUTH_SOCK=${HOME}/.gnupg/S.gpg-agent.ssh"
 # --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 export RIPGREP_CONFIG_PATH=~/.ripgreprc
+
+export GTAGSCONF=/usr/local/share/gtags/gtags.conf
+export GTAGSLABEL=pygments
 
 vimq() {
     vim -q <(rg --vimgrep $1)

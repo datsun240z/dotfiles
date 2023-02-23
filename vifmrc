@@ -1,3 +1,5 @@
+set timefmt="%y/%m/%d %H:%M"
+set viewcolumns=*{name}..,16{mtime},7{}
 
 nmap yy :!cp %f %D<CR>
 nmap dd :!mv %f %D<CR>

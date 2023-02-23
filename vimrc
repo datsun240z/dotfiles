@@ -75,6 +75,7 @@ filetype off                   " required!
    Bundle 'Valloric/ListToggle'
       " Location/Quick Toogle set to <leader>l and <leader>q, respectively.
    Bundle 'gyim/vim-boxdraw'
+   Bundle 'neoclide/jsonc.vim'
    Bundle 'vivien/vim-linux-coding-style'
       let g:linuxsty_patterns = [ "/oneos-linux", "/linux", "/ko", "/klm" ]
       " or :LinuxCodingStyle
@@ -714,11 +715,12 @@ command! DIM call Dim()
 " Cursor to yellow on insert mode
 " Blue on command/other mode
 " Note the use of hex codes (ie 3971ED)
+" https://gist.github.com/asethwright/9c436d2a8a5b0f48e499
 if exists('$TMUX')
-    let &t_EI = "\<Esc>Ptmux;\<Esc>\033]Pl3971ED\033\\"
-    let &t_SI = "\<Esc>Ptmux;\<Esc>\033]PlFBA922\033\\"
-    silent !echo -ne "\<Esc>Ptmux;\<Esc>\033]Pl3971ED\033\\"
-    autocmd VimLeave * silent !echo -ne "\<Esc>Ptmux;\<Esc>\033]Pl3971ED\033\\"
+    " let &t_EI = "\<Esc>Ptmux;\<Esc>\033]Pl3971ED\033\\"
+    " let &t_SI = "\<Esc>Ptmux;\<Esc>\033]PlFBA922\033\\"
+    " silent !echo -ne "\<Esc>Ptmux;\<Esc>\033]Pl3971ED\033\\"
+    " autocmd VimLeave * silent !echo -ne "\<Esc>Ptmux;\<Esc>\033]Pl3971ED\033\\"
 else
     let &t_EI = "\033]Pl3971ED\033\\"
     let &t_SI = "\033]PlFBA922\033\\"
