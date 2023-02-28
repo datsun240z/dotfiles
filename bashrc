@@ -40,6 +40,9 @@ fi
 case "$TERM" in
   xterm-color)
     ;;
+  xterm-kitty)
+          export TERM='xterm'
+    ;;
   xterm-256color|xterm)
     case "$OSTYPE" in
       linux-gnu)
