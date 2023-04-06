@@ -306,18 +306,19 @@ filetype off                   " required!
       "flake8.vim settings
       "====================================================
       let g:flake8_show_in_gutter=1
-      autocmd FileType python map <buffer> <Leader>f :call flake8#Flake8()<CR>
+      autocmd FileType python map <buffer> <Leader>l :call flake8#Flake8()<CR>
    Bundle 'okcompute/vim-python-match'
       " % g% [% ]%
+   Bundle 'psf/black'
    " Search OpenGrok from Vim
-   Bundle 'jdevera/vim-opengrok-search'
-      let g:ogs_app_url = 'https://opengrok.ciena.com/psa/'
-      let g:ogs_project = 'valimar'
-      if has('mac')
-         let g:ogs_browser_command = 'open -a firefox'
-      else
-         let g:ogs_browser_command = 'firefox'
-      endif
+   " Bundle 'jdevera/vim-opengrok-search'
+   "    let g:ogs_app_url = 'https://opengrok.ciena.com/psa/'
+   "    let g:ogs_project = 'valimar'
+   "    if has('mac')
+   "       let g:ogs_browser_command = 'open -a firefox'
+   "    else
+   "       let g:ogs_browser_command = 'firefox'
+   "    endif
       " Default Map    Description           Mapping targets~
       " <Leader>ogf    Search full text      <Plug>OpenGrokSearchFull
       "                                      <Plug>OpenGrokSearchSelectedFull
@@ -337,6 +338,8 @@ filetype off                   " required!
       vmap @or <Plug>OpenGrokSearchSelectedRefs
       " Use the word under the cursor for a symbol search
       nmap @or <Plug>OpenGrokSearchRefs
+   Bundle 'dense-analysis/ale'
+   Bundle 'altercation/vim-colors-solarized'
    Bundle 'bkad/CamelCaseMotion'
       call camelcasemotion#CreateMotionMappings('<leader>')
    Bundle 'ConradIrwin/vim-bracketed-paste'
@@ -372,7 +375,10 @@ augroup END
 
 " colorscheme by http://bytefluent.com/vivify/
 " colorscheme jellybeans
-colorscheme elflord
+" colorscheme elflord
+colorscheme solarized
+set background=dark
+let g:solarized_termcolors=256
 
 " SET:
 " To see current value ":set hidden?"
