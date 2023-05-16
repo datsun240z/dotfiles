@@ -4,19 +4,19 @@
 [color]
 	pager = true
 	ui = auto
-	ui = auto # covers diff = true, status = auto, branch = auto
 	interactive = auto
 [color "branch"]
 	current = blue reverse
 	local = blue
 	remote = green
 [color "diff"]
-	meta = blue
+	meta = 11
 	frag = magenta bold
 	old = red bold
-	new = green bold
+	new = "#00ff00 bold"
 	whitespace = red reverse
-	commit = blue bold
+	commit = yellow bold
+	func = 146 bold
 [color "status"]
 	added = blue
 	changed = green
@@ -80,7 +80,7 @@
 	oldNormal = red bold
 	oldHighlight = red bold 52
 	newNormal = green bold
-	newHighlight = green bold 22
+	newHighlight = blue bold 22
 [diff-so-fancy]
 	markEmptyLines = false
 	changeHunkIndicators = true
@@ -89,3 +89,8 @@
 [credential "https://github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
+[safe]
+	directory = *
+
+[interactive]
+	diffFilter = diff-so-fancy --patch

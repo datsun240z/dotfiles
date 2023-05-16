@@ -160,7 +160,6 @@ alias bt2='babeltrace2 --clock-gmt --clock-date'
 alias week='date +%V'
 alias rgg='rg -g '"'"'!oneos-linux'"'"''
 alias vout='vim $($(fc -ln -1))'
-PATH=${PATH}:/home/rbelaire/ybin
 alias ysrc='cd /localdata/rbelaire/yocto/source/evernight'
 alias ybld='cd /localdata/rbelaire/yocto/builds'
 # alias git-vimunstaged='$EDITOR $(git status -s | cut -f3 -d" ")'
@@ -193,28 +192,23 @@ if [[ ! "$HOSTNAME" =~ "ThinkPad-T4" ]]; then
   fi
 fi
 
-if [ -f  ${HOME}/.bash_completion_lib.d/completions/complete/bb.completion ]; then
+if [ -f  "${HOME}/.bash_completion_lib.d/completions/complete/bb.completion" ]; then
   source ${HOME}/.bash_completion_lib.d/completions/complete/bb.completion
 fi
 
-if [ -f  ${HOME}/.bash_completion_lib.d/completions/complete/bbconf.completion ]; then
+if [ -f  "${HOME}/.bash_completion_lib.d/completions/complete/bbconf.completion" ]; then
   source ${HOME}/.bash_completion_lib.d/completions/complete/bbconf.completion
 fi
 
-if [ -f  ${HOME}/.bash_completion_lib.d/completions/complete/localize.completion ]; then
+if [ -f  "${HOME}/.bash_completion_lib.d/completions/complete/localize.completion" ]; then
   source ${HOME}/.bash_completion_lib.d/completions/complete/localize.completion
 fi
 
-if [ -f  ${HOME}/.bash_completion_lib.d/completions/complete/gitm.completion ]; then
+if [ -f  "${HOME}/.bash_completion_lib.d/completions/complete/gitm.completion" ]; then
   source ${HOME}/.bash_completion_lib.d/completions/complete/gitm.completion
 fi
 
-if [ -f  ${HOME}/.bash_completion_lib.d/completions/complete/git-completion.bash ]; then
-  # source ${HOME}/.bash_completion_lib.d/completions/complete/git-completion.bash
-  :
-fi
-
-if [ -f  ${HOME}/.bash_completion_lib.d/completions/complete/bitbake ]; then
+if [ -f "${HOME}/.bash_completion_lib.d/completions/complete/bitbake" ]; then
   source ${HOME}/.bash_completion_lib.d/completions/complete/bitbake
 fi
 
@@ -378,5 +372,7 @@ export SCM_CHECK=true
 # export BASH_IT_RELOAD_LEGACY=1
 
 # Load Bash It
-source "$BASH_IT"/bash_it.sh
-. "$HOME/.cargo/env"
+SOURCEME="$BASH_IT"/bash_it.sh
+if [ -f $SOURCEME ] ; then source $SOURCEME; fi
+SOURCEME="$HOME/.cargo/env"
+if [ -f $SOURCEME ] ; then source $SOURCEME; fi

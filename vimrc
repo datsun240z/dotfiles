@@ -30,7 +30,6 @@ filetype off                   " required!
       nnoremap @gD <c-w>h<c-w>c
       " Use :Gstatus with "-" to add files to cache
       " Use :Gcommit
-   " Bundle 'tpope/vim-sleuth' indent-detector is mod to be better
    " GitHub extension for fugitive.vim
    Bundle 'tpope/vim-rhubarb'
    " Add Bitbucket URL support to fugitive.vim's :Gbrowse command
@@ -63,15 +62,6 @@ filetype off                   " required!
    Bundle 'tpope/vim-commentary'
       " gcc to un/comment a line
       " gc  to un/comment a motion/visual
-   " Bundle 'tpope/vim-vinegar'
-      " -  hop up to the directory listing and seek to the file you just came from
-      " nmap - <Plug>VinegarVerticalSplitUp
-      " nmap - :Vex<CR>
-      " I  toggle banner
-      " gh toggle dot file hiding
-      " .  to push filename to cmdline
-      " y. to yank filename
-      " ~  to go home
    Bundle 'Valloric/ListToggle'
       " Location/Quick Toogle set to <leader>l and <leader>q, respectively.
    Bundle 'gyim/vim-boxdraw'
@@ -123,36 +113,10 @@ filetype off                   " required!
       " \acom : align comments
       " \adec : align C declarations (one variable per line)
       " \afnc : align ansi-style C function input arguments
-   " Bundle 'w0rp/ale'
-   " Bundle 'vim-indent-object'
-   " Bundle 'rust-lang/rust.vim'
-   " Bundle 'bufexplorer.zip'
-      " CTRL+b opens the buffer list
-      " noremap <C-b> <esc>:BufExplorer<CR>
-   " Bundle 'The-NERD-tree'
-   "    noremap <F3> :NERDTreeToggle<CR>
-   "    noremap <F4> :NERDTreeFind<CR>
-   " Bundle 'NERD_Tree-and-ack'
-      " While in nerd, hit m to ack the folder
-   " Bundle 'ack.vim'
-      " :Ack pattern
-   " Bundle 'matchit.zip' Included in vim 6.0
    Bundle 'genutils'
    Bundle 'ScreenShot'
       let ScreenShot = {'Title':0, 'Icon':0, 'Credits':0, 'force_background':'#FFFFFF'}
    Bundle 'multvals.vim'
-   " Bundle 'GrepCommands'
-      " :ArgGrep[Add][!] [{pattern}]
-      " :ArgGrep[Add][!] /{pattern}/[g][j]
-      "                         Search for {pattern} (or current search string if
-      "                         omitted) in all files from the argument-list and set
-      "                         the error list to the matches.
-
-      " :BufGrep[Add][!] [{pattern}]
-      " :BufGrep[Add][!] /{pattern}/[g][j]
-      "                         Search for {pattern} (or current search string if
-      "                         omitted) in all listed buffers and set the error list
-      "                         to the matches.
    Bundle 'mhinz/vim-grepper'
       nnoremap <leader>* :Grepper -tool ag -cword -noprompt<cr>
       nmap gs  <plug>(GrepperOperator)
@@ -173,8 +137,6 @@ filetype off                   " required!
       let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
       let g:airline#extensions#whitespace#mixed_indent_algo = 2
       let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing', 'long', 'mixed-indent-file', 'conflicts' ]
-   " Bundle 'mbadran/headlights'
-      " Informs you of all the Bundles installed
    Bundle 'nathanaelkane/vim-indent-guides'
       " plugin for visually displaying indent levels in Vim
       " Use '\ig' to toggle
@@ -188,25 +150,16 @@ filetype off                   " required!
       " ]c      [c  Next/Prev Hunk
       " \hs and \hu Stage/Unstage Hunk
       " :GitGutterToggle  :GitGutterSignsToggle  :GitGutterLineHighlightsToggle
-   " Bundle 'luochen1990/indent-detector.vim'
-      " manually patch indent_detector#search_nearby('^ [^\t \*]')
    Bundle "daylerees/colour-schemes", { "rtp": "vim/" }
-   " Bundle 'wesQ3/vim-windowswap'
-      " \ww then move and \ww again
    Bundle 'vim-jp/vim-cpp'
       let c_space_errors=1
-   " Bundle 'godlygeek/csapprox'
    Bundle 'datsun240z/gtags-cscope'
       let GtagsCscope_Quiet=1
-   " Bundle 'ludovicchabant/vim-gutentags.git' requires vim 8.0
-   " Bundle 'datsun240z/bitbake.vim'
    Bundle 'kergoth/vim-bitbake'
-   " Bundle 'gyim/vim-boxdraw'
    Bundle 'datsun240z/GNOME-align-args'
       nmap ,a :GNOMEAlignArguments<CR>
    Bundle 'datsun240z/gtagsomnicomplete'
       autocmd FileType c set omnifunc=gtagsomnicomplete#Complete
-   " Bundle 'VOoM'
    Bundle 'unblevable/quick-scope'
       " Trigger a highlight in the appropriate direction when pressing these keys:
       let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
@@ -231,36 +184,6 @@ filetype off                   " required!
       command! -bang -nargs=* WikiRg cd ~/vimwiki | call fzf#vim#grep('rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>) , 1, fzf#vim#with_preview(), <bang>0)
 
    Bundle 'ajmwagar/vim-dues'
-   " Bundle 'gregsexton/gitv'
-      "Type :Gitv for log
-      "
-      "colors dues
-   " Bundle 'datsun240z/vim-colors'
-   " Bundle 'yaifa.vim'
-   " Bundle 'quickhl.vim'
-   " Bundle 'endel/vim-github-colorscheme'
-      " colorscheme github
-   " Bundle 'GGalizzi/cake-vim'
-      " colorscheme cake
-   " Bundle 'wimstefan/Lightning'
-      " colorscheme lightning
-   " Bundle 'vim-scripts/beauty256'
-      " colorscheme beauty256
-   " Bundle 'baeuml/summerfruit256.vim'
-      " colorscheme summerfruit256
-   " Bundle 'tmhedberg/SimpylFold'
-      " nmap <Space>m <Plug>(quickhl-manual-this)
-      " xmap <Space>m <Plug>(quickhl-manual-this)
-      " nmap <F9>     <Plug>(quickhl-manual-toggle)
-      " xmap <F9>     <Plug>(quickhl-manual-toggle)
-      " nmap <Space>M <Plug>(quickhl-manual-reset)
-      " xmap <Space>M <Plug>(quickhl-manual-reset)
-      " nmap <Space>j <Plug>(quickhl-cword-toggle)
-      " nmap <Space>] <Plug>(quickhl-tag-toggle)
-      " noremap H <Plug>(operator-quickhl-manual-this-motion)
-   " Bundle 'autoload_cscope.vim'
-   " Bundle 'cscope.vim'
-   " Bundle 'taglist.vim'
    Bundle 'vimwiki/vimwiki'
       let wiki_1 = {}
       let wiki_1.path            = '~/vimwiki/'
@@ -278,78 +201,29 @@ filetype off                   " required!
       " nnoremap <leader>wb <Plug>VimwikiGoBackLink :VimwikiGoBackLink<CR>
       " nnoremap <leader>wb :VimwikiGoBackLink<CR>
    Bundle 'mzlogin/vim-markdown-toc'
-   " Bundle 'suan/vim-instant-markdown'
-      " let g:instant_markdown_autostart = 0
-      " map <leader>md :InstantMarkdownPreview<CR>
    Bundle 'wikitopian/hardmode'
       nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
       let g:HardMode_level = 'wannabe'
    Bundle 'google/vim-searchindex'
       " press g/ to display search index for the last search
+   Bundle 'idanarye/vim-merginal'
+   Bundle 'Shougo/vimproc.vim'
    Bundle 'vim-scripts/confluencewiki.vim'
-   " Bundle 'vim-scripts/rtorrent-syntax-file'
-   Bundle 'Vimjas/vim-python-pep8-indent'
-      let g:python_pep8_indent_multiline_string=-1
-      " g:python_pep8_indent_multiline_string=[0|-1|-2]
-      "  You can configure the initial indentation of multiline strings using
-      "  g:python_pep8_indent_multiline_string (which can also be set per buffer). This
-      "  defaults to 0, which means that multiline strings are not indented. -1 and
-      "  positive values will be used as-is, where -1 is a special value for Vim's
-      "  indentexpr, and will keep the existing indent (using Vim's autoindent
-      "  setting). -2 is meant to be used for strings that are wrapped with
-      "  textwrap.dedent etc. It will add a level of indentation if the multiline
-      "  string started in the previous line, without any content in it already:
-      " g:python_pep8_indent_hang_closing=[0|-1]
-      " Control closing bracket indentation with python_pep8_indent_hang_closing
-   Bundle 'nvie/vim-flake8'
-      "====================================================
-      "flake8.vim settings
-      "====================================================
-      let g:flake8_show_in_gutter=1
-      autocmd FileType python map <buffer> <Leader>l :call flake8#Flake8()<CR>
    Bundle 'okcompute/vim-python-match'
       " % g% [% ]%
-   Bundle 'psf/black'
-   " Search OpenGrok from Vim
-   " Bundle 'jdevera/vim-opengrok-search'
-   "    let g:ogs_app_url = 'https://opengrok.ciena.com/psa/'
-   "    let g:ogs_project = 'valimar'
-   "    if has('mac')
-   "       let g:ogs_browser_command = 'open -a firefox'
-   "    else
-   "       let g:ogs_browser_command = 'firefox'
-   "    endif
-      " Default Map    Description           Mapping targets~
-      " <Leader>ogf    Search full text      <Plug>OpenGrokSearchFull
-      "                                      <Plug>OpenGrokSearchSelectedFull
-      "
-      " <Leader>ogd    Search definitions    <Plug>OpenGrokSearchDefs
-      "                                      <Plug>OpenGrokSearchSelectedDefs
-      "
-      " <Leader>ogr    Search symbols        <Plug>OpenGrokSearchRefs
-      "                                      <Plug>OpenGrokSearchSelectedRefs
-      "
-      " <Leader>ogp    Search file paths     <Plug>OpenGrokSearchPath
-      "                                      <Plug>OpenGrokSearchSelectedPath
-      "
-      " <Leader>ogh    Search file paths     <Plug>OpenGrokSearchHist
-      "                                      <Plug>OpenGrokSearchSelectedHist
-      " Use selected text to perform a symbol references search
-      vmap @or <Plug>OpenGrokSearchSelectedRefs
-      " Use the word under the cursor for a symbol search
-      nmap @or <Plug>OpenGrokSearchRefs
    Bundle 'dense-analysis/ale'
+      let g:ale_completion_enabled = 1
+      set omnifunc=ale#completion#OmniFunc
+      let g:ale_fixers = {}
+      let g:ale_fixers.python = ['black']
+      let g:ale_fixers.sh = ['shfmt']
+      let g:ale_sh_shfmt_options = '-i 2 -ci'
+      let g:ale_linters = {'python': ['flake8']}
    Bundle 'altercation/vim-colors-solarized'
-   Bundle 'bkad/CamelCaseMotion'
-      call camelcasemotion#CreateMotionMappings('<leader>')
    Bundle 'ConradIrwin/vim-bracketed-paste'
-   " Bundle 'Yggdroot/indentLine'
-   Bundle 'vim-signature'
 
    " ...All your other bundles...
    if iCanHazVundle == 0
-      echo "Installing Bundles, please ignore key map error messages"
-      echo ""
       :BundleInstall
    endif
    " Setting up Vundle - the vim plugin bundler end
@@ -373,11 +247,9 @@ autocmd!
 autocmd ColorScheme * highlight SpecialKey ctermfg=20
 augroup END
 
-" colorscheme by http://bytefluent.com/vivify/
-" colorscheme jellybeans
-" colorscheme elflord
 colorscheme solarized
-set background=dark
+set background=light
+" set background=dark
 let g:solarized_termcolors=256
 
 " SET:
@@ -386,22 +258,13 @@ let g:solarized_termcolors=256
 " To unset       value ":set nohidden"
 " To help        value ":help nohidden"
 "
-" set viminfo+='21,nC:/vim/_viminfo
-" Vim will search for the file named 'tags', starting with the current
-" directory and then going to the parent directory and then recursively to the
-" directory one level above, till it either locates the 'tags' file or reaches
-" the root '/' directory.
-" set tags=tags;/ Done in sensible.vim
 set path=.,**
 " set incsearch Done in sensible.vim
 set hlsearch
 " Make searches case-sensitive only if they contain upper-case characters
 set ignorecase smartcase
 set showmatch
-" set scrolloff=2 Done in sensible.vim
 set wildmode=longest,full
-" set columns=120
-" set lines=34
 set hidden
 set cindent
 set cinoptions+=(0
@@ -411,8 +274,6 @@ set guioptions+=a
 set guioptions-=T
 set textwidth=100
 set formatoptions-=t " do not automatically wrap text when typing
-" set tabstop=4 expandtab shiftwidth=4 nowrap
-" set patchmode=.org
 let g:is_bash=1
 behave xterm
 set number
@@ -421,7 +282,6 @@ set selectmode=key
 set keymodel=startsel
 set bsdir=buffer
 set t_Co=256 " 256 colors
-" set grepformat=%f:%l:%m
 noremap <C-Up> <C-Y>
 noremap <C-Down> <C-E>
 noremap <F10> :set ts=4   et sw=4 nowrap<CR>
@@ -616,9 +476,6 @@ set spellfile=$HOME/en.utf-8.add
 " z= suggest
 " [s next bad word
 
-" if has("autocmd")
-"   filetype plugin indent on
-" endif
 "autocmd FileType gitcommit match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$' | setlocal spell
 autocmd FileType gitcommit setlocal spell
 autocmd FileType vimwiki set nonumber | set norelativenumber | set list listchars=
@@ -627,6 +484,7 @@ autocmd FileType vimwiki set nonumber | set norelativenumber | set list listchar
 autocmd BufRead,BufNewFile *.nfo,*.NFO set ft=nfo
 autocmd FileType set nolist
 autocmd FileType python setlocal shiftwidth=4 softtabstop=4 expandtab
+autocmd FileType sh setlocal shiftwidth=4 softtabstop=4 expandtab
 
 " -----------------------------
 " NERDTree-like but using netrw
@@ -639,27 +497,6 @@ let g:netrw_winsize = 30
 " let g:netrw_preview = 1
 let g:netrw_fastbrowse = 0
 autocmd FileType netrw setl bufhidden=delete
-
-" function! ToggleVExplorer()
-"   if exists("t:expl_buf_num")
-"       let expl_win_num = bufwinnr(t:expl_buf_num)
-"       if expl_win_num != -1
-"           let cur_win_nr = winnr()
-"           exec expl_win_num . 'wincmd w'
-"           close
-"           exec cur_win_nr . 'wincmd w'
-"           unlet t:expl_buf_num
-"       else
-"           unlet t:expl_buf_num
-"       endif
-"   else
-"       exec '1wincmd w'
-"       Vexplore
-"       let t:expl_buf_num = bufnr("%")
-"   endif
-" endfunction
-" map <silent> <C-E> :call ToggleVExplorer()<CR>
-" close if final buffer is netrw or the quickfix
 
 vnoremap < <gv
 vnoremap > >gv
@@ -709,14 +546,8 @@ autocmd BufReadPost *
 function! Clear() abort
     set nolist nonumber norelativenumber
     GitGutterDisable
-    SignatureToggle
 endfunction
 command! CLEAR call Clear()
-
-function! Dim() abort
-    highlight SpecialKey ctermfg=20
-endfunction
-command! DIM call Dim()
 
 " Cursor to yellow on insert mode
 " Blue on command/other mode
@@ -734,3 +565,15 @@ else
     autocmd VimLeave * silent !echo -ne "\033]Pl3971ED\033\\"
 endif
 nnoremap <silent> <leader>m <cmd>Marks<cr>
+
+" Append modeline after last line in buffer.
+" Use substitute() instead of printf() to handle '%%s' modeline in LaTeX
+" files.
+function! AppendModeline()
+    let l:modeline = printf(" vim: set ts=%d sw=%d tw=%d %set :",
+                \ &tabstop, &shiftwidth, &textwidth, &expandtab ? '' : 'no')
+    let l:modeline = substitute(&commentstring, "%s", l:modeline, "")
+    call append(line("$"), l:modeline)
+endfunction
+nnoremap <silent> <Leader>ML :call AppendModeline()<CR>
+" vim: set ts=4 sw=4 tw=100 et :

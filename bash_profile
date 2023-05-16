@@ -18,62 +18,33 @@ if [[ '' = "$TMUX" ]]; then
   # set PATH so it includes user's private bin if it exists
   CHECKME=~/usr/bin
   if [ -d $CHECKME ] ; then PATH="$PATH":$CHECKME; fi
-
   CHECKME=~/usr/bin/git-config/bin
   if [ -d $CHECKME ] ; then PATH="$PATH":$CHECKME; fi
-
   CHECKME=/opt/tools/bin
   if [ -d $CHECKME ] ; then PATH="$PATH":$CHECKME; fi
-
-  CHECKME=~/usr/bin/p4u
-  if [ -d $CHECKME ] ; then PATH="$PATH":$CHECKME; fi
-
   CHECKME=~/ybin
   if [ -d $CHECKME ] ; then PATH="$PATH":$CHECKME; fi
-
   CHECKME=~/bin
   if [ -d $CHECKME ] ; then PATH="$PATH":$CHECKME; fi
-
+  CHECKME=~/.local/bin
+  if [ -d $CHECKME ] ; then PATH="$PATH":$CHECKME; fi
+  CHECKME=~/code/diff-so-fancy
+  if [ -d $CHECKME ] ; then PATH="$PATH":$CHECKME; fi
+  CHECKME=~/go/bin
+  if [ -d $CHECKME ] ; then PATH="$PATH":$CHECKME; fi
+  CHECKME=usr/local/sbin
+  if [ -d $CHECKME ] ; then PATH="$PATH":$CHECKME; fi
 fi
-
-CHECKME=usr/local/sbin
-if [ -d $CHECKME ] ; then PATH="$PATH":$CHECKME; fi
 
 # New dotfile stuff
 dots=~/dotfiles
-# not used yet, still hardcoded
-extentions_to_source=".path"
-function addToPath(){
-    #if [[ $FOO =~ "fii" ]]; then
-    #    echo hi
-    #fi
-    PATH="$1:$PATH"
-}
-function sourceDir(){
-    for file in *; do  # sets $file to * if empty directory
-        #echo "saw $file";
-        if [ -d $file ] && [ $(hostname) = $file ]; then
-            #echo "Recursing into $file";
-            cd $file;
-            sourceDir $file;
-            cd ..;
-        elif [[ $file == *.path ]]; then
-            # echo "$file is a .path";
-            source $file;
-        fi
-    done
-}
-
 pushd $dots > /dev/null
-
+source ~/complete/bash_completion.d/git
 source git-completion.bash
 source colours
-#source prompt
-#sourceDir
-
 popd > /dev/null
 
-if [ "$HOSTNAME" = "ONM-RBELAIRE-01" ]; then
+if [ "$HOSTNAME" = "RBELAIRE-LVDQ" ]; then
   [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && source $(brew --prefix)/etc/profile.d/autojump.sh
 
   if [ -f $(brew --prefix)/etc/bash_completion ]; then
@@ -89,7 +60,5 @@ test -e ${HOME}/.iterm2_shell_integration.bash && source ${HOME}/.iterm2_shell_i
 
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
-CHECKME=~/code/diff-so-fancy
-if [ -d $CHECKME ] ; then PATH="$PATH":$CHECKME; fi
-
-. "$HOME/.cargo/env"
+SOURCEME=~/complete/bash_completion.d/git
+if [ -f $SOURCEME ] ; then source $SOURCEME; fi
