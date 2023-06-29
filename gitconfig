@@ -98,3 +98,7 @@
 [add "interactive"]
 	# https://github.com/so-fancy/diff-so-fancy/issues/437#issuecomment-1169157237
 	useBuiltin = false
+[credential]
+	helper = /usr/local/share/gcm-core/git-credential-manager
+[credential "https://dev.azure.com"]
+	useHttpPath = true

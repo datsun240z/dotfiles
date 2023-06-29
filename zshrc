@@ -102,3 +102,6 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias pulse-off="sudo launchctl unload -w /Library/LaunchDaemons/net.pulsesecure.AccessService.plist"
 alias pulse-on="sudo launchctl load -w /Library/LaunchDaemons/net.pulsesecure.AccessService.plist"
+test -e /Users/rbelaire/.iterm2_shell_integration.zsh && source /Users/rbelaire/.iterm2_shell_integration.zsh || true
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

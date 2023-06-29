@@ -221,6 +221,9 @@ filetype off                   " required!
       let g:ale_sh_shfmt_options = '-i 2 -ci'
       let g:ale_linters = {'python': ['flake8']}
    Bundle 'altercation/vim-colors-solarized'
+      call togglebg#map("<leader>5")
+   Bundle 'bkad/CamelCaseMotion'
+      call camelcasemotion#CreateMotionMappings('<leader>')
    Bundle 'ConradIrwin/vim-bracketed-paste'
 
    " ...All your other bundles...
