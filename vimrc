@@ -44,6 +44,7 @@ filetype off                   " required!
       " [123+4*56]/2              cs])        (123+456)/2
       " if *x>3 {                 ysW(        if ( x>3 ) {
    Bundle 'tpope/vim-repeat'
+   " Bundle 'tpope/vim-sleuth'
    Bundle 'tpope/vim-unimpaired'
       " [b ]b             buffer next/previous
       " [q ]q             errors next/previous
@@ -169,8 +170,8 @@ filetype off                   " required!
       let g:fzf_layout = {}
       inoremap <expr> <c-x><c-k> fzf#complete('cat /usr/share/dict/words')
       nmap ; :Buffers<CR>
-      nmap <Leader>t :Files<CR>
-      nmap <Leader>r :Tags<CR>
+      nmap <Leader>f :Files<CR>
+      nmap <Leader>t :Tags<CR>
       nmap <leader>g :Rg <c-r>=expand("<cword>")<cr>
       " remap `gf` to pick up files anywhere inside current directory rather than just the literal `<cfile>`
       " when you want the same for some *other* directory, you put your cursor on the filename and type `:GF other-dir`
