@@ -58,7 +58,8 @@
 	guitool = meld
 	submodule = log
 	tool = vimdiff
-	algorithm = histogram
+	#algorithm = histogram
+	algorithm = patience
 [difftool]
 	prompt = false
 [merge]
@@ -94,3 +95,6 @@
 
 [interactive]
 	diffFilter = diff-so-fancy --patch
+[add "interactive"]
+	# https://github.com/so-fancy/diff-so-fancy/issues/437#issuecomment-1169157237
+	useBuiltin = false
