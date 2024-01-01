@@ -22,7 +22,6 @@ filetype off                   " required!
       let g:Author = 'rbelaire'
       " use .c .C to #ifdef out code
    " A Git wrapper
-   Bundle 'altercation/vim-colors-solarized'
    Bundle 'tpope/vim-fugitive'
       autocmd QuickFixCmdPost *grep* cwindow
       " vimdiff current vs git head (fugitive extension)
