@@ -34,7 +34,15 @@ if [[ '' = "$TMUX" ]]; then
   if [ -d $CHECKME ] ; then PATH="$PATH":$CHECKME; fi
   CHECKME=usr/local/sbin
   if [ -d $CHECKME ] ; then PATH="$PATH":$CHECKME; fi
+  CHECKME=/home/rbelaire/Android/Sdk/platform-tools
+  if [ -d $CHECKME ] ; then PATH="$PATH":$CHECKME; fi
 fi
+
+CHECKME=usr/local/sbin
+if [ -d $CHECKME ] ; then PATH="$PATH":$CHECKME; fi
+
+CHECKME=~/.local/bin
+if [ -d $CHECKME ] ; then PATH="$PATH":$CHECKME; fi
 
 # New dotfile stuff
 dots=~/dotfiles

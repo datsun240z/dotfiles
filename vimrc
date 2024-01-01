@@ -22,6 +22,7 @@ filetype off                   " required!
       let g:Author = 'rbelaire'
       " use .c .C to #ifdef out code
    " A Git wrapper
+   Bundle 'altercation/vim-colors-solarized'
    Bundle 'tpope/vim-fugitive'
       autocmd QuickFixCmdPost *grep* cwindow
       " vimdiff current vs git head (fugitive extension)
@@ -579,3 +580,4 @@ function! AppendModeline()
 endfunction
 nnoremap <silent> <Leader>ML :call AppendModeline()<CR>
 " vim: set ts=4 sw=4 tw=100 et :
+syntax enable

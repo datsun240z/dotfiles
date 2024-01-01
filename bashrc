@@ -162,6 +162,9 @@ alias rgg='rg -g '"'"'!oneos-linux'"'"''
 alias vout='vim $($(fc -ln -1))'
 alias ysrc='cd /localdata/rbelaire/yocto/source/evernight'
 alias ybld='cd /localdata/rbelaire/yocto/builds'
+alias vz='fdfind --type f --hidden --exclude .git | fzf-tmux -p --reverse | xargs nvim'
+alias m4b-tool='docker run -it --rm -u $(id -u):$(id -g) -v "$(pwd)":/mnt m4b-tool'
+
 # alias git-vimunstaged='$EDITOR $(git status -s | cut -f3 -d" ")'
 # alias gitlog='git log --graph --full-history --all --color --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20[%cn] %s"'
 
