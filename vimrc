@@ -271,7 +271,7 @@ set hidden
 set cindent
 set cinoptions+=(0
 set nomousehide
-set directory=/tmp
+set directory=$TMPDIR,~/tmp,/var/tmp,/tmp,.
 set guioptions+=a
 set guioptions-=T
 set textwidth=100
