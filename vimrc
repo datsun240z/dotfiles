@@ -183,8 +183,14 @@ filetype off                   " required!
       " https://errong.win/make-vim-like-source-insight-effective-c-c-ide
       " let g:fzf_tags_command = 'gtags'
       command! -bang -nargs=* WikiRg cd ~/vimwiki | call fzf#vim#grep('rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>) , 1, fzf#vim#with_preview(), <bang>0)
-
-   Bundle 'ajmwagar/vim-dues'
+      function! GtagsFzf(query, fullscreen)
+         let command_fmt = ' global -x -- %s | awk ''{printf  $3 ":" $2 "\t"}{$1=$2=$3=""; print $0}'' '
+         let command = printf(command_fmt, a:query)
+         call fzf#vim#grep(command, 0, fzf#vim#with_preview(), a:fullscreen)
+      endfunction
+      command! -nargs=* -bang Gtfzf call GtagsFzf(<q-args>, <bang>0)
+   " Bundle 'zackhsi/fzf-tags'
+   " Bundle 'ajmwagar/vim-dues'
    Bundle 'vimwiki/vimwiki'
       let wiki_1 = {}
       let wiki_1.path            = '~/vimwiki/'
@@ -271,6 +277,7 @@ set hidden
 set cindent
 set cinoptions+=(0
 set nomousehide
+set mouse=r
 set directory=$TMPDIR,~/tmp,/var/tmp,/tmp,.
 set guioptions+=a
 set guioptions-=T
@@ -485,7 +492,10 @@ autocmd FileType vimwiki set nonumber | set norelativenumber | set list listchar
 " try | silent edit ++enc=cp437 | catch | endtry
 autocmd BufRead,BufNewFile *.nfo,*.NFO set ft=nfo
 autocmd FileType set nolist
+" autocmd FileType python setlocal shiftwidth=4 softtabstop=4 expandtab foldmethod=indent foldnestmax=2
 autocmd FileType python setlocal shiftwidth=4 softtabstop=4 expandtab
+nnoremap <space> za
+vnoremap <space> zf
 autocmd FileType sh setlocal shiftwidth=4 softtabstop=4 expandtab
 
 " -----------------------------
@@ -578,5 +588,7 @@ function! AppendModeline()
     call append(line("$"), l:modeline)
 endfunction
 nnoremap <silent> <Leader>ML :call AppendModeline()<CR>
+" Visually sort a comma list on a line
+xnoremap , s<c-r>=join(sort(split(@", '\s*,\s*')), ', ')<cr><esc>
 " vim: set ts=4 sw=4 tw=100 et :
 syntax enable
