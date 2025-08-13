@@ -18,6 +18,7 @@ filetype off                   " required!
    call vundle#rc()
    Bundle 'gmarik/vundle'
    " Add your bundles here
+   Bundle 'kshenoy/vim-signature'
    Bundle 'comment.vim'
       let g:Author = 'rbelaire'
       " use .c .C to #ifdef out code
@@ -226,10 +227,14 @@ filetype off                   " required!
       let g:ale_fixers.sh = ['shfmt']
       let g:ale_sh_shfmt_options = '-i 2 -ci'
       let g:ale_linters = {'python': ['flake8']}
+      let g:ale_cpp_cc_options = '-std=c++17 -Wall -I/localdisk/rbelaire/yocto/source/evernight/ciena/oneos-linux/include -DSOME=\"define\"'
+      let g:ale_c_cc_options = '-std=c11 -Wall -I/localdisk/rbelaire/yocto/source/evernight/ciena/oneos-linux/include'
+      let g:ale_linters.json = ['jq']
    Bundle 'altercation/vim-colors-solarized'
       call togglebg#map("<leader>5")
    Bundle 'ConradIrwin/vim-bracketed-paste'
-
+   Bundle 'powerman/vim-plugin-viewdoc'
+      let g:viewdoc_open = "topleft new"
    " ...All your other bundles...
    if iCanHazVundle == 0
       :BundleInstall
@@ -592,3 +597,49 @@ nnoremap <silent> <Leader>ML :call AppendModeline()<CR>
 xnoremap , s<c-r>=join(sort(split(@", '\s*,\s*')), ', ')<cr><esc>
 " vim: set ts=4 sw=4 tw=100 et :
 syntax enable
+
+
+" Enable OmniCompletion
+" http://vim.wikia.com/wiki/Omni_completion
+" filetype plugin on
+" set omnifunc=syntaxcomplete#Complete Ron like gtags better
+
+" Configure menu behavior
+" http://vim.wikia.com/wiki/VimTip1386
+set completeopt=longest,menuone
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
+  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
+  \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+
+" Use Ctrl+Space for omni-completion
+" https://stackoverflow.com/questions/510503/ctrlspace-for-omni-and-keyword-completion-in-vim
+inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
+  \ "\<lt>C-n>" :
+  \ "\<lt>C-x>\<lt>C-o><c-r>=pumvisible() ?" .
+  \ "\"\\<lt>c-n>\\<lt>c-p>\\<lt>c-n>\" :" .
+  \ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
+imap <C-@> <C-Space>
+
+" Popup menu hightLight Group
+highlight Pmenu ctermbg=13 guibg=LightGray
+highlight PmenuSel ctermbg=7 guibg=DarkBlue guifg=White
+highlight PmenuSbar ctermbg=7 guibg=DarkGray
+highlight PmenuThumb guibg=Black
+
+" " Enable global scope search
+" let OmniCpp_GlobalScopeSearch = 1
+" " Show function parameters
+" let OmniCpp_ShowPrototypeInAbbr = 1
+" " Show access information in pop-up menu
+" let OmniCpp_ShowAccess = 1
+" " Auto complete after '.'
+" let OmniCpp_MayCompleteDot = 1
+" " Auto complete after '->'
+" let OmniCpp_MayCompleteArrow = 1
+" " Auto complete after '::'
+" let OmniCpp_MayCompleteScope = 0
+" " Don't select first item in pop-up menu
+" let OmniCpp_SelectFirstItem = 0
+

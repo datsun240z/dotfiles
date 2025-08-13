@@ -231,6 +231,8 @@ if [ -f  ${HOME}/.expect-liter ]; then
   source ${HOME}/.expect-literc
 fi
 
+complete -d cd
+
 ## BABS issue
 umask 002
 
@@ -283,6 +285,8 @@ export "SSH_AUTH_SOCK=${HOME}/.gnupg/S.gpg-agent.ssh"
 # --follow: Follow symlinks
 # --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+# Open in tmux popup if on tmux, otherwise use --height mode
+export FZF_DEFAULT_OPTS='--height 40% --tmux bottom,40% --layout reverse --border top'
 export RIPGREP_CONFIG_PATH=~/.ripgreprc
 
 export GTAGSCONF=/usr/local/share/gtags/gtags.conf
